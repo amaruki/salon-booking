@@ -21,8 +21,7 @@
             <div class="text-right">
                 <p class="text-2xl">
 
-                    LKR
-                    {{ number_format($bookingRevenueThisMonth, 2, '.', ',') }}
+                    Rp.{{ number_format($bookingRevenueThisMonth, 2, '.', ',') }}
                 </p>
                 <p>Booking Revenue This Month</p>
             </div>

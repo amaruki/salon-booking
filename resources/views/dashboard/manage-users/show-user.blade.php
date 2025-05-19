@@ -87,12 +87,12 @@
                                 </li>
                                 <li class="flex items-center py-3">
                                     <span>Last Purchase Amount</span>
-                                    <span class="ml-auto"> LKR {{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->total }}</span>
+                                    <span class="ml-auto"> Rp.{{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->total }}</span>
                                 </li>
 
                                 <li class="flex items-center py-3">
                                     <span>Total Purchases</span>
-                                    <span class="ml-auto"> LKR {{ $appointments->where('status', true)?->sum('total') }}</span>
+                                    <span class="ml-auto"> Rp.{{ $appointments->where('status', true)?->sum('total') }}</span>
                                 </li>
                                 <li class="flex items-center py-3">
                                     <span>Last Cancellation</span>

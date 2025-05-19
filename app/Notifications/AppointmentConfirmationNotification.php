@@ -28,20 +28,53 @@ class AppointmentConfirmationNotification extends Notification implements Should
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject( 'Appointment Confirmation - Salon Bliss 🎉' . $this->appointment->service->name)
+            ->subject(__(
+                'appointment.subject',
+                ['service' => $this->appointment->service->name]
+            ))
             ->from('noreply@salonbliss.com')
-            ->greeting('Hello ' . $notifiable->name . '!')
-            ->line('Your appointment for ' . $this->appointment->service->name . ' has been confirmed!')
-            // invoice
-            ->line('Your payment of LKR ' . $this->appointment->total . ' has been processed.')
-            ->line('🧾 Appointment Code: ' . $this->appointment->appointment_code)
-            ->line('📅 Date: ' . $this->appointment->date)
-            ->line('⏰ Time: ' . $this->appointment->start_time . ' - ' . $this->appointment->end_time)
-            ->line('📍 Location: ' . $this->appointment->location->name)
-            ->line('📍 Address: ' . $this->appointment->location->address)
-            ->line('📞 Contact: ' . $this->appointment->location->telephone_number)
-            ->action('View Your Appointment',  route('dashboard').'?search='. $this->appointment->appointment_code )
-            ->line('Thank you for using Salon Bliss! We hope to see you again soon.');
+            ->greeting(__(
+                'appointment.greeting',
+                ['name' => $notifiable->name]
+            ))
+            ->line(__(
+                'appointment.confirmed',
+                ['service' => $this->appointment->service->name]
+            ))
+            ->line(__(
+                'appointment.payment',
+                ['total' => $this->appointment->total]
+            ))
+            ->line(__(
+                'appointment.code',
+                ['code' => $this->appointment->appointment_code]
+            ))
+            ->line(__(
+                'appointment.date',
+                ['date' => $this->appointment->date]
+            ))
+            ->line(__(
+                'appointment.time',
+                ['start' => $this->appointment->start_time, 'end' => $this->appointment->end_time]
+            ))
+            ->line(__(
+                'appointment.location',
+                ['location' => $this->appointment->location->name]
+            ))
+            ->line(__(
+                'appointment.address',
+                ['address' => $this->appointment->location->address]
+            ))
+            ->line(__(
+                'appointment.contact',
+                ['contact' => $this->appointment->location->telephone_number]
+            ))
+            ->action(__(
+                'appointment.action'
+            ), route('dashboard').'?search='. $this->appointment->appointment_code )
+            ->line(__(
+                'appointment.thanks'
+            ));
 
     }
 

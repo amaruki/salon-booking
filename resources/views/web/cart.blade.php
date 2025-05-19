@@ -43,7 +43,7 @@
                                             <span class="font-semibold"> {{ $service->name }}</span>
                                         </div>
                                     </td>
-                                    <td class="py-4">LKR {{ number_format($service->price, 2, '.', ',') }}</td>
+                                    <td class="py-4">Rp.{{ number_format($service->price, 2, '.', ',') }}</td>
                                     <td class="py-4">
                                       {{ $service->pivot->date}}
                                     </td>
@@ -83,7 +83,7 @@
                         <h2 class="text-lg font-semibold mb-4">Summary</h2>
                         <div class="flex justify-between mb-2">
                             <span>Subtotal</span>
-                            <span>LKR {{ number_format($cart?->total, 2, '.', ',') }}</span>
+                            <span>Rp.{{ number_format($cart?->total, 2, '.', ',') }}</span>
 
                         </div>
 {{--                        <div class="flex justify-between mb-2">--}}
@@ -97,7 +97,7 @@
                         <hr class="my-2">
                         <div class="flex justify-between mb-2">
                             <span class="font-semibold">Total</span>
-                            <span class="font-semibold">LKR {{ number_format($cart?->total, 2, '.', ',') }}</span>
+                            <span class="font-semibold">Rp.{{ number_format($cart?->total, 2, '.', ',') }}</span>
                         </div>
                         <button @click="showCheckoutConfirmation = true" class="bg-pink-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
                     </div>
