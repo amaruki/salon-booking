@@ -11,7 +11,6 @@
                     Cancelled
                 @endif
 
-
                 Appointments
             </h2>
 

@@ -1,4 +1,4 @@
-# Laravel based booking + CRM for Salon Bliss
+# Laravel based booking + CRM for Ell's Salon
 
 <p align="center"><img src="readme-assets/screenshots/logo-readme.png" width="400" alt="Laravel Logo"></p>
 
@@ -20,7 +20,7 @@
 </figure>
 <br /><br />
 
-This project is a booking and CRM system for Salon Bliss, a fictional hair salon. 
+This project is a booking and CRM system for Ell's Salon, a fictional hair salon. 
 
 Managing Users, Services, Locations, Cart for customers, Appointment Booking functionality, Multiple categories, locations for the salon, use of Email
 notifications, sending emails and capturing the views of the users,
@@ -220,7 +220,7 @@ The system provides an API for the create, read, update and delete of a customer
 
 The system also provides an API for the create, read, update and delete of a service.
 
-The postman collection for the API is available here: [Salon Bliss.postman_collection.json](Salon Bliss.postman_collection.json)
+The postman collection for the API is available here: [Ell's Salon.postman_collection.json](Ell's Salon.postman_collection.json)
 
 [//]: # (## Screenshots)
 

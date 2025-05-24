@@ -16,7 +16,7 @@
                         <p class="mb-3 font-normal text-gray-700 ">{{ $deal->description }}</p>
                         <a href="#"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-500 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 ">
-                            View Offer
+                            Lihat Penawaran
                             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -35,7 +35,7 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                                    No Deals Found
+                                    Tidak Ada Penawaran yang Ditemukan
                                 </th>
                             </tr>
                         </thead>

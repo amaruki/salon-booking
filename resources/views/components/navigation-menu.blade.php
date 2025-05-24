@@ -141,13 +141,13 @@
                             <x-dropdown-link href="{{ route('cart') }}">
                                 {{ __('Cart') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="">
+                            {{-- <x-dropdown-link href="">
                                 {{ __('Booking') }}
                             </x-dropdown-link>
                             <x-dropdown-link href="">
                                 {{ __('My Appointments') }}
                             </x-dropdown-link>
-
+                           --}}
                             <div class="border-t border-gray-200"></div>
                             @endif
                             <!-- Account Management -->
@@ -159,11 +159,11 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
-                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                            {{-- @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
                                 </x-dropdown-link>
-                            @endif
+                            @endif --}}
 
                             <div class="border-t border-gray-200"></div>
 

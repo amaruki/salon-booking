@@ -1,9 +1,9 @@
 <div>
     <div class="flex justify-between mx-7">
-        <h2 class="text-2xl font-bold">Services</h2>
+        <h2 class="text-2xl font-bold">Layanan</h2>
 
         <x-button wire:click="confirmServiceAdd" class="px-5 py-2 text-white bg-pink-500 rounded-md hover:bg--600">
-            Create
+            Tambah
         </x-button>
     </div>
     <div class="mt-4">
@@ -17,7 +17,7 @@
 
     <div class="overflow-auto rounded-lg border border-gray-200 shadow-md m-5">
         <div class="w-1/3 float-right m-4">
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Cari</label>
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -53,8 +53,11 @@
                 @foreach ($services as $service)
                     <tr class="hover:bg-gray-50">
                         <td class="pl-6 py-4  max-w-0">{{ $service->id }}</td>
+
                         <th class="flex gap-3 px-6 py-4 font-normal text-gray-900  max-w-0">
+
                             <div class="font-medium text-gray-700">{{ $service->name }}</div>
+
                         </th>
                         <td class="px-6 py-4  max-w-0">
                             <div class="font-medium text-gray-700">
@@ -62,15 +65,19 @@
                                     class="w-20 h-20 object-cover">
                             </div>
                         </td>
+
                         <td class="px-6 py-4 max-w-0">{{ $service->description }}</td>
+
                         <td class="px-6 py-4  max-w-0">
                             <div class="font-medium text-gray-700">{{ $service->price }}</div>
                         </td>
                         <td class="px-6 py-4  max-w-0">
+
                             <div class="font-medium text-gray-700">{{ $service->category?->name }}</div>
                         </td>
                         <td class="px-6 py-4 ">
                             <div>
+
                                 @if ($service->is_hidden == true)
                                     <span
                                         class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
@@ -93,6 +100,14 @@
                                     <x-button>
                                         {{ __('View') }}
                                     </x-button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="mt-5 ">
+                                <a href="{{ route('view-service', ['slug' => $service->slug]) }}">
+                                    <x-button>
+                                        {{ __('View') }}
+                                    </x-button>
 
                                 </a>
                                 <x-button wire:click="confirmServiceEdit({{ $service->id }})"
@@ -103,14 +118,18 @@
                                     wire:loading.attr="disabled">
                                     {{ __('Delete') }}
                                 </x-danger-button>
+
+
                             </div>
                         </td>
                     </tr>
                 @endforeach
 
             </tbody>
+            </tbody>
         </table>
         <div class="p-5">
+            {{ $services->links() }}
             {{ $services->links() }}
         </div>
 
@@ -125,12 +144,14 @@
 
             <x-slot name="footer">
                 <div class="flex gap-3">
-                    <x-secondary-button wire:click="$set('confirmingServiceDeletion', false)"
+                        <x-secondary-button wire:click="$set('confirmingServiceDeletion', false)"
+                       
                         wire:loading.attr="disabled">
-                        {{ __('Cancel') }}
-                    </x-secondary-button>
+                            {{ __('Cancel') }}
+                        </x-secondary-button>
 
                     <x-danger-button wire:click="deleteService({{ $confirmingServiceDeletion }})"
+                       
                         wire:loading.attr="disabled">
                         {{ __('Delete') }}
                     </x-danger-button>
@@ -140,10 +161,12 @@
 
         <x-dialog-modal wire:model="confirmingServiceAdd">
             <x-slot name="title">
-                {{-- {{ __('Add a new service') }} --}}
+
                 {{ isset($this->newService->id) ? 'Edit Service' : 'Add Service' }}
             </x-slot>
             <x-slot name="content">
+
+
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                     <input type="text" wire:model="newService.name" id="name"
@@ -166,13 +189,16 @@
                         <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
                         <input type="text" wire:model="newService.price" id="price"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
                         @error('newService.price')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
+
                     </div>
 
                     <div>
                         <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
+
                         <select wire:model="newService.category_id" id="category_id"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             <option disabled selected value="">Select Category</option>
@@ -184,6 +210,8 @@
                             @enderror
                         </select>
                     </div>
+
+
                 </div>
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
@@ -214,7 +242,25 @@
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <div>
+                        <label for="benefits" class="block text-sm font-medium text-gray-700">Benefits</label>
+                        <textarea id="benefits" wire:model="newService.benefits"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                        @error('newService.benefits')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
 
+                    <div>
+                        <label for="aftercare_tips" class="block text-sm font-medium text-gray-700">Aftercare
+                            Tips</label>
+                        <textarea id="aftercare_tips" wire:model="newService.aftercare_tips"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                        @error('newService.aftercare_tips')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div>
                         <label for="aftercare_tips" class="block text-sm font-medium text-gray-700">Aftercare
                             Tips</label>
@@ -236,6 +282,17 @@
                 </div>
                 <div>
                     <label for="is_hidden" class="block text-sm font-medium text-gray-700">Is Hidden</label>
+                </div>
+                <div>
+                    <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>
+                    <textarea id="notes" wire:model="newService.notes"
+                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                    @error('newService.notes')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="is_hidden" class="block text-sm font-medium text-gray-700">Is Hidden</label>
 
                     <input type="checkbox" wire:model="newService.is_hidden" id="is_hidden">
                     @error('newService.is_hidden')
@@ -243,6 +300,15 @@
                     @enderror
                 </div>
 
+
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                        <input type="file" wire:model.defer="image" id="image"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        @error('image')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div class="col-span-2">
                         <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
@@ -255,12 +321,22 @@
                         {{-- If the image is already saved is system show img --}}
                         @if (isset($image) && is_string($image))
                             <img alt="image" src="{{ '/storage/' . $image }}" class="mt-4" width="200">
+                        {{-- If the image is already saved is system show img --}}
+                        @if (isset($image) && is_string($image))
+                            <img alt="image" src="{{ '/storage/' . $image }}" class="mt-4" width="200">
                             {{-- When the image is uploaded show img --}}
                         @elseif (isset($image) && is_object($image))
                             <img alt="image" src="{{ $image->temporaryUrl() }}" class="mt-4" width="200">
                         @else
                         @endif
+                        @elseif (isset($image) && is_object($image))
+                            <img alt="image" src="{{ $image->temporaryUrl() }}" class="mt-4" width="200">
+                        @else
+                        @endif
 
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4 gap-2">
                     </div>
                 </div>
                 <div class="flex justify-end mt-4 gap-2">
@@ -270,6 +346,8 @@
                     </x-secondary-button>
                     <x-button wire:click="saveService">Save</x-button>
                 </div>
+
+
             </x-slot>
             <x-slot name="footer">
             </x-slot>
