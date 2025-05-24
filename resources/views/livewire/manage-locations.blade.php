@@ -46,17 +46,10 @@
                 @foreach ($locations as $location)
                     <tr class="hover:bg-gray-50">
                         <td class="pl-6 py-4  max-w-0">{{ $location->id }}</td>
-
                         <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $location->name}}</td>
-
                         <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $location->address}}</td>
-
                         <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $location->telephone_number}}</td>
-
                         <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $location->status ? 'Yes' : 'No'}}</td>
-
-
-
                         <td>
                             <div class="flex gap-1 mt-5">
                                 <x-button wire:click="confirmLocationEdit({{ $location->id }})" wire:loading.attr="disabled">
@@ -78,8 +71,6 @@
                 {{ $locations->links() }}
             </div>
 
-
-
             <x-dialog-modal wire:model="confirmingLocationDeletion">
                 <x-slot name="title">
                     {{ __('Delete Location') }}
@@ -87,7 +78,6 @@
 
                 <x-slot name="content">
                     {{ __('Are you sure you want to delete the location?') }}
-
                 </x-slot>
 
                 <x-slot name="footer">
@@ -134,8 +124,6 @@
 
                         @error('location.status') <span class="text-red-500">{{ $message }}</span>@enderror
                     </div>
-
-
 
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div class="flex justify-end mt-4 gap-2">

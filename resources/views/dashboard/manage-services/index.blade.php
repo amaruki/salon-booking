@@ -1,9 +1,3 @@
 <x-dashboard>
-   
-  
-
-
-   <livewire:manage-services />
-
-
+    <livewire:manage-services />
 </x-dashboard>
