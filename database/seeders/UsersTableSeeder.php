@@ -1,0 +1,197 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class UsersTableSeeder extends Seeder
+{
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+
+        \DB::table('users')->delete();
+        
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'name' => 'Admin',
+                'email' => 'admin@ellsalon.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$jEDXhTpBI5MxtLzsSAOAau1ojhIbutA5kuF.OFmBkCDHAR35L.Bla',
+                'phone_number' => '1234569990',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-09-29 18:08:59',
+                'updated_at' => '2023-09-29 18:08:59',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 1,
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'name' => 'Customer 1',
+                'email' => 'cust1@gmail.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$50xsTMyTEvH9rrth.h6KR.noWxzyBIS3k1.sqy/m83fFdRCQKhdZ6',
+                'phone_number' => '1299567890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-09-29 18:08:59',
+                'updated_at' => '2023-09-30 02:53:22',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 3,
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Customer 2',
+                'email' => 'cust2@gmail.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$.GE6iuPXm25ZFdOkkaNfcOXh.YjIINSH7LP1OWZGXNXD1wg4obsy2',
+                'phone_number' => '1277567890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-09-29 18:09:00',
+                'updated_at' => '2023-09-30 02:53:19',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 3,
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'Customer 3',
+                'email' => 'cust3@gmail.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$fnIZHgYe/k0ANg4ZN3WVWOhallg6OaH8te.GIJ/x2kqGzjy4x2on.',
+                'phone_number' => '1234998890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-09-29 18:09:00',
+                'updated_at' => '2023-09-30 02:53:25',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 3,
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'name' => 'Customer 4',
+                'email' => 'cust4@gmail.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$3U.073gevAkCgavYg3ADeOQikBIgx8lvXG7r5n92MEP6UB8uYJL6e',
+                'phone_number' => '2224262890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 0,
+                'created_at' => '2023-09-29 18:09:00',
+                'updated_at' => '2023-09-29 18:09:00',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 3,
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'name' => 'Employee 1',
+                'email' => 'emp1@salonbliss.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$mmXYYpO4ZzTLKB04Knivf.y1kE9L38Mrj6YWGUC1H.qANdCLUOZem',
+                'phone_number' => '1644567890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-09-29 18:09:00',
+                'updated_at' => '2023-09-29 18:09:00',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 2,
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'name' => 'Employee 2',
+                'email' => 'emp2@salonbliss.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$GUk/wzeuz72xrVynR1huVebs8GvTT6pV1VHj5zTpglrwsEj7FxMfy',
+                'phone_number' => '1234523890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-09-29 18:09:00',
+                'updated_at' => '2023-09-29 18:09:00',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 2,
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'name' => 'Employee 3',
+                'email' => 'emp3@gmail.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$zq8CsWfaLZ4ejFtX4B0QOu.L7g.65Olxma8LR0Q3ZqLqQ9t.fk8CS',
+                'phone_number' => '0034567890',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 0,
+                'created_at' => '2023-09-29 18:09:00',
+                'updated_at' => '2023-09-29 18:09:00',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 2,
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'name' => 'Kim Hammond',
+                'email' => 'bofaboka@mailinator.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$LIihC13IaEbE0BEpQHHhKeTScH9MVcHAFQUBrPR51sPbo0WfI48BO',
+                'phone_number' => '0121212425',
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'status' => 1,
+                'created_at' => '2023-10-01 13:48:11',
+                'updated_at' => '2023-10-01 13:48:11',
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'role_id' => 3,
+            ),
+        ));
+        
+        
+    }
+}

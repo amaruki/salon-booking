@@ -38,9 +38,9 @@ Route::middleware([
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [App\Http\Controllers\DashboardHomeController::class, 'index'])->name('dashboard');
 
-        // middleware to give access only for admin
+        // middleware to give access only for owner
         Route::middleware([
-            'validateRole:Admin'
+            'validateRole:Owner'
         ])->group(function () {
 
             Route::prefix('manage')->group( function () {
@@ -57,9 +57,9 @@ Route::middleware([
 
         });
 
-        // middlleware to give access only for admin and employee
+        // middlleware to give access only for owner and cashier
         Route::middleware([
-            'validateRole:Admin,Employee'
+            'validateRole:Owner,Cashier'
         ])->group(function () {
 
             Route::prefix('manage')->group( function () {

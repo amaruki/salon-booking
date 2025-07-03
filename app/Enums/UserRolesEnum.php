@@ -5,6 +5,6 @@ namespace App\Enums;
 enum UserRolesEnum: int
 {
     case Customer = 3;
-    case Employee = 2;
-    case Admin = 1;
+    case Cashier = 2;
+    case Owner = 1;
 }
