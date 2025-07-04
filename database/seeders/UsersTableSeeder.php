@@ -117,7 +117,7 @@ class UsersTableSeeder extends Seeder
             5 => 
             array (
                 'id' => 6,
-                'name' => 'Employee 1',
+                'name' => 'Cashier 1',
                 'email' => 'emp1@salonbliss.com',
                 'email_verified_at' => NULL,
                 'password' => '$2y$10$mmXYYpO4ZzTLKB04Knivf.y1kE9L38Mrj6YWGUC1H.qANdCLUOZem',
@@ -136,7 +136,7 @@ class UsersTableSeeder extends Seeder
             6 => 
             array (
                 'id' => 7,
-                'name' => 'Employee 2',
+                'name' => 'Cashier 2',
                 'email' => 'emp2@salonbliss.com',
                 'email_verified_at' => NULL,
                 'password' => '$2y$10$GUk/wzeuz72xrVynR1huVebs8GvTT6pV1VHj5zTpglrwsEj7FxMfy',
@@ -155,7 +155,7 @@ class UsersTableSeeder extends Seeder
             7 => 
             array (
                 'id' => 8,
-                'name' => 'Employee 3',
+                'name' => 'Cashier 3',
                 'email' => 'emp3@gmail.com',
                 'email_verified_at' => NULL,
                 'password' => '$2y$10$zq8CsWfaLZ4ejFtX4B0QOu.L7g.65Olxma8LR0Q3ZqLqQ9t.fk8CS',

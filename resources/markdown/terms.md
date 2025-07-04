@@ -36,11 +36,11 @@ These terms and conditions ("Terms") govern your use of the Ell's Salon website 
    7.2. Ell's Salon does not guarantee the accuracy, reliability, or availability of the Site or its content.
 
 8. Limitation of Liability
-   8.1. Ell's Salon and its affiliates, officers, directors, employees, and agents shall not be liable for any direct, indirect, incidental, consequential, or exemplary damages arising out of or in connection with your use of the Site.
+   8.1. Ell's Salon and its affiliates, officers, directors, cashiers, and agents shall not be liable for any direct, indirect, incidental, consequential, or exemplary damages arising out of or in connection with your use of the Site.
    8.2. Ell's Salon's total liability for any claim arising out of or relating to these Terms or the Site shall not exceed the amount paid by you, if any, to Ell's Salon for the use of the Site.
 
 9. Indemnification
-   9.1. You agree to indemnify and hold Ell's Salon and its affiliates, officers, directors, employees, and agents harmless from any claims, losses, liabilities, damages, costs, or expenses arising out of your use of the Site or violation of these Terms.
+   9.1. You agree to indemnify and hold Ell's Salon and its affiliates, officers, directors, cashiers, and agents harmless from any claims, losses, liabilities, damages, costs, or expenses arising out of your use of the Site or violation of these Terms.
 
 10. Governing Law and Jurisdiction
 

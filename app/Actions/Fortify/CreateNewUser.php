@@ -29,7 +29,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
         
         // if ($input['role_id'] == 2) {
-        //     $role_id = UserRolesEnum::Employee;
+        //     $role_id = UserRolesEnum::Cashier;
         // } else {
             $role_id = UserRolesEnum::Customer;
         // }

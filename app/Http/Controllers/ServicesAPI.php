@@ -14,9 +14,9 @@ class ServicesAPI extends Controller
 
         $queryHiddenData = false;
         if (auth()->check() &&
-            (auth()->user()->role->id == UserRolesEnum::Employee->value
-                || auth()->user()->role->id == UserRolesEnum::Admin->value)) {
-            // No rate limit for Employee or Admin
+            (auth()->user()->role->id == UserRolesEnum::Cashier->value
+                || auth()->user()->role->id == UserRolesEnum::Owner->value)) {
+            // No rate limit for Cashier or Owner
             $rateLimit = Limit::none();
             $queryHiddenData = true;
         }

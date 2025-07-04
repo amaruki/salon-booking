@@ -98,8 +98,8 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl">{{ $totalEmployees }}</p>
-                    <p>Employees</p>
+                    <p class="text-2xl">{{ $totalCashiers }}</p>
+                    <p>Cashiers</p>
                 </div>
             </div>
 

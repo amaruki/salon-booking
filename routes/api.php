@@ -33,7 +33,7 @@ Route::post('/tokens/create', function (Request $request) {
 
 Route::middleware([
         'auth:sanctum',
-        'validateRole:Admin,Employee'
+        'validateRole:Owner,Cashier'
     ]
     )->group(
     function () {

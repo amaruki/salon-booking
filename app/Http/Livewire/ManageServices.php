@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ManageServices extends Component
 
@@ -87,6 +88,11 @@ class ManageServices extends Component
 
     public function deleteService(Service $service)
     {
+        // get original image of the old one and delete it from the disk
+        $originalImage = $service->image;
+        $originalImage = str_replace('storage', 'public', $originalImage);
+        Storage::delete($originalImage);
+
         $service->delete();
 
         session()->flash('message', 'Service successfully deleted.');
@@ -151,7 +157,7 @@ class ManageServices extends Component
             $this->newService['image'] = $this->image;
 
             if ($this->newService->isDirty('name')) {
-                $this->newService->slug = \Str::slug($this->newService->name);
+                $this->newService->slug = Str::slug($this->newService->name);
                 $this->validate(['newService.slug' => 'unique:services,slug,' . $this->newService->id]);
             }
 
@@ -161,7 +167,7 @@ class ManageServices extends Component
         } else {
             // create a slug
 
-            $this->newService['slug'] = \Str::slug($this->newService['name']);
+            $this->newService['slug'] = Str::slug($this->newService['name']);
 
 //            $this->validate(['newService.slug' => 'unique:services,slug']);
 

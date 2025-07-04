@@ -20,7 +20,7 @@ class AdminDashboardHomeController extends Controller
         $todayDate = Carbon::today()->toDateString();
 
         $totalCustomers = User::where('role_id', UserRolesEnum::Customer)->count();
-        $totalEmployees = User::where('role_id', UserRolesEnum::Employee)->count();
+        $totalCashiers = User::where('role_id', UserRolesEnum::Cashier)->count();
 
         $totalServicesActive = Service::where('is_hidden', 0)->count();
         $totalServices = Service::count();
@@ -28,7 +28,7 @@ class AdminDashboardHomeController extends Controller
         $totalUpcomingDeals = Deal::where('start_date', '<', $todayDate)->count();
         $totalOngoingDeals = Deal::where('start_date', '<=', $todayDate)->where('end_date', '>=', $todayDate)->count();
 
-        // dd($totalCustomers, $totalEmployees, $totalServicesActive, $totalServices, $totalUpcommingDeals, $totalOngoingDeals);
+        // dd($totalCustomers, $totalCashiers, $totalServicesActive, $totalServices, $totalUpcommingDeals, $totalOngoingDeals);
 
         $totalUpcomingAppointments = Appointment::where('date', '>', $todayDate)->count();
         $todaysAppointments = Appointment::where('date', $todayDate)->count();
@@ -69,9 +69,9 @@ class AdminDashboardHomeController extends Controller
 
 
 
-        return view('dashboard.admin-employee', [
+        return view('dashboard.admin-cashier', [
             'totalCustomers' => $totalCustomers,
-            'totalEmployees' => $totalEmployees,
+            'totalCashiers' => $totalCashiers,
             'totalServicesActive' => $totalServicesActive,
             'totalServices' => $totalServices,
             'totalUpcomingDeals' => $totalUpcomingDeals,

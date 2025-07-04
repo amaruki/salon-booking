@@ -1,7 +1,7 @@
 @if(Auth::User())
 
-    {{-- Only admin can manage the users at the moment --}}
-    {{-- @if(Auth::User()->role()->first()->name == 'Admin')
+    {{-- Only owner can manage the users at the moment --}}
+    {{-- @if(Auth::User()->role()->first()->name == 'Owner')
         <x-nav-link href="{{ route('manageusers') }}" :active="request()->routeIs('manageusers')">
             {{ __('Manage Users') }}
         </x-nav-link>

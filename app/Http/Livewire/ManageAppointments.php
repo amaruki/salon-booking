@@ -32,15 +32,23 @@ class ManageAppointments extends Component
     private $userId;
 
     protected $rules = [
-//        "appointment.name" => "required|string|max:255",
-
+        'appointment.cart_id' => 'required|integer|exists:carts,id',
+        'appointment.user_id' => 'required|integer|exists:users,id',
+        'appointment.service_id' => 'required|integer|exists:services,id',
+        'appointment.date' => 'required|date',
+        'appointment.time_slot_id' => 'required|integer|exists:time_slots,id',
+        'appointment.start_time' => 'required|string',
+        'appointment.end_time' => 'required|string',
+        'appointment.location_id' => 'required|integer|exists:locations,id',
+        'appointment.total' => 'required|numeric',
+        'appointment.status' => 'required|boolean',
     ];
 
     public function mount($userId = null, $selectFilter = 'upcoming') {
 
        if (auth()->user()->role->name == "Customer") {
             $this->userId = auth()->user()->id;
-        } else if (auth()->user()->role->name == ("Employee" || "Admin")) {
+        } else if (auth()->user()->role->name == ("Cashier" || "Owner")) {
            $this->userId = $userId;
         }
         $selectFilter ? $this->selectFilter = $selectFilter : $this->selectFilter = 'upcoming';
@@ -114,30 +122,40 @@ class ManageAppointments extends Component
 
 
 
-//    public function confirmAppointmentEdit(Appointment $appointment) {
-//        $this->appointment = $appointment;
-//        $this->confirmingAppointmentAdd= true;
-//    }
+    public function confirmAppointmentEdit(Appointment $appointment) {
+        $this->appointment = $appointment;
+        $this->confirmingAppointmentAdd= true;
+    }
     public function confirmAppointmentCancellation() {
         $this->confirmingAppointmentCancellation = true;
     }
 
-//    public function saveAppointment() {
-//        $this->validate();
-//
-//        if (isset($this->appointment->id)) {
-//            $this->appointment->save();
-//        } else {
-//            Appointment::create(
-//                [
-//                    'name' => $this->appointment['name'],
-//                ]
-//            );
-//        }
-//
-//        $this->confirmingAppointmentAdd = false;
-//        $this->appointment = null;
-//    }
+    public function saveAppointment()
+    {
+        $this->validate();
+
+        if (isset($this->appointment->id)) {
+            $this->appointment->save();
+            session()->flash('message', 'Appointment successfully updated.');
+        } else {
+            Appointment::create([
+                'cart_id' => $this->appointment['cart_id'],
+                'user_id' => $this->appointment['user_id'],
+                'service_id' => $this->appointment['service_id'],
+                'date' => $this->appointment['date'],
+                'time_slot_id' => $this->appointment['time_slot_id'],
+                'start_time' => $this->appointment['start_time'],
+                'end_time' => $this->appointment['end_time'],
+                'location_id' => $this->appointment['location_id'],
+                'total' => $this->appointment['total'],
+                'status' => $this->appointment['status'],
+            ]);
+            session()->flash('message', 'Appointment successfully created.');
+        }
+
+        $this->confirmingAppointmentAdd = false;
+        $this->appointment = null;
+    }
 
     public function cancelAppointment(Appointment $appointment)
     {
@@ -145,7 +163,7 @@ class ManageAppointments extends Component
 
 
         if (auth()->user()->id == $this->appointment->user->id
-            || auth()->user()->role->name == (UserRolesEnum::Employee->name || UserRolesEnum::Admin->name)) {
+            || auth()->user()->role->name == (UserRolesEnum::Cashier->name || UserRolesEnum::Owner->name)) {
 
             $this->appointment->status = 0;
 //        $this->appointment->cancelled_by = auth()->user()->id;
@@ -155,8 +173,8 @@ class ManageAppointments extends Component
         }
     }
 
-//    public function confirmAppointmentAdd() {
-//        $this->confirmingAppointmentAdd = true;
-//    }
+    public function confirmAppointmentAdd() {
+        $this->confirmingAppointmentAdd = true;
+    }
 
 }

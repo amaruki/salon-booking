@@ -30,7 +30,7 @@
                         <div class="text-3xl font-bold text-pink-600">Rp {{ number_format($service->price, 0, '.', '.') }}</div>
                     </div>
 
-                    <!-- Admin Controls -->
+                    <!-- Owner Controls -->
                     @if (Auth::user()?->role_id == 1 || Auth::user()?->role_id == 2)
                         <div class="mt-4">
                             <a href="{{ route('manageservices') }}?search={{ $service->slug }}" class="inline-flex items-center px-4 py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 transition">
@@ -124,7 +124,7 @@
                 </div>
             </div>
 
-            <!-- Analytics Section for Admin -->
+            <!-- Analytics Section for Owner -->
             @if (Auth::user()?->role_id == 1 || Auth::user()?->role_id == 2)
                 <div class="border-t border-gray-200 mt-8 px-6 py-6 bg-gray-50">
                     <h2 class="text-xl font-bold text-gray-800 mb-4">Wawasan Analitik</h2>

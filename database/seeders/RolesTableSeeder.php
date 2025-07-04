@@ -30,7 +30,7 @@ class RolesTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'name' => 'Employee',
+                'name' => 'Cashier',
                 'status' => 1,
                 'created_at' => '2023-09-29 18:08:59',
                 'updated_at' => '2023-09-29 18:08:59',

@@ -46,7 +46,7 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                         
-                        @if($userRole === 'Admin')
+                        @if($userRole === 'Owner')
                             <x-nav-link href="{{ route('manageusers') }}" :active="request()->routeIs('manageusers')"
                                         class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-50 hover:text-pink-600">
                                 {{ __('Manage Users') }}
@@ -261,7 +261,7 @@
             </x-responsive-nav-link>
 
             @if($isAuthenticated)
-                @if($userRole === 'Admin')
+                @if($userRole === 'Owner')
                     <x-responsive-nav-link href="{{ route('manageusers') }}" :active="request()->routeIs('manageusers')"
                                            class="block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">
                         {{ __('Manage Users') }}

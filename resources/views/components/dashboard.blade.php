@@ -66,7 +66,7 @@
 {{--                            </a>--}}
 {{--                          </li>--}}
 
-                          {{-- User Role 1= Admin, 2 = Employee --}}
+                          {{-- User Role 1= Owner, 2 = Cashier --}}
                           @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
 
                           <li class="px-5">

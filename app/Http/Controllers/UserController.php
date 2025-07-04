@@ -45,8 +45,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        // Redirect if not admin
-        if (auth()->user()->role->name != 'Admin') {
+        // Redirect if not owner
+        if (auth()->user()->role->name != 'Owner') {
             return redirect()->route('dashboard')->with('error', 'You are not authorized to perform this action.');
         }
 
@@ -58,7 +58,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8|max:255',
             'password_confirmation' => 'required|string|min:8|max:255|same:password',
             'phone_number' => ['required', 'string', 'regex:/^[0-9]{10}$/', 'unique:users'],
-            'role' => 'required|string|in:employee,customer',
+            'role' => 'required|string|in:cashier,customer',
         ]);
 
         if ($validator->fails()) {
@@ -69,8 +69,8 @@ class UserController extends Controller
 
         $role = $request['role'];
 
-        if ($role == 'employee') {
-            $role_id = UserRolesEnum::Employee;
+        if ($role == 'cashier') {
+            $role_id = UserRolesEnum::Cashier;
         } else {
             $role_id = UserRolesEnum::Customer;
         }

@@ -63,7 +63,7 @@ return [
     */
 
     'home' => function () {
-        if (Auth::user()->role()->first()->name == 'Admin' || Auth::user()->role()->first()->name == 'Employee') {
+        if (Auth::user()->role()->first()->name == 'Owner' || Auth::user()->role()->first()->name == 'Cashier') {
             return RouteServiceProvider::DASHBOARD;
         } else {
             return RouteServiceProvider::HOME;

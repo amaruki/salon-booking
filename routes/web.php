@@ -92,7 +92,7 @@ Route::middleware([
 //                Route::get('/revenue', [App\Http\Controllers\AnalyticsController::class, 'revenue'])->name('analytics.revenue');
 //                Route::get('/appointments', [App\Http\Controllers\AnalyticsController::class, 'appointments'])->name('analytics.appointments');
 //                Route::get('/customers', [App\Http\Controllers\AnalyticsController::class, 'customers'])->name('analytics.customers');
-//                Route::get('/employees', [App\Http\Controllers\AnalyticsController::class, 'employees'])->name('analytics.employees');
+//                Route::get('/cashiers', [App\Http\Controllers\AnalyticsController::class, 'cashiers'])->name('analytics.cashiers');
 //                Route::get('/services', [App\Http\Controllers\AnalyticsController::class, 'services'])->name('analytics.services');
 //                Route::get('/locations', [App\Http\Controllers\AnalyticsController::class, 'locations'])->name('analytics.locations');
 //            });
@@ -101,7 +101,7 @@ Route::middleware([
 //                    Route::get('/revenue', [App\Http\Controllers\GraphController::class, 'revenue'])->name('graph.revenue');
 //                    Route::get('/appointments', [App\Http\Controllers\GraphController::class, 'appointments'])->name('graph.appointments');
 //                    Route::get('/customers', [App\Http\Controllers\GraphController::class, 'customers'])->name('graph.customers');
-//                    Route::get('/employees', [App\Http\Controllers\GraphController::class, 'employees'])->name('graph.employees');
+//                    Route::get('/cashiers', [App\Http\Controllers\GraphController::class, 'cashiers'])->name('graph.cashiers');
 //                    Route::get('/services', [App\Http\Controllers\GraphController::class, 'services'])->name('graph.services');
 //                    Route::get('/locations', [App\Http\Controllers\GraphController::class, 'locations'])->name('graph.locations');
 //                });

@@ -67,7 +67,7 @@
                         @if (auth()->user()->role->name == 'Customer')
                             <th scope="col" class="px-4 py-4 font-medium text-gray-900">Address</th>
                             <th scope="col" class="px-4 py-4 font-medium text-gray-900">Contact No</th>
-                        @elseif (auth()->user()->role->name == 'Admin' || auth()->user()->role->name == 'Employee')
+                        @elseif (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
                             <th scope="col" class="px-4 py-4 font-medium text-gray-900">Customer</th>
                             <th scope="col" class="px-4 py-4 font-medium text-gray-900">Contact No</th>
                             <th scope="col" class="px-4 py-4 font-medium text-gray-900">Email</th>
@@ -101,7 +101,7 @@
                                         {{ $appointment->location->address }}</td>
                                     <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
                                         {{ $appointment->location->telephone_number }}</td>
-                                @elseif (auth()->user()->role->name == 'Admin' || auth()->user()->role->name == 'Employee')
+                                @elseif (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
                                     <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
                                         {{ $appointment->user->name }}</td>
                                     <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
@@ -113,6 +113,9 @@
                                 <td>
                                     <div class="flex gap-1 mt-5">
                                         @if ($selectFilter == 'upcoming')
+                                            <x-button wire:click="confirmAppointmentEdit({{ $appointment->id }})" wire:loading.attr="disabled">
+                                                {{ __('Edit') }}
+                                            </x-button>
                                             <x-danger-button
                                                 wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
                                                 wire:loading.attr="disabled">
