@@ -138,6 +138,7 @@ class ManageAppointments extends Component
             $this->appointment->save();
             session()->flash('message', 'Appointment successfully updated.');
         } else {
+            $queueNumber = Appointment::where('date', $this->appointment['date'])->count() + 1;
             Appointment::create([
                 'cart_id' => $this->appointment['cart_id'],
                 'user_id' => $this->appointment['user_id'],
@@ -149,6 +150,7 @@ class ManageAppointments extends Component
                 'location_id' => $this->appointment['location_id'],
                 'total' => $this->appointment['total'],
                 'status' => $this->appointment['status'],
+                'queue_number' => $queueNumber,
             ]);
             session()->flash('message', 'Appointment successfully created.');
         }

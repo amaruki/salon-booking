@@ -1,9 +1,9 @@
 <div>
     <div class="flex justify-between mx-7">
-        <h2 class="text-2xl font-bold">Layanan</h2>
+        <h2 class="text-2xl font-bold">{{ __('Services') }}</h2>
 
         <x-button wire:click="confirmServiceAdd" class="px-5 py-2 text-white bg-pink-500 rounded-md hover:bg--600">
-            Tambah
+            {{ __('Add') }}
         </x-button>
     </div>
     <div class="mt-4">
@@ -17,7 +17,7 @@
 
     <div class="overflow-auto rounded-lg border border-gray-200 shadow-md m-5">
         <div class="w-1/3 float-right m-4">
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Cari</label>
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">{{ __('Search') }}</label>
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -28,23 +28,23 @@
                 </div>
                 <input type="search" wire:model="search" id="default-search" name="search"
                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Search Services...">
+                    placeholder="{{ __('Search Services...') }}">
                 <button type="submit"
-                    class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                    class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">{{ __('Search') }}</button>
             </div>
         </div>
 
         <table class="w-full border-collapse bg-white text-left text-sm text-gray-500 overflow-x-scroll min-w-screen">
             <thead class="bg-gray-50">
                 <tr>
-                    <th scope="col" class="pl-6 py-4 font-medium text-gray-900">Id</th>
-                    <th scope="col" class="px-4 py-4 font-medium text-gray-900">Service</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Photo</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Description</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Price</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Category</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Visibility</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Actions</th>
+                    <th scope="col" class="pl-6 py-4 font-medium text-gray-900">{{ __('Id') }}</th>
+                    <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Service') }}</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Photo') }}</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Description') }}</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Price') }}</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Category') }}</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Visibility') }}</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Actions') }}</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                 </tr>
             </thead>
@@ -88,7 +88,7 @@
                             <span
                                 class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-600">
                                 <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
-                                Visible
+                                {{ __('Visible') }}
                             </span>
                             @endif
 
@@ -153,13 +153,13 @@
         <x-dialog-modal wire:model="confirmingServiceAdd">
             <x-slot name="title">
 
-                {{ isset($this->newService->id) ? 'Edit Service' : 'Add Service' }}
+                {{ isset($this->newService->id) ? __('Edit Service') : __('Add Service') }}
             </x-slot>
             <x-slot name="content">
 
 
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
                     <input type="text" wire:model="newService.name" id="name"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @error('newService.name')
@@ -167,7 +167,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <label for="description" class="block text-sm font-medium text-gray-700">{{ __('Description') }}</label>
                     <textarea id="description" wire:model="newService.description"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                     @error('newService.description')
@@ -177,7 +177,7 @@
 
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
                     <div>
-                        <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                        <label for="price" class="block text-sm font-medium text-gray-700">{{ __('Price') }}</label>
                         <input type="text" wire:model="newService.price" id="price"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
 
@@ -188,11 +188,11 @@
                     </div>
 
                     <div>
-                        <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
+                        <label for="category_id" class="block text-sm font-medium text-gray-700">{{ __('Category') }}</label>
 
                         <select wire:model="newService.category_id" id="category_id"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option disabled selected value="">Select Category</option>
+                            <option disabled selected value="">{{ __('Select Category') }}</option>
                             @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -206,7 +206,7 @@
                 </div>
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
-                        <label for="allergens" class="block text-sm font-medium text-gray-700">Allergens</label>
+                        <label for="allergens" class="block text-sm font-medium text-gray-700">{{ __('Allergens') }}</label>
                         <textarea id="allergens" wire:model="newService.allergens"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                         @error('newService.allergens')
@@ -215,7 +215,7 @@
                     </div>
 
                     <div>
-                        <label for="cautions" class="block text-sm font-medium text-gray-700">Cautions</label>
+                        <label for="cautions" class="block text-sm font-medium text-gray-700">{{ __('Cautions') }}</label>
                         <textarea id="cautions" wire:model="newService.benefits"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                         @error('newService.cautions')
@@ -232,7 +232,7 @@
 
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
-                        <label for="benefits" class="block text-sm font-medium text-gray-700">Benefits</label>
+                        <label for="benefits" class="block text-sm font-medium text-gray-700">{{ __('Benefits') }}</label>
                         <textarea id="benefits" wire:model="newService.benefits"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                         @error('newService.benefits')
@@ -241,8 +241,8 @@
                     </div>
 
                     <div>
-                        <label for="aftercare_tips" class="block text-sm font-medium text-gray-700">Aftercare
-                            Tips</label>
+                        <label for="aftercare_tips" class="block text-sm font-medium text-gray-700">{{ __('Aftercare Tips') }}
+                            </label>
                         <textarea id="aftercare_tips" wire:model="newService.aftercare_tips"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                         @error('newService.aftercare_tips')
@@ -252,7 +252,7 @@
 
                 </div>
                 <div>
-                    <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>
+                    <label for="notes" class="block text-sm font-medium text-gray-700">{{ __('Notes') }}</label>
                     <textarea id="notes" wire:model="newService.notes"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                     @error('newService.notes')
@@ -260,7 +260,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="is_hidden" class="block text-sm font-medium text-gray-700">Is Hidden</label>
+                    <label for="is_hidden" class="block text-sm font-medium text-gray-700">{{ __('Is Hidden') }}</label>
 
                     <input type="checkbox" wire:model="newService.is_hidden" id="is_hidden">
                     @error('newService.is_hidden')
@@ -271,7 +271,7 @@
 
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div class="col-span-2">
-                        <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                        <label for="image" class="block text-sm font-medium text-gray-700">{{ __('Image') }}</label>
                         <input type="file" wire:model.defer="image" id="image"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         @error('image')
@@ -295,7 +295,7 @@
                     <x-secondary-button wire:click="$set('confirmingServiceAdd', false)" wire:loading.attr="disabled">
                         {{ __('Cancel') }}
                     </x-secondary-button>
-                    <x-button wire:click="saveService">Save</x-button>
+                    <x-button wire:click="saveService">{{ __('Save') }}</x-button>
                 </div>
 
 

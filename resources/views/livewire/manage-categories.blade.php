@@ -1,10 +1,10 @@
 <div>
     <div>
         <div class="flex justify-between mx-7">
-            <h2 class="text-2xl font-bold">Categories</h2>
+            <h2 class="text-2xl font-bold">{{ __('Categories') }}</h2>
 
             <x-button wire:click="confirmCategoryAdd" class="px-5 py-2 text-white bg-pink-500 rounded-md hover:bg--600">
-                Create
+                {{ __('Create') }}
             </x-button>
         </div>
         <div class="mt-4">
@@ -18,7 +18,7 @@
         <div class="overflow-auto rounded-lg border border-gray-200 shadow-md m-5">
 
             <div class="w-1/3 float-right m-4">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">{{ __('Search') }}</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -29,9 +29,9 @@
                     </div>
                     <input type="search" wire:model="search" id="default-search" name="search"
                         class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Search Categories...">
+                        placeholder="{{ __('Search Categories...') }}">
                     <button type="submit"
-                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">{{ __('Search') }}</button>
                 </div>
             </div>
 
@@ -39,9 +39,9 @@
                 class="w-full border-collapse bg-white text-left text-sm text-gray-500 overflow-x-scroll min-w-screen">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="pl-6 py-4 font-medium text-gray-900">Id</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Name</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Actions</th>
+                        <th scope="col" class="pl-6 py-4 font-medium text-gray-900">{{ __('Id') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Name') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
@@ -95,7 +95,7 @@
                             {{ __('Cancel') }}
                         </x-secondary-button>
 
-                        <x-danger-button wire:click="deleteCategory({{ $confirmingCategoryDeletion }})"
+                        <x-danger-button wire:click="deleteCategory()"
                             wire:loading.attr="disabled">
                             {{ __('Delete') }}
                         </x-danger-button>
@@ -105,12 +105,12 @@
             </x-dialog-modal>
             <x-dialog-modal wire:model="confirmingCategoryAdd">
                 <x-slot name="title">
-                    {{ isset($this->category->id) ? 'Edit Category' : 'Add Category' }}
+                    {{ isset($this->category->id) ? __('Edit Category') : __('Add Category') }}
                 </x-slot>
 
                 <x-slot name="content">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
                         <input type="text" wire:model="category.name" id="name"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @error('category.name')
@@ -124,7 +124,7 @@
                                 wire:loading.attr="disabled">
                                 {{ __('Cancel') }}
                             </x-secondary-button>
-                            <x-button wire:click="saveCategory">Save</x-button>
+                            <x-button wire:click="saveCategory">{{ __('Save') }}</x-button>
                         </div>
                     </div>
                 </x-slot>

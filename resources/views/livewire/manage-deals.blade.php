@@ -1,9 +1,9 @@
 <div>
     <div>
         <div class="flex justify-between mx-7">
-            <h2 class="text-2xl font-bold">Deals</h2>
+            <h2 class="text-2xl font-bold">{{ __('Deals') }}</h2>
             <x-button wire:click="confirmDealAdd" class="px-5 py-2 text-white bg-pink-500 rounded-md hover:bg--600">
-                Create
+                {{ __('Create') }}
             </x-button>
         </div>
         <div class="mt-4">
@@ -17,7 +17,7 @@
         <div class="overflow-auto rounded-lg border border-gray-200 shadow-md m-5">
 
             <div class="w-1/3 float-right m-4">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">{{ __('Search') }}</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -28,9 +28,9 @@
                     </div>
                     <input type="search" wire:model="search" id="default-search" name="search"
                         class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Search Deals...">
+                        placeholder="{{ __('Search Deals...') }}">
                     <button type="submit"
-                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">{{ __('Search') }}</button>
                 </div>
             </div>
 
@@ -38,14 +38,14 @@
                 class="w-full border-collapse bg-white text-left text-sm text-gray-500 overflow-x-scroll min-w-screen">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="pl-6 py-4 font-medium text-gray-900">Id</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Name</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Description</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Discount</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Date Start</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Date End</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Is Hidden</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Actions</th>
+                        <th scope="col" class="pl-6 py-4 font-medium text-gray-900">{{ __('Id') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Name') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Description') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Discount') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Date Start') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Date End') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Is Hidden') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
@@ -70,13 +70,13 @@
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
-                                            Hidden
+                                            {{ __('Hidden') }}
                                         </span>
                                     @else
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
-                                            Visible
+                                            {{ __('Visible') }}
                                         </span>
                                     @endif
 
@@ -128,11 +128,11 @@
             <x-dialog-modal wire:model="confirmingDealAdd">
                 <x-slot name="title">
                     {{-- {{ __('Add a new deal') }} --}}
-                    {{ isset($this->newDeal->id) ? 'Edit Deal' : 'Add Deal' }}
+                    {{ isset($this->newDeal->id) ? __('Edit Deal') : __('Add Deal') }}
                 </x-slot>
                 <x-slot name="content">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
                         <input type="text" wire:model="newDeal.name" id="name"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @error('newDeal.name')
@@ -140,7 +140,7 @@
                         @enderror
                     </div>
                     <div>
-                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <label for="description" class="block text-sm font-medium text-gray-700">{{ __('Description') }}</label>
                         <input type="text" wire:model="newDeal.description" id="description"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @error('newDeal.description')
@@ -150,7 +150,7 @@
 
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div>
-                            <label for="start_date" class="block text-sm font-medium text-gray-700">Date Start</label>
+                            <label for="start_date" class="block text-sm font-medium text-gray-700">{{ __('Date Start') }}</label>
                             <input type="date" wire:model="newDeal.start_date" id="start_date"
                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                             @error('newDeal.start_date')
@@ -158,7 +158,7 @@
                             @enderror
                         </div>
                         <div>
-                            <label for="end_date" class="block text-sm font-medium text-gray-700">Date End</label>
+                            <label for="end_date" class="block text-sm font-medium text-gray-700">{{ __('Date End') }}</label>
                             <input type="date" wire:model="newDeal.end_date" id="end_date"
                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                             @error('newDeal.end_date')
@@ -169,8 +169,7 @@
 
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div>
-                            <label for="discount" class="block text-sm font-medium text-gray-700">Discount
-                                Percentage</label>
+                            <label for="discount" class="block text-sm font-medium text-gray-700">{{ __('Discount Percentage') }}</label>
                             <input type="number" wire:model="newDeal.discount" id="discount"
                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                             @error('newDeal.discount')
@@ -179,8 +178,7 @@
                         </div>
                         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                             <div>
-                                <label for="is_hidden" class="block text-sm font-medium text-gray-700">Is
-                                    Hidden</label>
+                                <label for="is_hidden" class="block text-sm font-medium text-gray-700">{{ __('Is Hidden') }}</label>
                                 <input type="checkbox" wire:model="newDeal.is_hidden" id="is_hidden"
                                     class="block w-5 h-5 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                                 @error('newDeal.is_hidden')
@@ -195,7 +193,7 @@
                                 wire:loading.attr="disabled">
                                 {{ __('Cancel') }}
                             </x-secondary-button>
-                            <x-button wire:click="saveDeal">Save</x-button>
+                            <x-button wire:click="saveDeal">{{ __('Save') }}</x-button>
                         </div>
                     </div>
                 </x-slot>

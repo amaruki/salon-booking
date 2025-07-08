@@ -1,10 +1,10 @@
 <div>
     <div>
         <div class="flex justify-between mx-7">
-            <h2 class="text-2xl font-bold">Locations</h2>
+            <h2 class="text-2xl font-bold">{{ __('Locations') }}</h2>
 
             <x-button wire:click="confirmLocationAdd" class="px-5 py-2 text-white bg-pink-500 rounded-md hover:bg--600">
-                Create
+                {{ __('Create') }}
             </x-button>
         </div>
         <div class="mt-4">
@@ -18,7 +18,7 @@
         <div class="overflow-auto rounded-lg border border-gray-200 shadow-md m-5">
 
             <div class="w-1/3 float-right m-4">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">{{ __('Search') }}</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -29,9 +29,9 @@
                     </div>
                     <input type="search" wire:model="search" id="default-search" name="search"
                         class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Search Locations...">
+                        placeholder="{{ __('Search Locations...') }}">
                     <button type="submit"
-                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2">{{ __('Search') }}</button>
                 </div>
             </div>
 
@@ -39,12 +39,12 @@
                 class="w-full border-collapse bg-white text-left text-sm text-gray-500 overflow-x-scroll min-w-screen">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="pl-6 py-4 font-medium text-gray-900">Id</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Name</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Address</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Telephone Number</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Is Operating</th>
-                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">Actions</th>
+                        <th scope="col" class="pl-6 py-4 font-medium text-gray-900">{{ __('Id') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Name') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Address') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Telephone Number') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Is Operating') }}</th>
+                        <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
@@ -57,7 +57,7 @@
                             <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $location->telephone_number }}
                             </td>
                             <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
-                                {{ $location->status ? 'Yes' : 'No' }}</td>
+                                {{ $location->status ? __('Yes') : __('No') }}</td>
                             <td>
                                 <div class="flex gap-1 mt-5">
                                     <x-button wire:click="confirmLocationEdit({{ $location->id }})"
@@ -107,12 +107,12 @@
             </x-dialog-modal>
             <x-dialog-modal wire:model="confirmingLocationAdd">
                 <x-slot name="title">
-                    {{ isset($this->location->id) ? 'Edit Location' : 'Add Location' }}
+                    {{ isset($this->location->id) ? __('Edit Location') : __('Add Location') }}
                 </x-slot>
 
                 <x-slot name="content">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
                         <input type="text" wire:model="location.name" id="name"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @error('location.name')
@@ -121,7 +121,7 @@
                     </div>
 
                     <div>
-                        <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                        <label for="address" class="block text-sm font-medium text-gray-700">{{ __('Address') }}</label>
                         <textarea type="text" wire:model="location.address" id="address"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm"></textarea>
                         @error('location.address')
@@ -130,8 +130,8 @@
                     </div>
 
                     <div>
-                        <label for="telephone_number" class="block text-sm font-medium text-gray-700">Telephone
-                            Number</label>
+                        <label for="telephone_number" class="block text-sm font-medium text-gray-700">{{ __('Telephone Number') }}
+                            </label>
                         <input type="tel" wire:model="location.telephone_number" minlength="10" maxlength="10"
                             id="name"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
@@ -141,7 +141,7 @@
                     </div>
 
                     <div>
-                        <label for="status" class="block text-sm font-medium text-gray-700">Is Operating</label>
+                        <label for="status" class="block text-sm font-medium text-gray-700">{{ __('Is Operating') }}</label>
 
                         <input type="checkbox" wire:model="location.status" id="status"
                             class="block mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
@@ -157,7 +157,7 @@
                                 wire:loading.attr="disabled">
                                 {{ __('Cancel') }}
                             </x-secondary-button>
-                            <x-button wire:click="saveLocation">Save</x-button>
+                            <x-button wire:click="saveLocation">{{ __('Save') }}</x-button>
                         </div>
                     </div>
                 </x-slot>

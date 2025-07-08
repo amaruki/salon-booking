@@ -3,10 +3,10 @@
         {{ route('home') }}
     </x-slot>
 
+    <link rel="stylesheet" href="{{ asset('css/hero.css') }}">
 
     <div class="relative">
-                <section class="relative bg-cover bg-center bg-no-repeat "
-            style="background-image: url({{ asset('images/salon1.png') }}" ;>
+        <section class="hero-section relative bg-cover bg-center bg-no-repeat">
             <div
                 class="absolute inset-0 bg-gradient-to-r from-white/95 to-white/0 ltr:bg-gradient-to-r rtl:bg-gradient-to-l sm:bg-transparent sm:from-white/95 sm:to-white/0">
             </div>
@@ -14,13 +14,13 @@
             <div class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
                 <div class="max-w-xl text-left ltr:sm:text-left rtl:sm:text-right">
                     <h1 class="text-3xl font-extrabold sm:text-5xl text-neutral-700">
-                      Temukan Pengalaman Salon Terbaik Anda  
+                      {{ __('Temukan Pengalaman Salon Terbaik Anda') }}  
                             <strong class="block font-extrabold text-pink-500">
                             Ell's Salon. </strong>
                     </h1>
 
     <p class="mt-4 max-w-lg sm:text-xl/relaxed">
-    Telusuri Dunia Kecantikan dan Keanggunan. Tingkatkan Gaya Anda di Ell's Salon, Tempat Mimpi Menjadi Kenyataan.
+    {{ __('Telusuri Dunia Kecantikan dan Keanggunan. Tingkatkan Gaya Anda di Ell\'s Salon, Tempat Mimpi Menjadi Kenyataan.') }}
          </p>
 
     <div class="mt-8 flex flex-wrap gap-4 text-center">
@@ -28,12 +28,12 @@
         href="{{route('services')}}"
         class="block w-full rounded bg-pink-500 px-12 py-3 text-lg font-medium text-white shadow hover:bg-pink-700 focus:outline-none focus:ring active:bg-pink-500 sm:w-auto"
       >
-Booking Sekarang     </a>
+{{ __('Booking Sekarang') }}     </a>
 <a
           href="{{route('services')}}"
           class="block w-full rounded bg-white px-12 py-3 text-lg font-medium text-pink-500 shadow hover:text-pink-600 focus:outline-none focus:ring-offset-pink-400 active:text-pink-500 sm:w-auto"
         >
-          Jelajahi Layanan
+          {{ __('Jelajahi Layanan') }}
         </a>
 
 
@@ -46,26 +46,26 @@ Booking Sekarang     </a>
         {{-- <img class="w-full bg-cover" src="{{ asset('images\Salon2.jpg') }}" alt="Banner image"> --}}
         {{-- <div class="absolute right-1 top-5 font-black text-pink-600 text-7xl">30% OFF <br>THIS SEASON</div> --}}
  <div>
-    <div class="text-center text-4xl font-semibold text-pink-500 m-2 mt-5">Kategori</div>
+    <div class="text-center text-4xl font-semibold text-pink-500 m-2 mt-5">{{ __('Kategori') }}</div>
 
     <div class="container flex gap-10 p-10 pt-3 justify-center mx-auto">
       <a href="#" class="text-center gap-2 duration-300 hover:scale-105">
           <img class="w-60 rounded-xl" src="{{ asset('images/hair.jpg')}}" alt="">
-          <span class="text-pink-500 text-2xl">Rambut</span>
+          <span class="text-pink-500 text-2xl">{{ __('Rambut') }}</span>
       </a>
       <a href="#" class="text-center gap-2 duration-300 hover:scale-105">
         <img class="w-60 rounded-xl" src="{{ asset('images/nails.jpg')}}"  alt="">
-        <span class="text-pink-500 text-2xl">Kuku</span>
+        <span class="text-pink-500 text-2xl">{{ __('Kuku') }}</span>
 
       </a>
       <a href="#" class="text-center gap-2 duration-300 hover:scale-105">
         <img class="w-60 rounded-xl" src="{{ asset('images/skin.jpg')}}" alt="">
-        <span class="text-pink-500 text-2xl">Kulit</span>
+        <span class="text-pink-500 text-2xl">{{ __('Kulit') }}</span>
 
                 </a>
                 <a href="#" class="text-center gap-2 duration-300 hover:scale-105">
                     <img class="w-60 rounded-xl" src="{{ asset('images/makeup.jpg') }}" alt="">
-                    <span class="text-pink-500 text-2xl">Makeup</span>
+                    <span class="text-pink-500 text-2xl">{{ __('Makeup') }}</span>
                 </a>
             </div>
 
@@ -74,9 +74,9 @@ Booking Sekarang     </a>
     <section class="pt-5 bg-white">
       <div class="md:w-4/5 mx-auto">
         <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
-          <h3 class="mb-6 text-3xl text-pink-500 font-bold">Layanan Populer</h3>
+          <h3 class="mb-6 text-3xl text-pink-500 font-bold">{{ __('Layanan Populer') }}</h3>
           <p class="mb-6 pb-2 text-gray-700 md:mb-12 md:pb-0">
-          Layanan yang populer di kalangan pelanggan kami.
+          {{ __('Layanan yang populer di kalangan pelanggan kami.') }}
           </p>
         </div>
 
@@ -87,7 +87,7 @@ Booking Sekarang     </a>
                 @endforeach
             @else
                 <p class="mx-auto text-center block text-gray-700 md:mb-12 md:pb-0">
-                    Tidak ada layanan yang ditemukan.
+                    {{ __('Tidak ada layanan yang ditemukan.') }}
                 </p>
             @endif
         </div>
@@ -96,7 +96,7 @@ Booking Sekarang     </a>
       <div class="flex justify-end mx-auto pb-5 gap-3 md:w-3/4">
 
         <a href="{{route('services')}}" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">
-          Lihat Semua Layanan
+          {{ __('Lihat Semua Layanan') }}
         </a>
       </div>
 {{--
@@ -112,7 +112,7 @@ Booking Sekarang     </a>
 
 <section class=" w-3/4 p-3 mx-auto pt-5">
 <div>
-  <div class="text-center text-4xl font-semibold text-pink-500 m-2">Penawaran</div>
+  <div class="text-center text-4xl font-semibold text-pink-500 m-2">{{ __('Penawaran') }}</div>
 </div>
 <div class="flex gap-10 ">
     @if($deals->count() > 0)
@@ -124,7 +124,7 @@ Booking Sekarang     </a>
                     </a>
                     <p class="mb-3 font-normal text-gray-700 ">{{ $deal->description }}</p>
                     <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-500 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 ">
-                        Lihat Penawaran
+                        {{ __('Lihat Penawaran') }}
                         <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </a>
                 </div>
@@ -132,7 +132,7 @@ Booking Sekarang     </a>
         @endforeach
     @else
         <p class="mx-auto text-center block text-gray-700 md:mb-12 md:pb-0">
-        Tidak ada penawaran yang ditemukan
+        {{ __('Tidak ada penawaran yang ditemukan') }}
         </p>
     @endif
 </div>
@@ -141,7 +141,7 @@ Booking Sekarang     </a>
     {{-- Gallery --}}
     <section class="pt-5 pb-5">
         <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
-          <h3 class="text-3xl text-pink-500 font-bold">Gallery</h3>
+          <h3 class="text-3xl text-pink-500 font-bold">{{ __('Gallery') }}</h3>
         </div>
         <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
           <div class="-m-1 flex flex-wrap md:-m-2">
@@ -200,9 +200,9 @@ Booking Sekarang     </a>
     <section class="bg-white pt-5">
       <div class="md:w-3/4 mx-auto">
         <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
-          <h3 class="mb-6 text-3xl text-pink-500 font-bold">Testimoni</h3>
+          <h3 class="mb-6 text-3xl text-pink-500 font-bold">{{ __('Testimoni') }}</h3>
           <p class="mb-6 pb-2 text-gray-700 md:mb-12 md:pb-0">
-          Berikut adalah testimoni dari para pelanggan kami yang telah mengunjungi salon kami.
+          {{ __('Berikut adalah testimoni dari para pelanggan kami yang telah mengunjungi salon kami.') }}
           </p>
         </div>
 
@@ -213,13 +213,13 @@ Booking Sekarang     </a>
             </div>
             <h5 class="mb-4 text-xl font-semibold">Kim Wexler</h5>
             <h6 class="mb-4 font-semibold text-primary dark:text-primary-400">
-              Lawyer
+              {{ __('Lawyer') }}
             </h6>
             <p class="mb-4 text-neutral-500">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-7 w-7 pr-2" viewBox="0 0 24 24">
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path>
               </svg>
-              Saya mendapatkan pengalaman yang paling menakjubkan di Ell's Salon! Para stafnya sangat ramah dan bersahabat, dan rambut saya terlihat sangat menakjubkan. Saya menerima begitu banyak pujian setelah janji temu saya dan saya tidak sabar untuk kembali lagi!
+              {{ __("Saya mendapatkan pengalaman yang paling menakjubkan di Ell\\'s Salon! Para stafnya sangat ramah dan bersahabat, dan rambut saya terlihat sangat menakjubkan. Saya menerima begitu banyak pujian setelah janji temu saya dan saya tidak sabar untuk kembali lagi!") }}
             </p>
             <ul class="mb-0 flex items-center justify-center">
               <li>
@@ -255,13 +255,13 @@ Booking Sekarang     </a>
             </div>
             <h5 class="mb-4 text-xl font-semibold">Lisa Cudrow</h5>
             <h6 class="mb-4 font-semibold text-primary dark:text-primary-400">
-              Graphic Designer
+              {{ __('Graphic Designer') }}
             </h6>
             <p class="mb-4 text-neutral-500">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-7 w-7 pr-2" viewBox="0 0 24 24">
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path>
               </svg>
-              "Saya mendapatkan model rambut terbaik dalam hidup saya di Ell's Salon! Penata rambutnya mendengarkan apa yang saya inginkan dan kemudian memberikan potongan rambut yang melebihi ekspektasi saya. Saya merasa sangat dimanjakan dan diperhatikan selama proses berlangsung. Saya tidak sabar untuk kembali lagi untuk janji temu berikutnya!"
+              {{ __('Saya mendapatkan model rambut terbaik dalam hidup saya di Ell\'s Salon! Penata rambutnya mendengarkan apa yang saya inginkan dan kemudian memberikan potongan rambut yang melebihi ekspektasi saya. Saya merasa sangat dimanjakan dan diperhatikan selama proses berlangsung. Saya tidak sabar untuk kembali lagi untuk janji temu berikutnya!') }}
             </p>
             <ul class="mb-0 flex items-center justify-center">
               <li>
@@ -297,13 +297,13 @@ Booking Sekarang     </a>
             </div>
             <h5 class="mb-4 text-xl font-semibold">Jane Smith</h5>
             <h6 class="mb-4 font-semibold text-primary dark:text-primary-400">
-              Marketing Specialist
+              {{ __('Marketing Specialist') }}
             </h6>
             <p class="mb-4 text-neutral-500">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-7 w-7 pr-2" viewBox="0 0 24 24">
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path>
               </svg>
-              "Saya memiliki masalah rambut di menit-menit terakhir dan Ell's Salon menyelamatkan saya! Para staf dapat langsung menyesuaikan diri dengan saya dan mereka melakukan pekerjaan yang luar biasa. Saya tidak bisa cukup berterima kasih kepada mereka atas profesionalisme dan keahlian mereka. Saya pasti akan kembali lagi!"
+              {{ __("Saya memiliki masalah rambut di menit-menit terakhir dan Ell's Salon menyelamatkan saya! Para staf dapat langsung menyesuaikan diri dengan saya dan mereka melakukan pekerjaan yang luar biasa. Saya tidak bisa cukup berterima kasih kepada mereka atas profesionalisme dan keahlian mereka. Saya pasti akan kembali lagi!") }}
             </p>
             <ul class="mb-0 flex items-center justify-center">
               <li>
@@ -347,10 +347,10 @@ Booking Sekarang     </a>
             <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
             <path fill="currentColor" d="M216 23.86c0-23.8-30.65-32.77-44.15-13.04C48 191.85 224 200 224 288c0 35.63-29.11 64.46-64.85 63.99-35.17-.45-63.15-29.77-63.15-64.94v-85.51c0-21.7-26.47-32.23-41.43-16.5C27.8 213.16 0 261.33 0 320c0 105.87 86.13 192 192 192s192-86.13 192-192c0-170.29-168-193-168-296.14z"/>
           </svg>
-          <strong class="mr-1">Penawaran terbatas!</strong> Dapatkan diskon besar-besaran sekarang sebelum terlambat
+          <strong class="mr-1">{{ __('Penawaran terbatas!') }}</strong> {{ __('Dapatkan diskon besar-besaran sekarang sebelum terlambat') }}
         </div>
         <div class="flex items-center justify-center">
-          <a class="inline-block px-6 py-2.5 bg-white text-gray-700 font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-100 hover:shadow-lg focus:bg-gray-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-200 active:shadow-lg transition duration-150 ease-in-out mr-4" href="#" role="button" data-mdb-ripple="true" data-mdb-ripple-color="light">Claim offer</a>
+          <a class="inline-block px-6 py-2.5 bg-white text-gray-700 font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-100 hover:shadow-lg focus:bg-gray-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-200 active:shadow-lg transition duration-150 ease-in-out mr-4" href="#" role="button" data-mdb-ripple="true" data-mdb-ripple-color="light">{{ __('Claim offer') }}</a>
 
 
                     <div class="text-white" data-bs-dismiss="alert" aria-label="Close" id="offer-banner-close">
@@ -371,7 +371,7 @@ class="bg-pink-500 text-center text-neutral-100 lg:text-left">
 <div
   class="flex items-center justify-center border-b-2 border-neutral-200 p-6 lg:justify-between">
   <div class="mr-12 hidden lg:block">
-    <span>Tetap berhubungan dengan kami di media sosial:</span>
+    <span>{{ __('Tetap berhubungan dengan kami di media sosial:') }}</span>
   </div>
   <!-- Social network icons container -->
   <div class="flex justify-center">
@@ -469,26 +469,26 @@ class="bg-pink-500 text-center text-neutral-100 lg:text-left">
     <div class="">
       <h6
         class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-        Layanan
+        {{ __('Layanan') }}
       </h6>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >Rambut</a
+          >{{ __('Rambut') }}</a
         >
       </p>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >Kuku</a
+          >{{ __('Kuku') }}</a
         >
       </p>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >Kulit</a
+          >{{ __('Kulit') }}</a
         >
       </p>
       <p>
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >Makeup</a
+          >{{ __('Makeup') }}</a
         >
       </p>
     </div>
@@ -496,16 +496,16 @@ class="bg-pink-500 text-center text-neutral-100 lg:text-left">
     <div class="">
       <h6
         class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-       Promosi
+       {{ __('Promosi') }}
       </h6>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >Penawaran Spesial</a
+          >{{ __('Penawaran Spesial') }}</a
         >
       </p>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >Program Loyalitas</a
+          >{{ __('Program Loyalitas') }}</a
         >
       </p>
       
@@ -517,7 +517,7 @@ class="bg-pink-500 text-center text-neutral-100 lg:text-left">
 
 <!--Copyright section-->
 <div class="bg-white p-2 text-center">
-  <span class="text-neutral-500">© 2025 Copyright:</span>
+  <span class="text-neutral-500">{{ __('© 2025 Copyright:') }}</span>
   <a
     class="font-semibold text-neutral-600"
     href="/"

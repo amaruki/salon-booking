@@ -11,11 +11,11 @@
                 <div class="text-gray-700">
                     <div class="grid md:grid-cols-2 text-sm">
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Phone No.</div>
+                            <div class="px-4 py-2 font-semibold">{{ __('Phone No.') }}</div>
                             <div class="px-4 py-2">{{ $user->phone_number }}</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Email.</div>
+                            <div class="px-4 py-2 font-semibold">{{ __('Email.') }}</div>
                             <div class="px-4 py-2">
                                 <a class="text-blue-800" href="mailto:jane@example.com">{{ $user->email }}</a>
                             </div>
@@ -24,55 +24,55 @@
                     <ul
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3">
-                            <span>Status</span>
+                            <span>{{ __('Status') }}</span>
                             @if ($user->status == 1)
                                 <span class="ml-auto"><span
-                                        class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                                        class="bg-green-500 py-1 px-2 rounded text-white text-sm">{{ __('Active') }}</span></span>
                             @else
                                 <span class="ml-auto"><span
-                                        class="bg-red-500 py-1 px-2 rounded text-white text-sm">Inactive</span></span>
+                                        class="bg-red-500 py-1 px-2 rounded text-white text-sm">{{ __('Inactive') }}</span></span>
                             @endif
                         </li>
                         <li class="flex items-center py-3">
-                            <span>Joined Date</span>
+                            <span>{{ __('Joined Date') }}</span>
                             <span class="ml-auto">{{ $user->created_at->toDateString() }}</span>
                         </li>
 
                         <li class="flex items-center py-3">
-                            <span>Last Appointment</span>
+                            <span>{{ __('Last Appointment') }}</span>
                             <span
                                 class="ml-auto">{{ $appointments->where('status', true)->sortByDesc('date')->where('date', '<=', \Carbon\Carbon::today()->toDateString())->first()?->service->name }}</span>
                         </li>
                         <li class="flex items-center py-3">
-                            <span>Last Appointment Date</span>
+                            <span>{{ __('Last Appointment Date') }}</span>
                             <span
                                 class="ml-auto">{{ $appointments->where('status', true)->sortByDesc('date')->first()?->date }}</span>
                         </li>
                         <div x-cloak x-show="showFullInfo">
                             <li class="flex items-center py-3">
-                                <span>Last Purchase</span>
+                                <span>{{ __('Last Purchase') }}</span>
                                 <span class="ml-auto">
                                     {{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->service->name }}
                                 </span>
                             </li>
                             <li class="flex items-center py-3">
-                                <span>Last Purchase Date</span>
+                                <span>{{ __('Last Purchase Date') }}</span>
                                 <span class="ml-auto">
                                     {{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->created_at->toDateString() }}</span>
                             </li>
                             <li class="flex items-center py-3">
-                                <span>Last Purchase Amount</span>
+                                <span>{{ __('Last Purchase Amount') }}</span>
                                 <span class="ml-auto">
                                     Rp.{{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->total }}</span>
                             </li>
 
                             <li class="flex items-center py-3">
-                                <span>Total Purchases</span>
+                                <span>{{ __('Total Purchases') }}</span>
                                 <span class="ml-auto">
                                     Rp.{{ $appointments->where('status', true)?->sum('total') }}</span>
                             </li>
                             <li class="flex items-center py-3">
-                                <span>Last Cancellation</span>
+                                <span>{{ __('Last Cancellation') }}</span>
                                 <span class="ml-auto">
                                     {{ $appointments->where('status', false)->sortByDesc('created_at')->first()?->service->name }}</span>
                             </li>
@@ -80,8 +80,7 @@
                     </ul>
                 </div>
                 <button x-on:click="showFullInfo = !showFullInfo"
-                    class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
-                    Full Information</button>
+                    class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">{{ __('Show Full Information') }}</button>
             </div>
         </div>
         <div class="w-full">

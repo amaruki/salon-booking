@@ -95,7 +95,7 @@ class ManageServices extends Component
 
         $service->delete();
 
-        session()->flash('message', 'Service successfully deleted.');
+        session()->flash('message', __('Service successfully deleted.'));
         $this->confirmingServiceDeletion = false;
 
     }
@@ -175,7 +175,7 @@ class ManageServices extends Component
 
         }
 
-        session()->flash('message', 'Service successfully saved.');
+        session()->flash('message', __('Service successfully saved.'));
 
         $this->confirmingServiceAdd = false;
 

@@ -20,8 +20,8 @@ class ManageCategories extends Component
 
     public $confirmingCategoryAdd;
 
-    public $confirmCategoryDeletion  = false;
     public $confirmingCategoryDeletion = false;
+    public $categoryIdToDelete;
 
     protected $rules = [
         "category.name" => "required|string|max:255",
@@ -41,7 +41,8 @@ class ManageCategories extends Component
         $this->category = $category;
         $this->confirmingCategoryAdd= true;
     }
-    public function confirmCategoryDeletion() {
+    public function confirmCategoryDeletion($categoryId) {
+        $this->categoryIdToDelete = $categoryId;
         $this->confirmingCategoryDeletion = true;
     }
 
@@ -62,9 +63,8 @@ class ManageCategories extends Component
         $this->category = null;
     }
 
-    public function deleteCategory(Category $categoryId) {
-        $this->category = $categoryId;
-        $this->category->delete();
+    public function deleteCategory() {
+        Category::find($this->categoryIdToDelete)->delete();
         $this->confirmingCategoryDeletion = false;
     }
 

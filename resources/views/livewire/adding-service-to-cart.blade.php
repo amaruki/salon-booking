@@ -1,5 +1,5 @@
 <section class="mt-10">
-    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Buat Janji Temu Anda</h3>
+    <h3 class="text-2xl font-semibold text-gray-800 mb-6">{{ __('Buat Janji Temu Anda') }}</h3>
 
     <form wire:submit.prevent="addToCart" class="space-y-8 bg-white rounded-lg shadow-md p-6">
         <!-- Pilih Lokasi -->
@@ -9,7 +9,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                Pilih Lokasi
+                {{ __('Pilih Lokasi') }}
             </h4>
 
             <fieldset x-data="{
@@ -48,7 +48,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                Pilih Tanggal
+                {{ __('Pilih Tanggal') }}
             </h4>
             
             <div class="relative">
@@ -67,7 +67,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Pilih Waktu
+                {{ __('Pilih Waktu') }}
             </h4>
             
             <fieldset x-data="{ 
@@ -98,7 +98,7 @@
                                             {{ date('g:i', strtotime($timeSlot->start_time)) }}
                                         </span>
                                         <span class="text-xs opacity-80">
-                                            hingga {{ date('g:i a', strtotime($timeSlot->end_time)) }}
+                                            {{ __('hingga') }} {{ date('g:i a', strtotime($timeSlot->end_time)) }}
                                         </span>
                                     </span>
                                     
@@ -119,7 +119,7 @@
                                             {{ date('g:i', strtotime($timeSlot->start_time)) }}
                                         </span>
                                         <span class="text-xs opacity-80">
-                                            hingga {{ date('g:i a', strtotime($timeSlot->end_time)) }}
+                                            {{ __('hingga') }} {{ date('g:i a', strtotime($timeSlot->end_time)) }}
                                         </span>
                                     </span>
                                     
@@ -131,7 +131,7 @@
                                         <div class="absolute inset-0 bg-gray-100 bg-opacity-40"></div>
                                     </span>
                                     
-                                    <span class="relative z-10 text-xs mt-1 text-red-400 font-medium">Tidak tersedia</span>
+                                    <span class="relative z-10 text-xs mt-1 text-red-400 font-medium">{{ __('Tidak tersedia') }}</span>
                                 </label>
                             @endif
                         </div>
@@ -147,7 +147,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                Tambahkan ke Keranjang
+                {{ __('Tambahkan ke Keranjang') }}
             </button>
         </div>
     </form>

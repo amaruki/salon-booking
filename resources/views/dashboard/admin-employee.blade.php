@@ -30,7 +30,7 @@
 
                         Rp.{{ number_format($bookingRevenueThisMonth, 2, '.', ',') }}
                     </p>
-                    <p>Booking Revenue This Month</p>
+                    <p>{{ __('Booking Revenue This Month') }}</p>
                 </div>
             </div>
             <div
@@ -67,7 +67,7 @@
 
 
                     </p>
-                    <p>Monthly Revenue Change</p>
+                    <p>{{ __('Monthly Revenue Change') }}</p>
                 </div>
             </div>
             <div
@@ -83,7 +83,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalCustomers }}</p>
-                    <p>Customers</p>
+                    <p>{{ __('Customers') }}</p>
                 </div>
             </div>
             <div
@@ -99,7 +99,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalCashiers }}</p>
-                    <p>Cashiers</p>
+                    <p>{{ __('Cashiers') }}</p>
                 </div>
             </div>
 
@@ -116,7 +116,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalServices }}</p>
-                    <p>Services</p>
+                    <p>{{ __('Services') }}</p>
                 </div>
             </div>
             <div
@@ -132,7 +132,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalServicesActive }}</p>
-                    <p>Active Services</p>
+                    <p>{{ __('Active Services') }}</p>
                 </div>
             </div>
             <div
@@ -148,7 +148,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalUpcomingDeals }}</p>
-                    <p>Upcoming Deals</p>
+                    <p>{{ __('Upcoming Deals') }}</p>
                 </div>
             </div>
             <div
@@ -164,7 +164,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalOngoingDeals }}</p>
-                    <p>Ongoing Deals</p>
+                    <p>{{ __('Ongoing Deals') }}</p>
                 </div>
             </div>
 
@@ -180,7 +180,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalUpcomingAppointments }}</p>
-                    <p>Upcoming Appointments</p>
+                    <p>{{ __('Upcoming Appointments') }}</p>
                 </div>
             </div>
         </div>
@@ -191,12 +191,12 @@
 
                 <div class="grid md:grid-cols-2">
                     <div class="m-3">
-                        <h2 class="font-medium text-gray-800 text-xl mb-2">Today's Schedule</h2>
+                        <h2 class="font-medium text-gray-800 text-xl mb-2">{{ __('Today\'s Schedule') }}</h2>
                         <x-day-schedule :date="\Carbon\Carbon::today()" :location-id="$location->id" />
                     </div>
 
                     <div class="m-3">
-                        <h2 class="font-medium text-gray-800 text-xl mb-2">Tomorrow's Schedule</h2>
+                        <h2 class="font-medium text-gray-800 text-xl mb-2">{{ __('Tomorrow\'s Schedule') }}</h2>
                         <x-day-schedule :date="\Carbon\Carbon::today()->addDay()" :location-id="$location->id" />
                     </div>
 

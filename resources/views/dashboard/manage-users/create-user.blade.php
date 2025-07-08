@@ -49,8 +49,8 @@
             <div class="col-span-6 sm:col-span-4 my-2">
                 <x-label for="role" value="{{ __('Role') }}" />
                 <select name="role" id="role" class="border-gray-300 focus:border-pink-500 focus:ring-pink-500 rounded-md shadow-sm">
-                    <option value="cashier">Cashier</option>
-                    <option value="customer">Customer</option>
+                    <option value="cashier">{{ __('Cashier') }}</option>
+                    <option value="customer">{{ __('Customer') }}</option>
                 </select>
                 <x-input-error for="role" class="mt-2" />
             </div>

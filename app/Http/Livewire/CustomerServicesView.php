@@ -12,7 +12,6 @@ class CustomerServicesView extends Component
     use WithPagination;
 
     public $search;
-    public $categories;
     public $categoryFilter = [];
     public $sortByPrice = 'PriceLowToHigh';
 
@@ -28,10 +27,8 @@ class CustomerServicesView extends Component
 
     public function mount()
     {
-        $this->categories = \App\Models\Category::all();
-
         // Initialize categoryFilter with all category IDs
-        $this->categoryFilter = $this->categories->pluck('id')->toArray();
+        $this->categoryFilter = \App\Models\Category::all()->pluck('id')->toArray();
     }
 
     public function render()
@@ -53,11 +50,11 @@ class CustomerServicesView extends Component
         // Determine whether to show category names in the URL or not
         $showCategoryNames = count($this->categoryFilter) <= 3;
 
-        $this->services = $query->orderBy($this->sortByPrice)->paginate(10);
+        $this->services = $query->orderByPrice($this->sortByPrice)->paginate(10);
 
         return view('livewire.customer-services-view', [
             'services' => $this->services,
-            'categories' => $this->categories,
+            'categories' => \App\Models\Category::all(),
             'showCategoryNames' => $showCategoryNames, // Pass this variable to your view
         ]);
     }
