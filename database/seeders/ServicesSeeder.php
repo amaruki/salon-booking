@@ -64,11 +64,7 @@ class ServicesSeeder extends Seeder
             'description' => 'Relaxing scalp massage to rejuvenate your hair and mind.',
             'image' => 'hair_treatment_scalp_massage.jpg',
             'price' => 3500.00,
-            'notes' => 'Enjoy a soothing massage with aromatic oils.',
-            'allergens' => 'Massage oils may contain allergens; inform us of any allergies.',
-            'benefits' => 'Promote scalp health and reduce stress with this pampering treatment.',
-            'aftercare_tips' => 'Take time to relax and destress after the treatment.',
-            'cautions' => null, // No specific cautions for this service
+            
 //            'duration_minutes' => 45, // Duration in minutes
             'category_id' => 3, // Replace with the actual category ID
             'is_hidden' => false,

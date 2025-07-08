@@ -61,11 +61,7 @@ class ServicesAPI extends Controller
         //     "name": "Service 1",
         //     "description": "Service 1 description",
         //     "price": 100,
-        //     "notes": "Service 1 notes",
-        //     "allergens": "Service 1 allergens",
-        //     "benefits": "Service 1 benefits",
-        //     "aftercare_tips": "Service 1 aftercare tips",
-        //     "cautions": "Service 1 cautions",
+        
         //     "category_id": 1,
         //     "is_hidden": false
         // }
@@ -85,11 +81,7 @@ class ServicesAPI extends Controller
             'description' => request('description'),
 //            'image' => request('image'),  // image null
             'price' => request('price'),
-            'notes' => request('notes'),
-            'allergens' => request('allergens'),
-            'benefits' => request('benefits'),
-            'aftercare_tips' => request('aftercare_tips'),
-            'cautions' => request('cautions'),
+            
             'category_id' => request('category_id'),
             'is_hidden' => request('is_hidden'),
         ]);
@@ -109,11 +101,7 @@ class ServicesAPI extends Controller
             'description' => request('description'),
             'image' => request('image'),
             'price' => request('price'),
-            'notes' => request('notes'),
-            'allergens' => request('allergens'),
-            'benefits' => request('benefits'),
-            'aftercare_tips' => request('aftercare_tips'),
-            'cautions' => request('cautions'),
+            
             'category_id' => request('category_id'),
             'is_hidden' => request('is_hidden'),
         ]);

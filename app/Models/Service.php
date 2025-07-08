@@ -25,12 +25,6 @@ class Service extends Model
         'description',
         'image',
         'price',
-        'notes',
-        'allergens',
-        'benefits',
-        'aftercare_tips',
-        'cautions',
-//        'duration_minutes',
         'category_id',
         'is_hidden',
     ];

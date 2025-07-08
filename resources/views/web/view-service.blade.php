@@ -48,74 +48,7 @@
                         <p class="text-gray-700">{{ $service->description }}</p>
                     </div>
 
-                    <!-- Tabs for Additional Information -->
-                    <div class="mt-8 border rounded-lg overflow-hidden">
-                        <div x-data="{ activeTab: 'benefits' }" class="bg-white">
-                            <!-- Tab Headers -->
-                            <div class="flex border-b">
-                                @if($service->benefits)
-                                <button 
-                                    @click="activeTab = 'benefits'" 
-                                    :class="{'bg-pink-50 border-pink-500 text-pink-600': activeTab === 'benefits', 'border-transparent': activeTab !== 'benefits'}"
-                                    class="px-4 py-2 text-sm font-medium border-b-2 focus:outline-none">
-                                    {{ __('Manfaat') }}
-                                </button>
-                                @endif
-
-                                @if($service->cautions)
-                                <button 
-                                    @click="activeTab = 'cautions'" 
-                                    :class="{'bg-pink-50 border-pink-500 text-pink-600': activeTab === 'cautions', 'border-transparent': activeTab !== 'cautions'}"
-                                    class="px-4 py-2 text-sm font-medium border-b-2 focus:outline-none">
-                                    {{ __('Peringatan') }}
-                                </button>
-                                @endif
-
-                                @if($service->allergens)
-                                <button 
-                                    @click="activeTab = 'allergens'" 
-                                    :class="{'bg-pink-50 border-pink-500 text-pink-600': activeTab === 'allergens', 'border-transparent': activeTab !== 'allergens'}"
-                                    class="px-4 py-2 text-sm font-medium border-b-2 focus:outline-none">
-                                    {{ __('Alergen') }}
-                                </button>
-                                @endif
-
-                                @if($service->aftercare_tips)
-                                <button 
-                                    @click="activeTab = 'aftercare'" 
-                                    :class="{'bg-pink-50 border-pink-500 text-pink-600': activeTab === 'aftercare', 'border-transparent': activeTab !== 'aftercare'}"
-                                    class="px-4 py-2 text-sm font-medium border-b-2 focus:outline-none">
-                                    {{ __('Perawatan') }}
-                                </button>
-                                @endif
-                            </div>
-
-                            <!-- Tab Content -->
-                            @if($service->benefits)
-                            <div x-show="activeTab === 'benefits'" class="p-4">
-                                <p class="text-gray-700">{{ $service->benefits }}</p>
-                            </div>
-                            @endif
-
-                            @if($service->cautions)
-                            <div x-show="activeTab === 'cautions'" class="p-4">
-                                <p class="text-gray-700">{{ $service->cautions }}</p>
-                            </div>
-                            @endif
-
-                            @if($service->allergens)
-                            <div x-show="activeTab === 'allergens'" class="p-4">
-                                <p class="text-gray-700">{{ $service->allergens }}</p>
-                            </div>
-                            @endif
-
-                            @if($service->aftercare_tips)
-                            <div x-show="activeTab === 'aftercare'" class="p-4">
-                                <p class="text-gray-700">{{ $service->aftercare_tips }}</p>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
+                    
 
                     <!-- Call to Action -->
                     <div class="mt-8">

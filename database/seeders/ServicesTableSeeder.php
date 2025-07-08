@@ -99,11 +99,7 @@ class ServicesTableSeeder extends Seeder
                 'description' => 'Service 1 description',
                 'image' => NULL,
                 'price' => 100,
-                'notes' => 'Service 1 notes',
-                'allergens' => 'Service 1 allergens',
-                'benefits' => 'Service 1 benefits',
-                'aftercare_tips' => 'Service 1 aftercare tips',
-                'cautions' => 'Service 1 cautions',
+                
                 'category_id' => 1,
                 'is_hidden' => 0,
                 'created_at' => '2023-10-01 16:26:29',
