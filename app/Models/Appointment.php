@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\UserRolesEnum;
-use App\Jobs\SendAppointmentConfirmationMailJob;
-use App\Jobs\SendNewServicePromoMailJob;
 use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
@@ -54,18 +51,14 @@ class Appointment extends Model
         return $this->belongsTo(Location::class);
     }
 
-
-
-    static function boot()
+    public static function boot()
     {
         parent::boot();
 
         static::creating(function ($appointment) {
             // a readable unique code for the appointment, including the id in the code
-            $appointment->appointment_code = 'APP-'.  ($appointment->count() + 1) ;
+            $appointment->appointment_code = 'APP-'.($appointment->count() + 1);
 
         });
     }
-
-
 }

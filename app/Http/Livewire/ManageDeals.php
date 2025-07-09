@@ -2,21 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Deal;
+use Livewire\Component;
 use Livewire\WithPagination;
+
 // use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Log;
 
 class ManageDeals extends Component
-
 {
-
     use withPagination;
 
-
     public $confirmingDealDeletion = false;
+
     public $confirmingDealAdd = false;
+
     public $confirmingDealEdit = false;
 
     public $search;
@@ -25,9 +24,19 @@ class ManageDeals extends Component
         'search' => ['except' => ''],
     ];
 
-    public $newDeal, $name, $description, $discount, $start_date, $end_date, $is_hidden;
+    public $newDeal;
 
+    public $name;
 
+    public $description;
+
+    public $discount;
+
+    public $start_date;
+
+    public $end_date;
+
+    public $is_hidden;
 
     protected function rules()
     {
@@ -43,13 +52,12 @@ class ManageDeals extends Component
         return $rules;
     }
 
-
     public function render()
     {
         $deals = Deal::when($this->search, function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%')
-                    ->orWhere('description', 'like', '%' . $this->search . '%');
-            })
+            $query->where('name', 'like', '%'.$this->search.'%')
+                ->orWhere('description', 'like', '%'.$this->search.'%');
+        })
             ->orderBy('start_date', 'desc')
             ->paginate(10);
 
@@ -70,7 +78,6 @@ class ManageDeals extends Component
         session()->flash('message', 'Deal successfully deleted.');
         $this->confirmingDealDeletion = false;
     }
-
 
     public function confirmDealAdd()
     {
@@ -105,7 +112,6 @@ class ManageDeals extends Component
                 'is_hidden' => isset($this->newService['is_hidden']) ? $this->newService['is_hidden'] : false,
             ]);
         }
-
 
         session()->flash('message', 'Deal successfully saved.');
 

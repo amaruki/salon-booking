@@ -10,7 +10,6 @@ use App\Models\Service;
 use App\Models\TimeSlot;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class AdminDashboardHomeController extends Controller
 {
@@ -44,30 +43,25 @@ class AdminDashboardHomeController extends Controller
             $percentageRevenueChangeLastMonth = 100;
         }
 
-
         $todaysSchedule = Appointment::orderBy('start_time', 'asc')
-                ->where('date', $todayDate)
-                ->where('status', '!=', 0)
-                ->orderBy('time_slot_id', 'asc')
-                ->where('status', '!=', 0)
-                ->with('service', 'timeSlot', 'user')
-                ->get();
+            ->where('date', $todayDate)
+            ->where('status', '!=', 0)
+            ->orderBy('time_slot_id', 'asc')
+            ->where('status', '!=', 0)
+            ->with('service', 'timeSlot', 'user')
+            ->get();
 
         $tommorowsSchedule = Appointment::orderBy('start_time', 'asc')
-                ->where('date', Carbon::today()->addDay()->toDateTime())
-                ->where('status', '!=', 0)
-                ->orderBy('time_slot_id', 'asc')
-                ->where('status', '!=', 0)
-                ->with('service', 'timeSlot', 'user')
-                ->get();
+            ->where('date', Carbon::today()->addDay()->toDateTime())
+            ->where('status', '!=', 0)
+            ->orderBy('time_slot_id', 'asc')
+            ->where('status', '!=', 0)
+            ->with('service', 'timeSlot', 'user')
+            ->get();
 
         $timeSlots = TimeSlot::all();
 
         $locations = Location::all();
-
-
-
-
 
         return view('dashboard.admin-cashier', [
             'totalCustomers' => $totalCustomers,
@@ -81,10 +75,8 @@ class AdminDashboardHomeController extends Controller
             'tommorowsAppointments' => $tommorowsAppointments,
             'bookingRevenueThisMonth' => $bookingRevenueThisMonth,
 
-//            'bookingRevenueLastMonth' => $bookingRevenueLastMonth,
+            //            'bookingRevenueLastMonth' => $bookingRevenueLastMonth,
             'percentageRevenueChangeLastMonth' => $percentageRevenueChangeLastMonth,
-
-
 
             'todaysSchedule' => $todaysSchedule,
             'tomorrowsSchedule' => $tommorowsSchedule,

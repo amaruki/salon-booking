@@ -14,10 +14,9 @@ class AnalyticsJob implements ShouldQueue
 
     public function __construct(
         public string $model,
-        public int    $id,
+        public int $id,
         public string $analytic_type
-    )
-    {
+    ) {
 
     }
 

@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class ManageLocations extends Component
 {
-
     private $locations;
 
     public $search;
@@ -20,15 +19,17 @@ class ManageLocations extends Component
 
     public $confirmingLocationAdd;
 
-    public $confirmLocationDeletion  = false;
+    public $confirmLocationDeletion = false;
+
     public $confirmingLocationDeletion = false;
 
     protected $rules = [
-        "location.name" => "required|string|max:255",
-        "location.address" => "required|string|max:255",
-        "location.telephone_number" => "required|string|min_digits:10|max_digits:10",
-        "location.status" => "required|boolean",
+        'location.name' => 'required|string|max:255',
+        'location.address' => 'required|string|max:255',
+        'location.telephone_number' => 'required|string|min_digits:10|max_digits:10',
+        'location.status' => 'required|boolean',
     ];
+
     public function render()
     {
         $this->locations = Location::when($this->search, function ($query) {
@@ -40,15 +41,19 @@ class ManageLocations extends Component
         ]);
     }
 
-    public function confirmLocationEdit(Location $location) {
+    public function confirmLocationEdit(Location $location)
+    {
         $this->location = $location;
-        $this->confirmingLocationAdd= true;
+        $this->confirmingLocationAdd = true;
     }
-    public function confirmLocationDeletion() {
+
+    public function confirmLocationDeletion()
+    {
         $this->confirmingLocationDeletion = true;
     }
 
-    public function saveLocation() {
+    public function saveLocation()
+    {
         $this->validate();
 
         if (isset($this->location->id)) {
@@ -68,14 +73,15 @@ class ManageLocations extends Component
         $this->location = null;
     }
 
-    public function deleteLocation(Location $locationId) {
+    public function deleteLocation(Location $locationId)
+    {
         $this->location = $locationId;
         $this->location->delete();
         $this->confirmingLocationDeletion = false;
     }
 
-    public function confirmLocationAdd() {
+    public function confirmLocationAdd()
+    {
         $this->confirmingLocationAdd = true;
     }
-
 }

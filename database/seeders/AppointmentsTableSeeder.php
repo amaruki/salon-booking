@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class AppointmentsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class AppointmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('appointments')->delete();
-        
-        \DB::table('appointments')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('appointments')->insert([
+            0 => [
                 'id' => 1,
                 'appointment_code' => 'APP-1',
                 'cart_id' => 1,
@@ -35,9 +32,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 0,
                 'created_at' => '2023-09-29 18:25:03',
                 'updated_at' => '2023-10-01 14:13:44',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'appointment_code' => 'APP-2',
                 'cart_id' => 2,
@@ -52,9 +48,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-09-29 18:37:12',
                 'updated_at' => '2023-09-29 18:37:12',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'appointment_code' => 'APP-3',
                 'cart_id' => 3,
@@ -69,9 +64,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-09-30 02:50:28',
                 'updated_at' => '2023-09-30 02:50:28',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'appointment_code' => 'APP-4',
                 'cart_id' => 4,
@@ -86,9 +80,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 09:35:32',
                 'updated_at' => '2023-10-01 09:35:32',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'appointment_code' => 'APP-5',
                 'cart_id' => 4,
@@ -103,9 +96,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 09:46:24',
                 'updated_at' => '2023-10-01 09:46:24',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'appointment_code' => 'APP-6',
                 'cart_id' => 5,
@@ -120,9 +112,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 09:48:56',
                 'updated_at' => '2023-10-01 09:48:56',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'appointment_code' => 'APP-7',
                 'cart_id' => 6,
@@ -137,9 +128,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 09:57:48',
                 'updated_at' => '2023-10-01 09:57:48',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'appointment_code' => 'APP-8',
                 'cart_id' => 6,
@@ -154,9 +144,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 09:57:48',
                 'updated_at' => '2023-10-01 09:57:48',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'appointment_code' => 'APP-9',
                 'cart_id' => 6,
@@ -171,9 +160,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 09:57:48',
                 'updated_at' => '2023-10-01 09:57:48',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'appointment_code' => 'APP-10',
                 'cart_id' => 7,
@@ -188,9 +176,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 13:48:41',
                 'updated_at' => '2023-10-01 13:48:41',
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'appointment_code' => 'APP-11',
                 'cart_id' => 8,
@@ -205,9 +192,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 13:49:54',
                 'updated_at' => '2023-10-01 13:49:54',
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'appointment_code' => 'APP-12',
                 'cart_id' => 8,
@@ -222,9 +208,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 13:49:54',
                 'updated_at' => '2023-10-01 13:49:54',
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 13,
                 'appointment_code' => 'APP-13',
                 'cart_id' => 9,
@@ -239,9 +224,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 17:01:56',
                 'updated_at' => '2023-10-01 17:01:56',
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'appointment_code' => 'APP-14',
                 'cart_id' => 9,
@@ -256,9 +240,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 17:01:56',
                 'updated_at' => '2023-10-01 17:01:56',
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 15,
                 'appointment_code' => 'APP-15',
                 'cart_id' => 9,
@@ -273,9 +256,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-10-01 17:01:56',
                 'updated_at' => '2023-10-01 17:01:56',
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'appointment_code' => 'APP-16',
                 'cart_id' => 10,
@@ -290,9 +272,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-12-08 11:35:41',
                 'updated_at' => '2023-12-08 11:35:41',
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 17,
                 'appointment_code' => 'APP-17',
                 'cart_id' => 11,
@@ -307,9 +288,8 @@ class AppointmentsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-12-08 17:14:39',
                 'updated_at' => '2023-12-08 17:14:39',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

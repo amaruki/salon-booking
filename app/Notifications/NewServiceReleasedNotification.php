@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use App\Models\Service;
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -15,8 +14,7 @@ class NewServiceReleasedNotification extends Notification implements ShouldQueue
 
     public function __construct(
         public Service $service,
-    )
-    {
+    ) {
     }
 
     public function via($notifiable): array
@@ -53,7 +51,7 @@ class NewServiceReleasedNotification extends Notification implements ShouldQueue
             ))
             ->action(__(
                 'new_service.action'
-            ), url('/services/' . $this->service->slug))
+            ), url('/services/'.$this->service->slug))
             ->line(__(
                 'new_service.thanks'
             ));

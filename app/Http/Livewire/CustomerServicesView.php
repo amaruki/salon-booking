@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Service;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class CustomerServicesView extends Component
@@ -12,7 +11,9 @@ class CustomerServicesView extends Component
     use WithPagination;
 
     public $search;
+
     public $categoryFilter = [];
+
     public $sortByPrice = 'PriceLowToHigh';
 
     public $sortDropDown;
@@ -37,12 +38,12 @@ class CustomerServicesView extends Component
 
         if ($this->search) {
             $query->where(function ($subquery) {
-                $subquery->where('name', 'like', '%' . $this->search . '%')
-                    ->orWhere('description', 'like', '%' . $this->search . '%');
+                $subquery->where('name', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%');
             });
         }
 
-        if (!in_array(0, $this->categoryFilter)) {
+        if (! in_array(0, $this->categoryFilter)) {
             // Exclude 0 (which represents "All" category) from the filter
             $query->whereIn('category_id', $this->categoryFilter);
         }
@@ -65,16 +66,16 @@ class CustomerServicesView extends Component
         $this->resetPage();
     }
 
-//    public function updatedCategoryFilter()
-//    {
-//        $this->render(); // Re-render the component
-//    }
+    //    public function updatedCategoryFilter()
+    //    {
+    //        $this->render(); // Re-render the component
+    //    }
 
     public function sortByMostPopular($sort)
     {
         // validate $sort value to only be 'PriceLowToHigh' or 'PriceHighToLow'
 
-        if ( $sort == 'PriceLowToHigh' || $sort == 'PriceHighToLow' ) {
+        if ($sort == 'PriceLowToHigh' || $sort == 'PriceHighToLow') {
             $this->sortByPrice = $sort;
         } else {
             $this->sortByPrice = 'PriceLowToHigh';
@@ -82,9 +83,6 @@ class CustomerServicesView extends Component
 
         echo $this->sortByPrice;
 
-
-
         $this->render(); // Re-render the component
     }
-
 }

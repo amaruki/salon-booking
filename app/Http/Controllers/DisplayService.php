@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Enums\UserRolesEnum;
 use App\Jobs\AnalyticsJob;
-use App\Models\Appointment;
-use App\Models\TimeSlot;
-use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\TimeSlot;
 
 class DisplayService extends Controller
 {
@@ -25,7 +23,7 @@ class DisplayService extends Controller
 
         $serviceQuery = Service::where('slug', $slug);
 
-        if (!auth()->check() || auth()->user()->role->id == UserRolesEnum::Customer->value)  {
+        if (! auth()->check() || auth()->user()->role->id == UserRolesEnum::Customer->value) {
             // If the user is not logged in or is a customer
             $serviceQuery->where('is_hidden', false);
         }
@@ -49,10 +47,7 @@ class DisplayService extends Controller
         $percentageAppointmentsChangeLastMonth = null;
         $percentageRevenueChangeLastMonth = null;
 
-
-
-
-        if( !auth()->check()  || auth()->user()->role->id ==  UserRolesEnum::Customer->value ) {
+        if (! auth()->check() || auth()->user()->role->id == UserRolesEnum::Customer->value) {
             if ($service->is_hidden) {
                 abort(404);
             }
@@ -74,11 +69,10 @@ class DisplayService extends Controller
             // views the week before last week for this service
             $viewsTheWeekBeforeLastWeek = $service->hits()->where('analytic_data_type', 'view')->whereBetween('created_at', [now()->subWeeks(2), now()->subWeeks(1)])->count();
 
-
             if ($viewsTheWeekBeforeLastWeek != 0) {
                 $percentageViewsChangeLastWeek = (($viewsLastWeek - $viewsTheWeekBeforeLastWeek) / $viewsTheWeekBeforeLastWeek) * 100;
             } else {
-                $percentageViewsChangeLastWeek = "N/A"; // Set to "N/A" if division by zero
+                $percentageViewsChangeLastWeek = 'N/A'; // Set to "N/A" if division by zero
             }
 
             $totalRevenue = $service->appointments()->sum('total');
@@ -91,7 +85,7 @@ class DisplayService extends Controller
             if ($totalRevenueTheWeekBeforeLastWeek != 0) {
                 $percentageRevenueChangeLastWeek = (($totalRevenueLastWeek - $totalRevenueTheWeekBeforeLastWeek) / $totalRevenueTheWeekBeforeLastWeek) * 100;
             } else {
-                $percentageRevenueChangeLastWeek = "N/A"; // Set to "N/A" if division by zero
+                $percentageRevenueChangeLastWeek = 'N/A'; // Set to "N/A" if division by zero
             }
 
             // total revenue last month for this service
@@ -104,7 +98,7 @@ class DisplayService extends Controller
             if ($totalRevenueTheMonthBeforeLastMonth != 0) {
                 $percentageRevenueChangeLastMonth = (($totalRevenueLastMonth - $totalRevenueTheMonthBeforeLastMonth) / $totalRevenueTheMonthBeforeLastMonth) * 100;
             } else {
-                $percentageRevenueChangeLastMonth = "N/A"; // Set to "N/A" if division by zero
+                $percentageRevenueChangeLastMonth = 'N/A'; // Set to "N/A" if division by zero
             }
 
             // get the appointments for this service
@@ -120,7 +114,7 @@ class DisplayService extends Controller
             if ($appointmentsTheWeekBeforeLastWeek != 0) {
                 $percentageAppointmentsChangeLastWeek = (($appointmentsLastWeek - $appointmentsTheWeekBeforeLastWeek) / $appointmentsTheWeekBeforeLastWeek) * 100;
             } else {
-                $percentageAppointmentsChangeLastWeek = "N/A"; // Set to "N/A" if division by zero
+                $percentageAppointmentsChangeLastWeek = 'N/A'; // Set to "N/A" if division by zero
             }
 
             // appointments last month for this service
@@ -133,7 +127,7 @@ class DisplayService extends Controller
             if ($appointmentsTheMonthBeforeLastMonth != 0) {
                 $percentageAppointmentsChangeLastMonth = (($appointmentsLastMonth - $appointmentsTheMonthBeforeLastMonth) / $appointmentsTheMonthBeforeLastMonth) * 100;
             } else {
-                $percentageAppointmentsChangeLastMonth = "N/A"; // Set to "N/A" if division by zero
+                $percentageAppointmentsChangeLastMonth = 'N/A'; // Set to "N/A" if division by zero
             }
 
             // get the most popular time slots for this service
@@ -162,8 +156,6 @@ class DisplayService extends Controller
                 ];
             });
 
-
-
         }
 
         return view('web.view-service', [
@@ -182,7 +174,7 @@ class DisplayService extends Controller
             'appointmentsLastWeek' => $appointmentsLastWeek,
             'appointmentsLastMonth' => $appointmentsLastMonth,
             'percentageAppointmentsChangeLastWeek' => $percentageAppointmentsChangeLastWeek,
-            'percentageAppointmentsChangeLastMonth'=> $percentageAppointmentsChangeLastMonth,
+            'percentageAppointmentsChangeLastMonth' => $percentageAppointmentsChangeLastMonth,
             'percentageRevenueChangeLastMonth' => $percentageRevenueChangeLastMonth,
         ]);
     }

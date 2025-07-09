@@ -20,7 +20,6 @@ class HomePageController extends Controller
             ->where('is_hidden', false)
             ->get();
 
-
         return view('web.home', compact('deals', 'popularServices'));
     }
 }

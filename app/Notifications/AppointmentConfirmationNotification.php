@@ -3,8 +3,6 @@
 namespace App\Notifications;
 
 use App\Models\Appointment;
-use App\Models\Service;
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -16,8 +14,7 @@ class AppointmentConfirmationNotification extends Notification implements Should
 
     public function __construct(
         public Appointment $appointment,
-    )
-    {
+    ) {
     }
 
     public function via($notifiable): array
@@ -71,7 +68,7 @@ class AppointmentConfirmationNotification extends Notification implements Should
             ))
             ->action(__(
                 'appointment.action'
-            ), route('dashboard').'?search='. $this->appointment->appointment_code )
+            ), route('dashboard').'?search='.$this->appointment->appointment_code)
             ->line(__(
                 'appointment.thanks'
             ));

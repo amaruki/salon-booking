@@ -2,26 +2,33 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Service;
-use Livewire\WithPagination;
+use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class ManageServices extends Component
-
 {
-    
     use withPagination;
     use withFileUploads;
 
-    public $confirmingServiceDeletion = false; 
+    public $confirmingServiceDeletion = false;
+
     public $confirmingServiceAdd = false;
+
     public $confirmingServiceEdit = false;
 
-    
-    public $newService, $name, $description, $image, $price, $is_hidden = false;
+    public $newService;
 
+    public $name;
 
+    public $description;
+
+    public $image;
+
+    public $price;
+
+    public $is_hidden = false;
 
     protected $rules = [
         'newService.name' => 'required|string|min:1|max:255',
@@ -31,15 +38,15 @@ class ManageServices extends Component
         // 'newService.image' => ['nullable', function ($attribute, $value, $fail) {
         //     $isNewImageUploaded = request()->hasFile($attribute);
         //     $isExistingImageFilename = is_string($value);
-    
+
         //     if (!$isNewImageUploaded && !$isExistingImageFilename) {
         //         $fail('The '.$attribute.' field must be either an image file or an image filename.');
         //     }
-    
+
         //     if ($isNewImageUploaded) {
         //         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
         //         $extension = strtolower($value->getClientOriginalExtension());
-    
+
         //         if (!in_array($extension, $allowedExtensions)) {
         //             $fail('The '.$attribute.' field must be a valid image file (jpg, jpeg, png, gif, svg).');
         //         }
@@ -48,8 +55,6 @@ class ManageServices extends Component
         'newService.price' => 'required|numeric|min:0',
         'newService.is_hidden' => 'boolean',
     ];
-    
-  
 
     public function render()
     {
@@ -64,7 +69,6 @@ class ManageServices extends Component
     {
         $this->confirmingServiceDeletion = $id;
 
-
     }
 
     public function deleteService(Service $service)
@@ -73,40 +77,37 @@ class ManageServices extends Component
 
         session()->flash('message', 'Service successfully deleted.');
         $this->confirmingServiceDeletion = false;
-        
+
     }
 
-
-    public function confirmServiceAdd() {
+    public function confirmServiceAdd()
+    {
 
         $this->reset(['newService']);
         $this->confirmingServiceAdd = true;
 
-  
     }
 
-    public function confirmServiceEdit( Service $newService ) {
+    public function confirmServiceEdit(Service $newService)
+    {
         $this->newService = $newService;
 
         // dd($this->newService);
         // $this->newService['image'] = $newService->image;
 
-
-
         $this->confirmingServiceAdd = true;
     }
-    
 
+    public function saveService()
+    {
 
-    public function saveService() {
-        
         $this->validate();
         dd($this->newService);
 
         // // if image is string, it means it is not changed
         // if (is_string($this->newService['image'])) {
         //     $this->newService['image'] = $this->newService['image'];
-            
+
         // } else {
         //     $this->newService['image']->store('images', 'public');
         //     $this->newService['image'] = $this->newService['image']->hashName();
@@ -116,7 +117,6 @@ class ManageServices extends Component
         //         Storage::disk('public')->delete('images/' . $this->newService->getOriginal('image'));
         //     }
         // }
-        
 
         // if ($this->newService->id) {
         //     $this->newService->save();
@@ -128,22 +128,17 @@ class ManageServices extends Component
         //         'price' => $this->newService['price'],
         //         'is_hidden' => $this->newService['is_hidden'],
         //     ]);
-           
+
         // }
-       
 
         // session()->flash('message', 'Service successfully saved.');
 
         // $this->confirmingServiceAdd = false;
 
-      
     }
 
-    private function handleImageUpload() {
+    private function handleImageUpload()
+    {
 
     }
-
-
-
-    
 }

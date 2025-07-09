@@ -4,22 +4,19 @@ namespace App\Models;
 
 use App\Enums\UserRolesEnum;
 use App\Jobs\SendNewServicePromoMailJob;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class Service extends Model
 {
-
-//    protected $hidden = [
-//        'id',
-//        'category_id',
-//        'is_hidden',
-//        'created_at',
-//        'updated_at',
-//    ];
+    //    protected $hidden = [
+    //        'id',
+    //        'category_id',
+    //        'is_hidden',
+    //        'created_at',
+    //        'updated_at',
+    //    ];
     protected $fillable = [
-//        'uuid',
+        //        'uuid',
         'name',
         'slug',
         'description',
@@ -40,6 +37,7 @@ class Service extends Model
     {
         return $query->where('is_hidden', false);
     }
+
     public function scopeOrderByPrice($query, $order)
     {
         if ($order === 'PriceLowToHigh') {
@@ -66,6 +64,7 @@ class Service extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+
     public function locations()
     {
         return $this->belongsToMany(Location::class, 'cart_service')
@@ -74,9 +73,9 @@ class Service extends Model
 
     protected static function booted()
     {
-//        static::creating(function ($service) {
-//            $service->uuid = (string) \Illuminate\Support\Str::uuid();
-//        });
+        //        static::creating(function ($service) {
+        //            $service->uuid = (string) \Illuminate\Support\Str::uuid();
+        //        });
 
         static::created(function ($service) {
 
@@ -93,7 +92,4 @@ class Service extends Model
             }
         });
     }
-
-
-
 }

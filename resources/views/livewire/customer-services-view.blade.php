@@ -27,18 +27,6 @@
                             <li>
                                 <a href="#" class="block px-2 py-3">{{ __('Totes') }}</a>
                             </li>
-                            <li>
-                                <a href="#" class="block px-2 py-3">{{ __('Backpacks') }}</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-2 py-3">{{ __('Travel Bags') }}</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-2 py-3">{{ __('Hip Bags') }}</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-2 py-3">{{ __('Laptop Sleeves') }}</a>
-                            </li>
                         </ul>
 
                         <div class="border-t border-gray-200 px-4 py-6">

@@ -181,7 +181,7 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                         @php
-                                            $totalWeekly = array_sum(array_column($timeSlotsStatsLastWeek, 'count'));
+                                            $totalWeekly = array_sum(array_column($timeSlotsStatsLastWeek->toArray(), 'count'));
                                         @endphp
                                         @foreach ($timeSlotsStatsLastWeek as $timeSlotStat)
                                             <tr>

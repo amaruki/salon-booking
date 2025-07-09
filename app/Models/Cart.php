@@ -15,7 +15,6 @@ class Cart extends Model
         'total',
     ];
 
-
     protected $with = ['services'];
 
     public function user()
@@ -28,11 +27,9 @@ class Cart extends Model
         return $this
             ->belongsToMany(Service::class)
             ->with('locations')
-            ->withPivot('id','time_slot_id','date', 'start_time', 'end_time', 'location_id' , 'price');
+            ->withPivot('id', 'time_slot_id', 'date', 'start_time', 'end_time', 'location_id', 'price');
 
     }
-
-
 
     protected static function booted()
     {
@@ -40,5 +37,4 @@ class Cart extends Model
             $cart->uuid = \Illuminate\Support\Str::uuid();
         });
     }
-
 }

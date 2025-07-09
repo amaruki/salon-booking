@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\DisplayDeal;
 use App\Models\Service;
 use App\Models\User;
 use App\Notifications\NewServiceReleasedNotification;
@@ -20,8 +19,7 @@ class SendNewServicePromoMailJob implements ShouldQueue
     public function __construct(
         public User $customer,
         public Service $service
-    )
-    {
+    ) {
     }
 
     public function handle(): void

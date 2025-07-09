@@ -36,6 +36,7 @@ class ServicesAPI extends Controller
     public function show($id)
     {
         $service = Service::where('id', $id)->firstOrFail();
+
         return response()->json($service, 200);
     }
 
@@ -45,7 +46,7 @@ class ServicesAPI extends Controller
         request()->validate([
             'name' => 'required|max:255',
             'description' => 'required|max:255',
-//            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price' => 'required|numeric',
             'notes' => 'nullable|string|max:255',
             'allergens' => 'nullable|string|max:255',
@@ -61,27 +62,25 @@ class ServicesAPI extends Controller
         //     "name": "Service 1",
         //     "description": "Service 1 description",
         //     "price": 100,
-        
+
         //     "category_id": 1,
         //     "is_hidden": false
         // }
 
-
         // slug
-        $slug = \Str::slug( request('name'));
+        $slug = \Str::slug(request('name'));
         $slugCount = Service::where('slug', 'like', $slug.'%')->count();
         if ($slugCount > 0) {
             $slug = $slug.'-'.($slugCount + 1);
         }
 
-
         $service = Service::create([
             'name' => request('name'),
             'slug' => $slug,
             'description' => request('description'),
-//            'image' => request('image'),  // image null
+            //            'image' => request('image'),  // image null
             'price' => request('price'),
-            
+
             'category_id' => request('category_id'),
             'is_hidden' => request('is_hidden'),
         ]);
@@ -101,7 +100,7 @@ class ServicesAPI extends Controller
             'description' => request('description'),
             'image' => request('image'),
             'price' => request('price'),
-            
+
             'category_id' => request('category_id'),
             'is_hidden' => request('is_hidden'),
         ]);
@@ -112,11 +111,11 @@ class ServicesAPI extends Controller
     public function destroy($id)
     {
         $service = Service::where('id', $id)->first();
-        if (!$service) {
+        if (! $service) {
             return response()->json("'message': 'Service not found'", 404);
         }
         $service->delete();
+
         return response()->json("message': 'Service deleted successfully'", 200);
     }
-
 }

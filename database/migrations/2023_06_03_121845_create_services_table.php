@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('image')->nullable();
             $table->decimal('price', 8, 2);
-            
-//            $table->integer('duration_minutes')->default(15)->nullable();
+
+            //            $table->integer('duration_minutes')->default(15)->nullable();
             $table->foreignId('category_id')->nullable()->index();
             $table->boolean('is_hidden')->default(false);
             $table->timestamps();

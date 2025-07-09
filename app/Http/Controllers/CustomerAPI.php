@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRolesEnum;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class CustomerAPI extends Controller
 {
@@ -12,6 +12,7 @@ class CustomerAPI extends Controller
     {
         // get all customers
         $customers = User::where('role_id', UserRolesEnum::Customer->value)->get();
+
         return response()->json($customers, 200);
 
     }
@@ -38,7 +39,7 @@ class CustomerAPI extends Controller
         $customer = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'phone_number' => '1' . $request->phone_number,
+            'phone_number' => '1'.$request->phone_number,
             'password' => bcrypt($request->password),
             'role_id' => UserRolesEnum::Customer->value,
         ]);
@@ -62,18 +63,17 @@ class CustomerAPI extends Controller
     public function update(Request $request, $id)
     {
         // format
-//         {
-//             "name": "Updated Customer 1",
-//             "email": "updatedcust@gmail",
-//             "phone_number": "1233567890",
-//             "password": "custpassword"
-//         }
-
+        //         {
+        //             "name": "Updated Customer 1",
+        //             "email": "updatedcust@gmail",
+        //             "phone_number": "1233567890",
+        //             "password": "custpassword"
+        //         }
 
         // validate
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required|email|unique:users,email,'.$id,
             'phone_number' => 'required|numeric',
             'password' => 'required|min:8',
         ]);
@@ -86,7 +86,7 @@ class CustomerAPI extends Controller
         $customer->update([
             'name' => $request->name,
             'email' => $request->email,
-            'phone_number' => '1' . $request->phone_number,
+            'phone_number' => '1'.$request->phone_number,
             'password' => bcrypt($request->password),
         ]);
 

@@ -18,12 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 //Route::get('/hello', function () {
 //    return response()->json(['message' => 'Hello World!'], 200);
 //});
-
-
 
 Route::post('/tokens/create', function (Request $request) {
     $token = $request->user()->createToken($request->token_name);
@@ -32,13 +29,13 @@ Route::post('/tokens/create', function (Request $request) {
 });
 
 Route::middleware([
-        'auth:sanctum',
-        'validateRole:Owner,Cashier'
-    ]
-    )->group(
+    'auth:sanctum',
+    'validateRole:Owner,Cashier',
+]
+)->group(
     function () {
 
-        Route::prefix('services')->group( function () {
+        Route::prefix('services')->group(function () {
             Route::get('/', [\App\Http\Controllers\ServicesAPI::class, 'index'])->name('api-services.index');
             Route::get('/{id}', [\App\Http\Controllers\ServicesAPI::class, 'show'])->name('api-services.show');
             Route::post('/', [\App\Http\Controllers\ServicesAPI::class, 'store'])->name('api-services.store');
@@ -46,7 +43,7 @@ Route::middleware([
             Route::delete('/{id}', [\App\Http\Controllers\ServicesAPI::class, 'destroy'])->name('api-services.destroy');
         });
 
-        Route::prefix('customers')->group( function () {
+        Route::prefix('customers')->group(function () {
             Route::get('/', [\App\Http\Controllers\CustomerAPI::class, 'index'])->name('api-customers.index');
             Route::get('/{id}', [\App\Http\Controllers\CustomerAPI::class, 'show'])->name('api-customers.show');
             Route::post('/', [\App\Http\Controllers\CustomerAPI::class, 'store'])->name('api-customers.store');
@@ -55,14 +52,5 @@ Route::middleware([
 
         });
 
-
-
-
-
-
-
     }
 );
-
-
-

@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class ServiceHitsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,133 +13,119 @@ class ServiceHitsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('service_hits')->delete();
-        
-        \DB::table('service_hits')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('service_hits')->insert([
+            0 => [
                 'id' => 1,
                 'service_id' => 3,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 09:35:13',
                 'updated_at' => '2023-10-01 09:35:13',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'service_id' => 1,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 09:46:10',
                 'updated_at' => '2023-10-01 09:46:10',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'service_id' => 2,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 09:48:34',
                 'updated_at' => '2023-10-01 09:48:34',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'service_id' => 1,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 09:55:43',
                 'updated_at' => '2023-10-01 09:55:43',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'service_id' => 1,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 09:56:11',
                 'updated_at' => '2023-10-01 09:56:11',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'service_id' => 1,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 09:56:26',
                 'updated_at' => '2023-10-01 09:56:26',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'service_id' => 3,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 12:51:40',
                 'updated_at' => '2023-10-01 12:51:40',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'service_id' => 2,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 12:51:40',
                 'updated_at' => '2023-10-01 12:51:40',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'service_id' => 1,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 12:52:03',
                 'updated_at' => '2023-10-01 12:52:03',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'service_id' => 1,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 12:53:38',
                 'updated_at' => '2023-10-01 12:53:38',
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'service_id' => 4,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 12:53:50',
                 'updated_at' => '2023-10-01 12:53:50',
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'service_id' => 4,
                 'hit_time' => '2023-09-29 18:08:59',
                 'analytic_data_type' => 'view',
-                'user_id' => NULL,
+                'user_id' => null,
                 'created_at' => '2023-10-01 12:58:20',
                 'updated_at' => '2023-10-01 12:58:20',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

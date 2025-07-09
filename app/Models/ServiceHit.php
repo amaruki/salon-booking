@@ -10,6 +10,7 @@ class ServiceHit extends Model
      * @var \Illuminate\Support\Carbon|mixed
      */
     public mixed $hit_time;
+
     protected $fillable = [
         'service_id',
         'hit_time',

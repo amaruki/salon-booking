@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class LocationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class LocationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('locations')->delete();
-        
-        \DB::table('locations')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('locations')->insert([
+            0 => [
                 'id' => 1,
                 'name' => 'Location 1',
                 'address' => 'Address 1',
@@ -28,9 +25,8 @@ class LocationsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-09-29 18:08:59',
                 'updated_at' => '2023-09-29 18:08:59',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'name' => 'Location 2',
                 'address' => 'Address 2',
@@ -38,9 +34,8 @@ class LocationsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-09-29 18:08:59',
                 'updated_at' => '2023-09-29 18:08:59',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'name' => 'Location 3',
                 'address' => 'Address 3',
@@ -48,9 +43,8 @@ class LocationsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-09-29 18:08:59',
                 'updated_at' => '2023-09-29 18:08:59',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'name' => 'Location 4',
                 'address' => 'Address 4',
@@ -58,9 +52,8 @@ class LocationsTableSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2023-09-29 18:08:59',
                 'updated_at' => '2023-09-29 18:08:59',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

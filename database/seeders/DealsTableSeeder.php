@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class DealsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class DealsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('deals')->delete();
-        
-        \DB::table('deals')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('deals')->insert([
+            0 => [
                 'id' => 1,
                 'name' => 'Deal 1',
                 'description' => 'Deal 1 description',
@@ -30,9 +27,8 @@ class DealsTableSeeder extends Seeder
                 'is_hidden' => 0,
                 'created_at' => '2023-09-29 18:09:00',
                 'updated_at' => '2023-09-29 18:09:00',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

@@ -86,8 +86,9 @@
 
                             </a>
                           </li>
+                          @endif
 
-                            <li>
+                        <li>
                                 <a href="{{ route('managelocations') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-pink-500 pr-6
                                 {{ request()->is('dashboard/manage/locations') ? 'bg-gray-100 border-pink-500 text-gray-900 font-semibold' : '' }}
                                 ">
@@ -100,8 +101,6 @@
 
                                 </a>
                             </li>
-
-                          @endif
 
                         <li>
                             <a href="{{ route('manageappointments') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-pink-500 pr-6

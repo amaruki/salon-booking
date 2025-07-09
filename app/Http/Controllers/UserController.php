@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Enums\UserRolesEnum;
 use App\Models\Appointment;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,8 +49,6 @@ class UserController extends Controller
         if (auth()->user()->role->name != 'Owner') {
             return redirect()->route('dashboard')->with('error', 'You are not authorized to perform this action.');
         }
-
-
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
@@ -98,8 +96,8 @@ class UserController extends Controller
 
         // find the appointments of the user
         $appointments = Appointment::where('user_id', $user->id)
-                            ->orderBy('created_at', 'desc')
-                            ->paginate(10);
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
         return view('dashboard.manage-users.show-user', compact('user', 'appointments'));
     }

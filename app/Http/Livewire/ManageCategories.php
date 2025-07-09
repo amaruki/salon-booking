@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class ManageCategories extends Component
 {
-
     private $categories;
 
     public $search;
@@ -21,11 +20,13 @@ class ManageCategories extends Component
     public $confirmingCategoryAdd;
 
     public $confirmingCategoryDeletion = false;
+
     public $categoryIdToDelete;
 
     protected $rules = [
-        "category.name" => "required|string|max:255",
+        'category.name' => 'required|string|max:255',
     ];
+
     public function render()
     {
         $this->categories = Category::when($this->search, function ($query) {
@@ -37,21 +38,25 @@ class ManageCategories extends Component
         ]);
     }
 
-    public function confirmCategoryEdit(Category $category) {
+    public function confirmCategoryEdit(Category $category)
+    {
         $this->category = $category;
-        $this->confirmingCategoryAdd= true;
+        $this->confirmingCategoryAdd = true;
     }
-    public function confirmCategoryDeletion($categoryId) {
+
+    public function confirmCategoryDeletion($categoryId)
+    {
         $this->categoryIdToDelete = $categoryId;
         $this->confirmingCategoryDeletion = true;
     }
 
-    public function saveCategory() {
+    public function saveCategory()
+    {
         $this->validate();
 
         if (isset($this->category->id)) {
             $this->category->save();
-            } else {
+        } else {
             Category::create(
                 [
                     'name' => $this->category['name'],
@@ -63,13 +68,14 @@ class ManageCategories extends Component
         $this->category = null;
     }
 
-    public function deleteCategory() {
+    public function deleteCategory()
+    {
         Category::find($this->categoryIdToDelete)->delete();
         $this->confirmingCategoryDeletion = false;
     }
 
-    public function confirmCategoryAdd() {
+    public function confirmCategoryAdd()
+    {
         $this->confirmingCategoryAdd = true;
     }
-
 }
