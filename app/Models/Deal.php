@@ -16,5 +16,11 @@ class Deal extends Model
         'start_date',
         'end_date',
         'is_hidden',
+        'service_id',
     ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

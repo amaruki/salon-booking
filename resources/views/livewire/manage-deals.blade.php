@@ -41,6 +41,7 @@
                         <th scope="col" class="pl-6 py-4 font-medium text-gray-900">{{ __('Id') }}</th>
                         <th scope="col" class="px-4 py-4 font-medium text-gray-900">{{ __('Name') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Description') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Service') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Discount') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Date Start') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Date End') }}</th>
@@ -55,6 +56,7 @@
                             <td class="pl-6 py-4  max-w-0">{{ $deal->id }}</td>
                             <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $deal->name }}</td>
                             <td class="px-6 py-4 max-w-xs">{{ $deal->description }}</td>
+                            <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $deal->service->name }}</td>
                             <td class="px-6 py-4  max-w-0">
                                 <div class="font-medium text-gray-700">{{ $deal->discount }} %</div>
                             </td>
@@ -127,7 +129,6 @@
 
             <x-dialog-modal wire:model="confirmingDealAdd">
                 <x-slot name="title">
-                    {{-- {{ __('Add a new deal') }} --}}
                     {{ isset($this->newDeal->id) ? __('Edit Deal') : __('Add Deal') }}
                 </x-slot>
                 <x-slot name="content">
@@ -144,6 +145,19 @@
                         <input type="text" wire:model="newDeal.description" id="description"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @error('newDeal.description')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="service_id" class="block text-sm font-medium text-gray-700">{{ __('Service') }}</label>
+                        <select wire:model="newDeal.service_id" id="service_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
+                            <option value="">{{ __('Select a service') }}</option>
+                            @foreach($services as $service)
+                                <option value="{{ $service->id }}">{{ $service->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('newDeal.service_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
