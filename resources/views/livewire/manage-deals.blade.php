@@ -43,6 +43,7 @@
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Description') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Service') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Discount') }}</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Price') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Date Start') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Date End') }}</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">{{ __('Is Hidden') }}</th>
@@ -59,6 +60,15 @@
                             <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $deal->service->name }}</td>
                             <td class="px-6 py-4  max-w-0">
                                 <div class="font-medium text-gray-700">{{ $deal->discount }} %</div>
+                            </td>
+                            <td class="px-6 py-4  max-w-0">
+                                <div class="font-medium text-gray-700">
+                                    @if ($deal->price)
+                                        {{ $deal->price }}
+                                    @else
+                                        {{ $deal->service->price - ($deal->service->price * $deal->discount) / 100 }}
+                                    @endif
+                                </div>
                             </td>
                             <td class="px-6 py-4  max-w-0">
                                 <div class="font-medium text-gray-700">{{ $deal->start_date }}</div>
@@ -187,6 +197,14 @@
                             <input type="number" wire:model="newDeal.discount" id="discount"
                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                             @error('newDeal.discount')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700">{{ __('Price') }}</label>
+                            <input type="number" wire:model="newDeal.price" id="price"
+                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
+                            @error('newDeal.price')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                         </div>

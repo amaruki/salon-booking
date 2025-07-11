@@ -25,8 +25,10 @@
                             <h1 class="text-3xl font-bold text-gray-900">{{ $deal->name }}</h1>
                         </div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-pink-600">Rp {{ number_format($deal->discounted_price, 0, '.', '.') }}</div>
-                            <div class="text-lg text-gray-500 line-through">Rp {{ number_format($deal->original_price, 0, '.', '.') }}</div>
+                            <div class="text-3xl font-bold text-pink-600">Rp {{ number_format($deal->discounted_price, 0, ',', '.') }}</div>
+                            @if ($deal->discounted_price < $deal->service->price)
+                                <div class="text-lg text-gray-500 line-through">Rp {{ number_format($deal->service->price, 0, ',', '.') }}</div>
+                            @endif
                         </div>
                     </div>
 

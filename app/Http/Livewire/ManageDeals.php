@@ -34,6 +34,7 @@ class ManageDeals extends Component
             'newDeal.end_date' => 'required|date|after_or_equal:newDeal.start_date',
             'newDeal.is_hidden' => 'boolean',
             'newDeal.service_id' => 'required|exists:services,id',
+            'newDeal.price' => 'nullable|numeric|min:0',
         ];
     }
 
@@ -96,6 +97,7 @@ class ManageDeals extends Component
                 'end_date' => $this->newDeal['end_date'],
                 'is_hidden' => $this->newDeal['is_hidden'] ?? false,
                 'service_id' => $this->newDeal['service_id'],
+                'price' => $this->newDeal['price'] ?? null,
             ]);
         }
 
