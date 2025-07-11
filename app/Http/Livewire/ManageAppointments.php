@@ -124,8 +124,9 @@ class ManageAppointments extends Component
         $this->confirmingAppointmentAdd = true;
     }
 
-    public function confirmAppointmentCancellation()
+    public function confirmAppointmentCancellation(Appointment $appointment)
     {
+        $this->appointment = $appointment;
         $this->confirmingAppointmentCancellation = true;
     }
 
@@ -134,11 +135,22 @@ class ManageAppointments extends Component
         $this->validate();
 
         if (isset($this->appointment->id)) {
+            $originalDate = $this->appointment->getOriginal('date');
+            $originalLocation = $this->appointment->getOriginal('location_id');
+
             $this->appointment->save();
             session()->flash('message', 'Appointment successfully updated.');
+
+            $newDate = $this->appointment->date;
+            $newLocation = $this->appointment->location_id;
+
+            if ($originalDate != $newDate || $originalLocation != $newLocation) {
+                Appointment::recalculateQueueNumbers($originalDate, $originalLocation);
+            }
+            Appointment::recalculateQueueNumbers($newDate, $newLocation);
+
         } else {
-            $queueNumber = Appointment::where('date', $this->appointment['date'])->count() + 1;
-            Appointment::create([
+            $newAppointment = Appointment::create([
                 'cart_id' => $this->appointment['cart_id'],
                 'user_id' => $this->appointment['user_id'],
                 'service_id' => $this->appointment['service_id'],
@@ -149,8 +161,8 @@ class ManageAppointments extends Component
                 'location_id' => $this->appointment['location_id'],
                 'total' => $this->appointment['total'],
                 'status' => $this->appointment['status'],
-                'queue_number' => $queueNumber,
             ]);
+            Appointment::recalculateQueueNumbers($newAppointment->date, $newAppointment->location_id);
             session()->flash('message', 'Appointment successfully created.');
         }
 
@@ -158,17 +170,21 @@ class ManageAppointments extends Component
         $this->appointment = null;
     }
 
-    public function cancelAppointment(Appointment $appointment)
+    public function cancelAppointment()
     {
-        $this->appointment = $appointment;
-
         if (auth()->user()->id == $this->appointment->user->id
-            || auth()->user()->role->name == (UserRolesEnum::Cashier->name || UserRolesEnum::Owner->name)) {
+            || auth()->user()->role->name == UserRolesEnum::Cashier->name || auth()->user()->role->name == UserRolesEnum::Owner->name) {
 
-            $this->appointment->status = 0;
-            //        $this->appointment->cancelled_by = auth()->user()->id;
-            // TODO add reason
-            $this->appointment->save();
+            $cancelledAppointment = $this->appointment;
+            $date = $cancelledAppointment->date;
+            $location_id = $cancelledAppointment->location_id;
+
+            $cancelledAppointment->status = 0;
+            $cancelledAppointment->queue_number = null;
+            $cancelledAppointment->save();
+
+            Appointment::recalculateQueueNumbers($date, $location_id);
+
             $this->confirmingAppointmentCancellation = false;
         }
     }
@@ -178,3 +194,4 @@ class ManageAppointments extends Component
         $this->confirmingAppointmentAdd = true;
     }
 }
+

@@ -49,10 +49,6 @@ class ServicesAPI extends Controller
             //            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price' => 'required|numeric',
             'notes' => 'nullable|string|max:255',
-            'allergens' => 'nullable|string|max:255',
-            'benefits' => 'nullable|string|max:255',
-            'aftercare_tips' => 'nullable|string|max:255',
-            'cautions' => 'nullable|string|max:255',
             'category_id' => 'required|numeric|exists:categories,id',
             'is_hidden' => 'nullable|boolean',
         ]);
@@ -100,7 +96,6 @@ class ServicesAPI extends Controller
             'description' => request('description'),
             'image' => request('image'),
             'price' => request('price'),
-
             'category_id' => request('category_id'),
             'is_hidden' => request('is_hidden'),
         ]);

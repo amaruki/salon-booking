@@ -14,7 +14,7 @@ class ServicesSeeder extends Seeder
             'slug' => 'nail-extensions',
             'description' => 'Get beautiful nail extensions for a stylish look.',
             'image' => 'nail_extensions.jpg',
-            'price' => 1250.00,
+            'price' => 125000,
             'notes' => 'Choose from a variety of nail designs and colors.',
 
             //            'duration_minutes' => 90, // Duration in minutes
@@ -27,7 +27,7 @@ class ServicesSeeder extends Seeder
             'slug' => 'hair-coloring-highlights',
             'description' => 'Add vibrant highlights to your hair for a stunning effect.',
             'image' => 'hair_coloring_highlights.jpg',
-            'price' => 3000.00,
+            'price' => 300000,
             //            'duration_minutes' => 120, // Duration in minutes
             'category_id' => 3, // Replace with the actual category ID
             'is_hidden' => false,
@@ -38,7 +38,7 @@ class ServicesSeeder extends Seeder
             'slug' => 'hair-treatment-deep-conditioning',
             'description' => 'Revitalize your hair with deep conditioning treatment.',
             'image' => 'hair_treatment_deep_conditioning.jpg',
-            'price' => 4000.00,
+            'price' => 400000,
 
             //            'duration_minutes' => 60, // Duration in minutes
             'category_id' => 3, // Replace with the actual category ID
@@ -50,7 +50,7 @@ class ServicesSeeder extends Seeder
             'slug' => 'hair-treatment-scalp-massage',
             'description' => 'Relaxing scalp massage to rejuvenate your hair and mind.',
             'image' => 'hair_treatment_scalp_massage.jpg',
-            'price' => 3500.00,
+            'price' => 350000,
 
             //            'duration_minutes' => 45, // Duration in minutes
             'category_id' => 3, // Replace with the actual category ID

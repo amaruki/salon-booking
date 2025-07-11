@@ -12,4 +12,9 @@ class DisplayDeal extends Controller
 
         return view('web.deals', compact('deals'));
     }
+
+    public function show(Deal $deal)
+    {
+        return view('web.view-deal', compact('deal'));
+    }
 }

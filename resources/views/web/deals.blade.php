@@ -10,11 +10,11 @@
             @foreach ($deals as $deal)
                 @if ($deal->is_hidden == false)
                     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ">
-                        <a href="#">
+                        <a href="{{ route('view-deal', $deal) }}">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $deal->name }}</h5>
                         </a>
                         <p class="mb-3 font-normal text-gray-700 ">{{ $deal->description }}</p>
-                        <a href="#"
+                        <a href="{{ route('view-deal', $deal) }}"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-500 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 ">
                             Lihat Penawaran
                             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"

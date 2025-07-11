@@ -22,6 +22,7 @@ Route::get('/services/{slug}', [App\Http\Controllers\DisplayService::class, 'sho
 
 // Route::get('/services/{id}', [App\Http\Controllers\ServiceDisplay::class, 'show'])->name('services.show');
 Route::get('/deals', [App\Http\Controllers\DisplayDeal::class, 'index'])->name('deals');
+Route::get('/deals/{deal}', [App\Http\Controllers\DisplayDeal::class, 'show'])->name('view-deal');
 
 // Users needs to be logged in for these routes
 Route::middleware([

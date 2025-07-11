@@ -82,8 +82,6 @@
                         </div>
                         <button @click="showCheckoutConfirmation = true"
                             class="bg-pink-500 text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('Checkout') }}</button>
-                        <button @click="showCheckoutConfirmation = true"
-                            class="bg-pink-500 text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('Checkout') }}</button>
                     </div>
                 </div>
             </div>
@@ -101,7 +99,6 @@
                         class="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none">
                         {{ __('Batal') }}
                     </button>
-                    <form action="{{ route('cart.checkout') }}" method="post">
                     <form action="{{ route('cart.checkout') }}" method="post">
                         @csrf
                         <button

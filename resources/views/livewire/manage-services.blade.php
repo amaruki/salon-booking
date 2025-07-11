@@ -70,7 +70,7 @@
                         <td class="px-6 py-4 max-w-0">{{ $service->description }}</td>
 
                         <td class="px-6 py-4  max-w-0">
-                            <div class="font-medium text-gray-700">{{ $service->price }}</div>
+                            <div class="font-medium text-gray-700">Rp.{{ $service->price }}</div>
                         </td>
                         <td class="px-6 py-4  max-w-0">
 
@@ -206,65 +206,7 @@
 
 
                 </div>
-                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                    <div>
-                        <label for="allergens"
-                            class="block text-sm font-medium text-gray-700">{{ __('Allergens') }}</label>
-                        <textarea id="allergens" wire:model="newService.allergens"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                        @error('newService.allergens')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
 
-                    <div>
-                        <label for="cautions"
-                            class="block text-sm font-medium text-gray-700">{{ __('Cautions') }}</label>
-                        <textarea id="cautions" wire:model="newService.benefits"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                        @error('newService.cautions')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                    @error('newService.price')
-                        <span class="text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                    <div>
-                        <label for="benefits"
-                            class="block text-sm font-medium text-gray-700">{{ __('Benefits') }}</label>
-                        <textarea id="benefits" wire:model="newService.benefits"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                        @error('newService.benefits')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="aftercare_tips"
-                            class="block text-sm font-medium text-gray-700">{{ __('Aftercare Tips') }}
-                        </label>
-                        <textarea id="aftercare_tips" wire:model="newService.aftercare_tips"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                        @error('newService.aftercare_tips')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                </div>
-                <div>
-                    <label for="notes" class="block text-sm font-medium text-gray-700">{{ __('Notes') }}</label>
-                    <textarea id="notes" wire:model="newService.notes"
-                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                    @error('newService.notes')
-                        <span class="text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
                 <div>
                     <label for="is_hidden"
                         class="block text-sm font-medium text-gray-700">{{ __('Is Hidden') }}</label>
@@ -287,13 +229,13 @@
                         @enderror
 
                         {{-- If the image is already saved is system show img --}}
-                        @if (isset($image) && is_string($image))
-                            <img alt="image" src="{{ '/storage/' . $image }}" class="mt-4" width="200">
-                            {{-- When the image is uploaded show img --}}
-                        @elseif (isset($image) && is_object($image))
+                        @if ($image instanceof \Livewire\TemporaryUploadedFile)
                             <img alt="image" src="{{ $image->temporaryUrl() }}" class="mt-4" width="200">
-                        @else
+                        @elseif (!empty($existingImagePath))
+                            <img alt="image" src="{{ asset('storage/' . $existingImagePath) }}" class="mt-4"
+                                width="200">
                         @endif
+
 
                     </div>
                 </div>
@@ -311,4 +253,4 @@
             </x-slot>
         </x-dialog-modal>
     </div>
-</div> 
+</div>

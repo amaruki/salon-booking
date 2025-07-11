@@ -132,7 +132,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">{{ $totalServicesActive }}</p>
-                    <p>{{ __('Active Services') }}</p>
+                    <p>{{ __(' Active Services') }}</p>
                 </div>
             </div>
             <div

@@ -118,11 +118,10 @@
                                             <x-button wire:click="confirmAppointmentEdit({{ $appointment->id }})" wire:loading.attr="disabled">
                                                 {{ __('Edit') }}
                                             </x-button>
-                                            <x-danger-button
-                                                wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
-                                                wire:loading.attr="disabled">
-                                                {{ __('Cancel') }}
-                                            </x-danger-button>
+                                            <x-danger-button wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
+                                    wire:loading.attr="disabled">
+                                    Cancel
+                                </x-danger-button>
                                         @endif
                                     </div>
                                 </td>
@@ -152,7 +151,7 @@
                             {{ __('Back') }}
                         </x-secondary-button>
 
-                        <x-danger-button wire:click="cancelAppointment({{ $confirmingAppointmentCancellation }})"
+                        <x-danger-button wire:click="cancelAppointment()"
                             wire:loading.attr="disabled">
                             {{ __('Cancel') }}
                         </x-danger-button>

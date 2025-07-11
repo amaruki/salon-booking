@@ -136,6 +136,12 @@ class CartController extends Controller
 
         // get the appointments of the cart
         $appointments = Appointment::where('cart_id', $cart->id)->get();
+
+        // Recalculate queue numbers for each appointment
+        foreach ($appointments as $appointment) {
+            Appointment::recalculateQueueNumbers($appointment->date, $appointment->location_id);
+        }
+
         $customer = auth()->user();
         foreach ($appointments as $appointment) {
             SendAppointmentConfirmationMailJob::dispatch($customer, $appointment);

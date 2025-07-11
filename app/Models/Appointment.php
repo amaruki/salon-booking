@@ -18,12 +18,7 @@ class Appointment extends Model
         'location_id',
         'total',
         'status',
-
-    ];
-
-    protected $casts = [
-        'start_time' => 'string',  // as string cuz we get it from the time slot
-        'end_time' => 'string',
+        'queue_number'
     ];
 
     public function user()
@@ -51,13 +46,28 @@ class Appointment extends Model
         return $this->belongsTo(Location::class);
     }
 
+    public static function recalculateQueueNumbers($date, $locationId)
+    {
+        $appointments = self::where('date', $date)
+            ->where('location_id', $locationId)
+            ->where('status', 1)
+            ->orderBy('start_time')
+            ->get();
+
+        $queueCounter = 1;
+        foreach ($appointments as $app) {
+            $app->queue_number = $queueCounter++;
+            $app->save();
+        }
+    }
+
     public static function boot()
     {
         parent::boot();
 
         static::creating(function ($appointment) {
             // a readable unique code for the appointment, including the id in the code
-            $appointment->appointment_code = 'APP-'.($appointment->count() + 1);
+            $appointment->appointment_code = 'APP-'.(self::count() + 1);
 
         });
     }
