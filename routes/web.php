@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,6 +121,8 @@ Route::middleware([
             //
             //            // Cancel an appointment
             //            Route::delete('appointments/{appointment_code}', [App\Http\Controllers\AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+            Route::get('history', [HistoryController::class, 'index'])->name('history');
 
         });
     });

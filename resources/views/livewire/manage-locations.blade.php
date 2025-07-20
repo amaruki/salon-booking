@@ -132,7 +132,7 @@
                     <div>
                         <label for="telephone_number" class="block text-sm font-medium text-gray-700">{{ __('Telephone Number') }}
                             </label>
-                        <input type="tel" wire:model="location.telephone_number" minlength="10" maxlength="10"
+                        <input type="tel" wire:model="location.telephone_number" minlength="9" maxlength="15"
                             id="name"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @error('location.telephone_number')

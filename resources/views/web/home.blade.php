@@ -202,7 +202,7 @@
         <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
           <h3 class="mb-6 text-3xl text-pink-500 font-bold">{{ __('Testimoni') }}</h3>
           <p class="mb-6 pb-2 text-gray-700 md:mb-12 md:pb-0">
-          {{ __('Berikut adalah testimoni dari para pelanggan kami yang telah mengunjungi salon kami.') }}
+          {{ __("Berikut adalah testimoni dari para pelanggan kami yang telah mengunjungi salon kami.") }}
           </p>
         </div>
 
@@ -211,7 +211,7 @@
             <div class="mb-6 flex justify-center">
               <img src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(1).jpg" class="w-32 rounded-full shadow-lg dark:shadow-black/30">
             </div>
-            <h5 class="mb-4 text-xl font-semibold">Kim Wexler</h5>
+            <h5 class="mb-4 text-xl font-semibold">Hestyanna</h5>
             <h6 class="mb-4 font-semibold text-primary dark:text-primary-400">
               {{ __('Lawyer') }}
             </h6>
@@ -219,7 +219,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-7 w-7 pr-2" viewBox="0 0 24 24">
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path>
               </svg>
-              {{ __("Saya mendapatkan pengalaman yang paling menakjubkan di Ell\\'s Salon! Para stafnya sangat ramah dan bersahabat, dan rambut saya terlihat sangat menakjubkan. Saya menerima begitu banyak pujian setelah janji temu saya dan saya tidak sabar untuk kembali lagi!") }}
+              {{ __("Saya mendapatkan pengalaman yang paling menakjubkan di Ell's Salon! Para stafnya sangat ramah dan bersahabat, dan rambut saya terlihat sangat menakjubkan. Saya menerima begitu banyak pujian setelah janji temu saya dan saya tidak sabar untuk kembali lagi!") }}
             </p>
             <ul class="mb-0 flex items-center justify-center">
               <li>
@@ -253,7 +253,7 @@
             <div class="mb-6 flex justify-center">
               <img src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(2).jpg" class="w-32 rounded-full shadow-lg dark:shadow-black/30">
             </div>
-            <h5 class="mb-4 text-xl font-semibold">Lisa Cudrow</h5>
+            <h5 class="mb-4 text-xl font-semibold">Anita</h5>
             <h6 class="mb-4 font-semibold text-primary dark:text-primary-400">
               {{ __('Graphic Designer') }}
             </h6>
@@ -261,7 +261,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-7 w-7 pr-2" viewBox="0 0 24 24">
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path>
               </svg>
-              {{ __('Saya mendapatkan model rambut terbaik dalam hidup saya di Ell\'s Salon! Penata rambutnya mendengarkan apa yang saya inginkan dan kemudian memberikan potongan rambut yang melebihi ekspektasi saya. Saya merasa sangat dimanjakan dan diperhatikan selama proses berlangsung. Saya tidak sabar untuk kembali lagi untuk janji temu berikutnya!') }}
+              {{ __("Saya mendapatkan model rambut terbaik dalam hidup saya di Ell's Salon! Penata rambutnya mendengarkan apa yang saya inginkan dan kemudian memberikan potongan rambut yang melebihi ekspektasi saya. Saya merasa sangat dimanjakan dan diperhatikan selama proses berlangsung. Saya tidak sabar untuk kembali lagi untuk janji temu berikutnya!") }}
             </p>
             <ul class="mb-0 flex items-center justify-center">
               <li>
@@ -295,7 +295,7 @@
             <div class="mb-6 flex justify-center">
               <img src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(4).jpg" class="w-32 rounded-full shadow-lg dark:shadow-black/30">
             </div>
-            <h5 class="mb-4 text-xl font-semibold">Jane Smith</h5>
+            <h5 class="mb-4 text-xl font-semibold">Ike yuliani sofyana</h5>
             <h6 class="mb-4 font-semibold text-primary dark:text-primary-400">
               {{ __('Marketing Specialist') }}
             </h6>
@@ -303,7 +303,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-7 w-7 pr-2" viewBox="0 0 24 24">
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path>
               </svg>
-              {{ __("Saya memiliki masalah rambut di menit-menit terakhir dan Ell's Salon menyelamatkan saya! Para staf dapat langsung menyesuaikan diri dengan saya dan mereka melakukan pekerjaan yang luar biasa. Saya tidak bisa cukup berterima kasih kepada mereka atas profesionalisme dan keahlian mereka. Saya pasti akan kembali lagi!") }}
+              {{ __("Hasil smoothing rambutku sangat memuaskan,bagus. pihak salon juga sangat bertanggungjawab jika terjadi kesalahan saat pengerjaan") }}
             </p>
             <ul class="mb-0 flex items-center justify-center">
               <li>
