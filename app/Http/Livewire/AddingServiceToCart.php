@@ -158,13 +158,19 @@ class AddingServiceToCart extends Component
         // if there is no appointment with the same time
         // add the service to the cart
         $timeSlot = TimeSlot::find($this->selectedTimeSlot);
+
+        // check if there is a deal for this service
+        $deal = $this->service->deals()->where('start_date', '<', now())->where('end_date', '>', now())->first();
+
+        $price = $deal ? $deal->discounted_price : $this->service->price;
+
         $cart->services()->attach($this->service->id, [
             'time_slot_id' => $this->selectedTimeSlot,
             'date' => $this->selectedDate,
             'start_time' => $timeSlot->start_time,
             'end_time' => $timeSlot->end_time,
             'location_id' => $this->selectedLocation,
-            'price' => $this->service->price,
+            'price' => $price,
         ]);
 
         // total

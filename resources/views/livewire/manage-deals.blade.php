@@ -160,6 +160,20 @@
                     </div>
 
                     <div class="mt-4">
+                        <label for="image" class="block text-sm font-medium text-gray-700">{{ __('Image') }}</label>
+                        <input type="file" wire:model="image" id="image"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
+                        @if ($image)
+                            <img src="{{ $image->temporaryUrl() }}" class="mt-2 w-20 h-20">
+                        @elseif (isset($newDeal->image))
+                            <img src="{{ asset('storage/' . $newDeal->image) }}" class="mt-2 w-20 h-20">
+                        @endif
+                        @error('image')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="mt-4">
                         <label for="service_id" class="block text-sm font-medium text-gray-700">{{ __('Service') }}</label>
                         <select wire:model="newDeal.service_id" id="service_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                             <option value="">{{ __('Select a service') }}</option>
@@ -169,8 +183,6 @@
                         </select>
                         @error('newDeal.service_id')
                             <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
 
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div>

@@ -77,6 +77,8 @@ Route::middleware([
                 Route::get('appointments', function () {
                     return view('dashboard.manage-appointments.index');
                 })->name('manageappointments');
+
+                Route::get('transaction-history', [App\Http\Controllers\Dashboard\CashierTransactionHistoryController::class, 'index'])->name('cashier.history');
             });
         });
 

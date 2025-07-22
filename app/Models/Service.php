@@ -71,6 +71,11 @@ class Service extends Model
             ->withPivot('location_id');
     }
 
+    public function deals()
+    {
+        return $this->hasMany(Deal::class);
+    }
+
     protected static function booted()
     {
         //        static::creating(function ($service) {

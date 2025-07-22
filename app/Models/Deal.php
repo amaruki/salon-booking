@@ -12,6 +12,7 @@ class Deal extends Model
     protected $fillable = [
         'name',
         'description',
+        'image',
         'discount',
         'start_date',
         'end_date',

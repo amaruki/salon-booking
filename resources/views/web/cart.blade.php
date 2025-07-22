@@ -20,7 +20,7 @@
                 </div>
             @endif
 
-            <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex flex-col md:flex-row gap-4" x-data="{ total: {{ isset($cart) ? $cart->services->sum('pivot.price') : 0 }} }">
                 <div class="md:w-3/4">
                     <div class="bg-white rounded-lg shadow-md p-6 mb-4">
                         <table class="w-full">
@@ -40,7 +40,8 @@
                                         <tr>
                                             <td class="py-4">
                                                 <input type="checkbox" name="selected_services[]"
-                                                    value="{{ $service->pivot->id }}" form="checkout-form">
+                                                    value="{{ $service->pivot->id }}" form="checkout-form" checked
+                                                    @change="total += $event.target.checked ? {{ $service->pivot->price }} : -{{ $service->pivot->price }}">
                                             </td>
                                             <td class="py-4">
                                                 <div class="flex items-center">

@@ -5,11 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Deal;
 use App\Models\Service;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class ManageDeals extends Component
 {
-    use withPagination;
+    use withPagination, WithFileUploads;
 
     public $confirmingDealDeletion = false;
     public $confirmingDealAdd = false;
@@ -23,6 +24,7 @@ class ManageDeals extends Component
 
     public $newDeal;
     public $services;
+    public $image;
 
     protected function rules()
     {
@@ -35,6 +37,7 @@ class ManageDeals extends Component
             'newDeal.is_hidden' => 'boolean',
             'newDeal.service_id' => 'required|exists:services,id',
             'newDeal.price' => 'nullable|numeric|min:0',
+            'image' => 'nullable|image|max:1024',
         ];
     }
 
@@ -86,6 +89,10 @@ class ManageDeals extends Component
     {
         $this->validate();
 
+        if ($this->image) {
+            $this->newDeal['image'] = $this->image->store('deals', 'public');
+        }
+
         if (isset($this->newDeal->id)) {
             $this->newDeal->save();
         } else {
@@ -98,6 +105,7 @@ class ManageDeals extends Component
                 'is_hidden' => $this->newDeal['is_hidden'] ?? false,
                 'service_id' => $this->newDeal['service_id'],
                 'price' => $this->newDeal['price'] ?? null,
+                'image' => $this->newDeal['image'] ?? null,
             ]);
         }
 
