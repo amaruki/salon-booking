@@ -27,7 +27,7 @@
                             <ul class="flex flex-col py-4 space-y-1">
                                 <li class="px-5">
                                     <div class="flex flex-row items-center h-8">
-                                        <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
+                                        <div class="text-sm font-light tracking-wide text-gray-500">{{ __('Menu') }}</div>
                                     </div>
                                 </li>
                                 <li>
@@ -41,7 +41,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+                                        <span class="ml-2 text-sm tracking-wide truncate">{{ __('Dashboard') }}</span>
                                     </a>
                                 </li>
                                 {{-- User Role 1= Owner, 2 = Cashier --}}
@@ -49,7 +49,7 @@
 
                                     <li class="px-5">
                                         <div class="flex flex-row items-center h-8">
-                                            <div class="text-sm font-light tracking-wide text-gray-500">CRM Manage</div>
+                                            <div class="text-sm font-light tracking-wide text-gray-500">{{ __('CRM Manage') }}</div>
                                         </div>
                                     </li>
                                     @if (Auth::user()->role_id == 1)

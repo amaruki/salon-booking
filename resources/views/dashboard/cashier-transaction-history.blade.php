@@ -40,18 +40,14 @@
                                             {{ $appointment->user->name }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <ul>
-                                                @foreach ($appointment->services as $service)
-                                                    <li>{{ $service->name }}</li>
-                                                @endforeach
-                                            </ul>
+                                            {{ $appointment->service->name }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $appointment->services->first()->locations->first()->name ?? 'N/A' }}
+                                            {{ $appointment->service->locations->first()->name ?? 'N/A' }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $appointment->services->first()->pivot->date }}
-                                            {{ date('g:i a', strtotime($appointment->services->first()->pivot->start_time)) }}
+                                            {{ \Carbon\Carbon::parse($appointment->date)->translatedFormat('d F Y') }}
+                                            {{ date('g:i a', strtotime($appointment->start_time)) }}
                                         </td>
                                         <td class="px-6 py-4">
                                             Rp.{{ number_format($appointment->total_price, 0, ',', '.') }}

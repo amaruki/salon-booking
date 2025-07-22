@@ -41,7 +41,7 @@ class CartController extends Controller
 
         if (empty($selectedServiceIds)) {
             Log::info('No services selected for checkout.');
-            return redirect()->back()->with('error', 'No services selected for checkout.');
+            return redirect()->back()->with('error', __('No services selected for checkout.'));
         }
 
         $is_time_slots_available = true;
@@ -148,7 +148,7 @@ class CartController extends Controller
         });
 
         Log::info('Checkout function finished successfully.');
-        return redirect()->route('dashboard')->with('success', 'Your appointment(s) have been booked successfully');
+        return redirect()->route('dashboard')->with('success', __('Your appointment(s) have been booked successfully'));
 
     }
 
@@ -169,7 +169,7 @@ class CartController extends Controller
 
         if (! $cartService) {
             // Item not found in cart, maybe already removed
-            return redirect()->back()->with('error', 'Item not found in your cart.');
+            return redirect()->back()->with('error', __('Item not found in your cart.'));
         }
 
         // Detach the service from the cart using the pivot table record ID
@@ -182,7 +182,7 @@ class CartController extends Controller
         $cart->total = $newTotal;
         $cart->save();
 
-        return redirect()->back()->with('success', 'Item removed from cart.');
+        return redirect()->back()->with('success', __('Item removed from cart.'));
     }
 
     public function destroy($id)
@@ -202,7 +202,7 @@ class CartController extends Controller
 
         if (! $cartService) {
             // Item not found in cart, maybe already removed
-            return redirect()->back()->with('error', 'Item not found in your cart.');
+            return redirect()->back()->with('error', __('Item not found in your cart.'));
         }
 
         // Detach the service from the cart using the pivot table record ID
@@ -215,6 +215,6 @@ class CartController extends Controller
         $cart->total = $newTotal;
         $cart->save();
 
-        return redirect()->back()->with('success', 'Item removed from cart.');
+        return redirect()->back()->with('success', __('Item removed from cart.'));
     }
 }

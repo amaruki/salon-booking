@@ -123,7 +123,6 @@
     "Role": "Peran",
     "Active": "Aktif",
     "Suspended": "Ditangguhkan",
-    "Suspend": "Tangguhkan",
     "Activate": "Aktifkan",
     "Deactivate account": "Nonaktifkan akun",
     "Are you sure you want to deactivate your\n                                            account? All of your data will be permanently removed. This action cannot be\n                                            undone.": "Apakah Anda yakin ingin menonaktifkan akun Anda? Semua data Anda akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.",
@@ -256,5 +255,16 @@
     "Slot Waktu Terpopuler Minggu Lalu": "Slot Waktu Terpopuler Minggu Lalu",
     "Jumlah": "Jumlah",
     "Persentase": "Persentase",
-    "Slot Waktu Terpopuler Sepanjang Waktu": "Slot Waktu Terpopuler Sepanjang Waktu"
+    "Slot Waktu Terpopuler Sepanjang Waktu": "Slot Waktu Terpopuler Sepanjang Waktu",
+    "You already have a service in your cart with the same time": "Anda sudah memiliki layanan di keranjang dengan waktu yang sama.",
+    "There is an appointment with the same time": "Ada janji temu dengan waktu yang sama.",
+    "No services selected for checkout.": "Tidak ada layanan yang dipilih untuk checkout.",
+    "Your appointment(s) have been booked successfully": "Janji temu Anda berhasil dipesan.",
+    "Item not found in your cart.": "Item tidak ditemukan di keranjang Anda.",
+    "Item removed from cart.": "Item dihapus dari keranjang.",
+    "Deal successfully deleted.": "Penawaran berhasil dihapus.",
+    "Deal successfully saved.": "Penawaran berhasil disimpan.",
+    "Menu": "Menu",
+    "CRM Manage": "Kelola CRM",
+    "Transaction History": "Riwayat Transaksi"
 }

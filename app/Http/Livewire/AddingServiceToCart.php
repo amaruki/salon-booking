@@ -136,7 +136,7 @@ class AddingServiceToCart extends Component
 
         // if the user has a cart item with the same time return an error
         if ($cartItem) {
-            session()->flash('error', 'You already have a service in your cart with the same time');
+            session()->flash('error', __('You already have a service in your cart with the same time'));
 
             return redirect()->route('cart');
         }
@@ -150,7 +150,7 @@ class AddingServiceToCart extends Component
 
         // if there is an appointment with the same time return an error
         if ($appointment) {
-            session()->flash('error', 'There is an appointment with the same time');
+            session()->flash('error', __('There is an appointment with the same time'));
 
             return redirect()->route('cart');
         }

@@ -69,7 +69,7 @@ class ManageDeals extends Component
     public function deleteDeal(Deal $deal)
     {
         $deal->delete();
-        session()->flash('message', 'Deal successfully deleted.');
+        session()->flash('message', __('Deal successfully deleted.'));
         $this->confirmingDealDeletion = false;
     }
 
@@ -109,7 +109,7 @@ class ManageDeals extends Component
             ]);
         }
 
-        session()->flash('message', 'Deal successfully saved.');
+        session()->flash('message', __('Deal successfully saved.'));
         $this->confirmingDealAdd = false;
     }
 }

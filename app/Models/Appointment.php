@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AppointmentStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Str;
@@ -21,6 +22,10 @@ class Appointment extends Model
         'total',
         'status',
         'queue_number'
+    ];
+
+    protected $casts = [
+        'status' => AppointmentStatusEnum::class,
     ];
 
     public function user()
