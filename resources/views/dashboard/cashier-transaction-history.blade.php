@@ -55,7 +55,7 @@
                                         <td class="px-6 py-4">
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $appointment->status->statusBadge() }}">
-                                                {{ $appointment->status }}
+                                                {{ $appointment->status->getLabel() }}
                                             </span>
                                         </td>
                                     </tr>

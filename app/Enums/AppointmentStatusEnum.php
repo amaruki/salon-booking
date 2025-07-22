@@ -19,13 +19,13 @@ enum AppointmentStatusEnum: int
         };
     }
 
-    public function __toString(): string
+    public function getLabel(): string
     {
         return match ($this) {
-            self::Pending => 'Pending',
-            self::Confirmed => 'Confirmed',
-            self::Cancelled => 'Cancelled',
-            self::Completed => 'Completed',
+            self::Pending => __('Pending'),
+            self::Confirmed => __('Confirmed'),
+            self::Cancelled => __('Cancelled'),
+            self::Completed => __('Completed'),
         };
     }
 }
