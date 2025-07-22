@@ -13,7 +13,7 @@
                 <!-- Image Section -->
                 <div class="md:col-span-5 lg:col-span-5">
                     <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 shadow">
-                        <img src="{{ asset('storage/' . $deal->service->image) }}" alt="{{ $deal->name . ' image' }}"
+                        <img src="{{ asset('storage/' . $deal->image) }}" alt="{{ $deal->name . ' image' }}"
                             class="object-cover object-center w-full h-full transition-all hover:scale-105">
                     </div>
                 </div>

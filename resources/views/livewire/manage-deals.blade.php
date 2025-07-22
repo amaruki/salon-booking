@@ -183,6 +183,8 @@
                         </select>
                         @error('newDeal.service_id')
                             <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div>

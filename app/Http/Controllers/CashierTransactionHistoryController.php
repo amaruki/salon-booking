@@ -1,8 +1,7 @@
 <?php
 
-nnamespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 
 class CashierTransactionHistoryController extends Controller
