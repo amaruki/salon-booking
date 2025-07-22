@@ -1,5 +1,6 @@
+// @ts-check
 import { defineConfig } from 'vite';
-import laravel, { refreshPaths } from 'laravel-vite-plugin';
+import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
@@ -9,8 +10,10 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: [
-                ...refreshPaths,
                 'app/Http/Livewire/**',
+                'resources/views/**',
+                'lang/**',
+                'routes/**',
             ],
         }),
     ],

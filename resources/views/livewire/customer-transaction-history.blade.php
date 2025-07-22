@@ -36,22 +36,7 @@
                                 <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $appointment->location->name ?? 'N/A' }}</td>
                                 <td class="px-6 py-4 max-w-xs font-medium text-gray-700">{{ $appointment->total }}</td>
                                 <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
-                                    @switch($appointment->status)
-                                        @case(0)
-                                            {{ __('Unpaid') }}
-                                            @break
-                                        @case(1)
-                                            {{ __('Paid') }}
-                                            @break
-                                        @case(2)
-                                            {{ __('Cancelled') }}
-                                            @break
-                                        @case(3)
-                                            {{ __('Completed') }}
-                                            @break
-                                        @default
-                                            {{ __('Unknown') }}
-                                    @endswitch
+                                    {{ $appointment->status->getLabel() }}
                                 </td>
                             </tr>
                         @endforeach

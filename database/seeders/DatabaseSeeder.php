@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             TimeSlotsTableSeeder::class,
             CartsTableSeeder::class,
-            AppointmentsTableSeeder::class,
+            // AppointmentsTableSeeder::class,
             ServiceHitsTableSeeder::class,
         ]);
     }

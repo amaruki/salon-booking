@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-dashboard>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __("Riwayat Transaksi") }}
@@ -69,8 +69,11 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="mt-4">
+                        {{ $appointments->links() }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-dashboard>

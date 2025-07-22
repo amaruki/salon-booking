@@ -124,6 +124,10 @@
                                                 <x-button wire:click="markAsPaid({{ $appointment->id }})" wire:loading.attr="disabled">
                                                     {{ __('Mark as Paid') }}
                                                 </x-button>
+                                                <x-danger-button wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
+                                                    wire:loading.attr="disabled">
+                                                    Cancel
+                                                </x-danger-button>
                                             @endif
                                         @endif
                                         @if (auth()->user()->role->name == 'Customer')

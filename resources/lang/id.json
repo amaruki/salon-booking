@@ -269,5 +269,6 @@
     "Pending": "Tertunda",
     "Confirmed": "Dikonfirmasi",
     "Completed": "Selesai",
-    "Cancelled": "Dibatalkan"
+    "Mark as Paid": "Tandai Dibayar",
+    "Unpaid": "Belum Dibayar"
 }

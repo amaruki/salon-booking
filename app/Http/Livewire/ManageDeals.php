@@ -93,6 +93,11 @@ class ManageDeals extends Component
             $this->newDeal['image'] = $this->image->store('deals', 'public');
         }
 
+        // Ensure price is null if empty string
+        if (empty($this->newDeal['price'])) {
+            $this->newDeal['price'] = null;
+        }
+
         if (isset($this->newDeal->id)) {
             $this->newDeal->save();
         } else {
@@ -104,7 +109,7 @@ class ManageDeals extends Component
                 'end_date' => $this->newDeal['end_date'],
                 'is_hidden' => $this->newDeal['is_hidden'] ?? false,
                 'service_id' => $this->newDeal['service_id'],
-                'price' => $this->newDeal['price'] ?? null,
+                'price' => $this->newDeal['price'],
                 'image' => $this->newDeal['image'] ?? null,
             ]);
         }

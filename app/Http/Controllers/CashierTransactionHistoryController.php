@@ -8,7 +8,7 @@ class CashierTransactionHistoryController extends Controller
 {
     public function index()
     {
-        $appointments = Appointment::with(['user', 'service.locations'])->latest()->get();
+        $appointments = Appointment::with(['user', 'service.locations'])->latest()->paginate(10);
 
         return view('dashboard.cashier-transaction-history', compact('appointments'));
     }
