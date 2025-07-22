@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Str;
+
 class Appointment extends Model
 {
     protected $fillable = [
@@ -48,9 +50,9 @@ class Appointment extends Model
 
     public static function recalculateQueueNumbers($date, $locationId)
     {
+        // Recalculate queue numbers for all appointments for the day, regardless of payment status
         $appointments = self::where('date', $date)
             ->where('location_id', $locationId)
-            ->where('status', 1)
             ->orderBy('start_time')
             ->get();
 

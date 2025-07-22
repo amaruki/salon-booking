@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HistoryController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,27 +78,6 @@ Route::middleware([
                     return view('dashboard.manage-appointments.index');
                 })->name('manageappointments');
             });
-
-            // analytics route group
-            //            Route::prefix('analytics')->group(function () {
-            //                Route::get('/', [App\Http\Controllers\AnalyticsController::class, 'index'])->name('analytics');
-            //                Route::get('/revenue', [App\Http\Controllers\AnalyticsController::class, 'revenue'])->name('analytics.revenue');
-            //                Route::get('/appointments', [App\Http\Controllers\AnalyticsController::class, 'appointments'])->name('analytics.appointments');
-            //                Route::get('/customers', [App\Http\Controllers\AnalyticsController::class, 'customers'])->name('analytics.customers');
-            //                Route::get('/cashiers', [App\Http\Controllers\AnalyticsController::class, 'cashiers'])->name('analytics.cashiers');
-            //                Route::get('/services', [App\Http\Controllers\AnalyticsController::class, 'services'])->name('analytics.services');
-            //                Route::get('/locations', [App\Http\Controllers\AnalyticsController::class, 'locations'])->name('analytics.locations');
-            //            });
-            //                // graph route group
-            //                Route::prefix('graph')->group(function () {
-            //                    Route::get('/revenue', [App\Http\Controllers\GraphController::class, 'revenue'])->name('graph.revenue');
-            //                    Route::get('/appointments', [App\Http\Controllers\GraphController::class, 'appointments'])->name('graph.appointments');
-            //                    Route::get('/customers', [App\Http\Controllers\GraphController::class, 'customers'])->name('graph.customers');
-            //                    Route::get('/cashiers', [App\Http\Controllers\GraphController::class, 'cashiers'])->name('graph.cashiers');
-            //                    Route::get('/services', [App\Http\Controllers\GraphController::class, 'services'])->name('graph.services');
-            //                    Route::get('/locations', [App\Http\Controllers\GraphController::class, 'locations'])->name('graph.locations');
-            //                });
-
         });
 
         Route::middleware([
@@ -113,16 +92,9 @@ Route::middleware([
                 Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
             });
 
-            // Get the appointments of the user
-            //            Route::get('appointments', [App\Http\Controllers\AppointmentController::class, 'index'])->name('appointments');
-            //
-            //            // View an appointment
-            //            Route::get('appointments/{appointment_code}', [App\Http\Controllers\AppointmentController::class, 'show'])->name('appointments.show');
-            //
-            //            // Cancel an appointment
-            //            Route::delete('appointments/{appointment_code}', [App\Http\Controllers\AppointmentController::class, 'destroy'])->name('appointments.destroy');
-
-            Route::get('history', [HistoryController::class, 'index'])->name('history');
+            Route::get('history', function () {
+                return view('dashboard.customer-transaction-history');
+            })->name('history');
 
         });
     });

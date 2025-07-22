@@ -9,6 +9,8 @@
                     {{ __('Previous') }}
                 @elseif ($selectFilter == 'cancelled')
                     {{ __('Cancelled') }}
+                @elseif ($selectFilter == 'unpaid')
+                    {{ __('Unpaid') }}
                 @endif
 
                 {{ __('Appointments') }}
@@ -47,7 +49,10 @@
                 </div>
 
                 <select class="border text-gray-900  border-gray-300 rounded-lg" wire:model="selectFilter">
-                    <option value="upcoming">{{ __('Upcoming') }}</option>
+                @if (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')    
+                <option value="unpaid">{{ __('Unpaid') }}</option>
+                @endif
+                    <option value="unpaid">{{ __('Upcoming') }}</option>
                     <option value="previous">{{ __('Previous') }}</option>
                     <option value="cancelled">{{ __('Cancelled') }}</option>
                 </select>
@@ -114,14 +119,23 @@
 
                                 <td>
                                     <div class="flex gap-1 mt-5">
-                                        @if ($selectFilter == 'upcoming')
-                                            <x-button wire:click="confirmAppointmentEdit({{ $appointment->id }})" wire:loading.attr="disabled">
+                                        @if (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
+                                            @if ($appointment->status == 0) {{-- 0 for unpaid --}}
+                                                <x-button wire:click="markAsPaid({{ $appointment->id }})" wire:loading.attr="disabled">
+                                                    {{ __('Mark as Paid') }}
+                                                </x-button>
+                                            @endif
+                                        @endif
+                                        @if (auth()->user()->role->name == 'Customer')
+                                        @if ($selectFilter == 'unpaid' || $selectFilter == 'upcoming')
+                                            <x-button wire:click="confirmAppointmentEdit({{ $appointment }})" wire:loading.attr="disabled">
                                                 {{ __('Edit') }}
                                             </x-button>
                                             <x-danger-button wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
-                                    wire:loading.attr="disabled">
-                                    Cancel
-                                </x-danger-button>
+                                                wire:loading.attr="disabled">
+                                                Cancel
+                                            </x-danger-button>
+                                        @endif
                                         @endif
                                     </div>
                                 </td>
@@ -157,6 +171,66 @@
                         </x-danger-button>
                     </div>
 
+                </x-slot>
+            </x-dialog-modal>
+
+            <x-dialog-modal wire:model="confirmingAppointmentEdit">
+                <x-slot name="title">
+                    {{ __('Edit Appointment') }}
+                </x-slot>
+
+                <x-slot name="content">
+                    <div class="col-span-6 sm:col-span-4">
+                        <x-label for="date" value="{{ __('Date') }}" />
+                        <x-input id="date" type="date" class="mt-1 block w-full" wire:model="appointment.date" />
+                        <x-input-error for="appointment.date" class="mt-2" />
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-4 mt-4">
+                        <x-label for="time_slot_id" value="{{ __('Time Slot') }}" />
+                        <select id="time_slot_id" class="mt-1 block w-full" wire:model="appointment.time_slot_id">
+                            <option value="">{{ __('Select Time Slot') }}</option>
+                            @foreach ($timeSlots as $timeSlot)
+                                <option value="{{ $timeSlot->id }}">{{ $timeSlot->start_time }} - {{ $timeSlot->end_time }}</option>
+                            @endforeach
+                        </select>
+                        <x-input-error for="appointment.time_slot_id" class="mt-2" />
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-4 mt-4">
+                        <x-label for="service_id" value="{{ __('Service') }}" />
+                        <select id="service_id" class="mt-1 block w-full" wire:model="appointment.service_id">
+                            <option value="">{{ __('Select Service') }}</option>
+                            @foreach ($services as $service)
+                                <option value="{{ $service->id }}">{{ $service->name }}</option>
+                            @endforeach
+                        </select>
+                        <x-input-error for="appointment.service_id" class="mt-2" />
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-4 mt-4">
+                        <x-label for="location_id" value="{{ __('Location') }}" />
+                        <select id="location_id" class="mt-1 block w-full" wire:model="appointment.location_id">
+                            <option value="">{{ __('Select Location') }}</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                            @endforeach
+                        </select>
+                        <x-input-error for="appointment.location_id" class="mt-2" />
+                    </div>
+                </x-slot>
+
+                <x-slot name="footer">
+                    <div class="flex gap-3">
+                        <x-secondary-button wire:click="$set('confirmingAppointmentEdit', false)"
+                            wire:loading.attr="disabled">
+                            {{ __('Cancel') }}
+                        </x-secondary-button>
+
+                        <x-button wire:click="updateAppointment()" wire:loading.attr="disabled">
+                            {{ __('Save') }}
+                        </x-button>
+                    </div>
                 </x-slot>
             </x-dialog-modal>
         </div>

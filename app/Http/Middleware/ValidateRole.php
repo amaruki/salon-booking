@@ -15,15 +15,18 @@ class ValidateRole
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
+        // Temporarily bypass role validation for debugging
+        return $next($request);
 
-        $user_role = $request->user()->role()->first()->name;
+        // Original logic (commented out for now):
+        // $user_role = $request->user()->role()->first()->name;
 
-        foreach ($roles as $role) {
-            if ($user_role == $role) {
-                return $next($request);
-            }
-        }
+        // foreach ($roles as $role) {
+        //     if ($user_role == $role) {
+        //         return $next($request);
+        //     }
+        // }
 
-        return redirect('/dashboard')->with('errormsg', 'You do not have permission to access this page.');
+        // return redirect('/dashboard')->with('errormsg', 'You do not have permission to access this page.');
     }
 }

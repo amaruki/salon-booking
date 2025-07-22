@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
+
 class HomePageController extends Controller
 {
     public function index()
@@ -20,6 +22,8 @@ class HomePageController extends Controller
             ->where('is_hidden', false)
             ->get();
 
-        return view('web.home', compact('deals', 'popularServices'));
+        $locations = Location::all();
+
+        return view('web.home', compact('deals', 'popularServices', 'locations'));
     }
 }
