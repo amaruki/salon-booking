@@ -34,7 +34,7 @@ class ManageLocations extends Component
     {
         $this->locations = Location::when($this->search, function ($query) {
             $query->where('name', 'like', '%'.$this->search.'%');
-        })->paginate(10);
+        })->orderBy('id', 'asc')->paginate(10);
 
         return view('livewire.manage-locations', [
             'locations' => $this->locations,

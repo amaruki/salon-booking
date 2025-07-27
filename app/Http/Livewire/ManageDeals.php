@@ -54,6 +54,7 @@ class ManageDeals extends Component
                     ->orWhere('description', 'like', '%' . $this->search . '%');
             })
             ->orderBy('start_date', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         return view('livewire.manage-deals', [

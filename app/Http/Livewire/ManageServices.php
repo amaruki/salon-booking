@@ -67,6 +67,7 @@ class ManageServices extends Component
                         $query->where('name', 'like', '%' . $this->search . '%');
                     });
             })
+            ->orderBy('id', 'asc')
             ->orderByPrice('PriceLowToHigh')
             ->with('category')
             ->paginate(10);

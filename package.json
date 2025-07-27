@@ -5,8 +5,8 @@
         "node": ">=16.0.0"
     },
     "scripts": {
-        "dev": "vite --config vite.config.mjs",
-        "build": "vite build --config vite.config.mjs"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
         "@alpinejs/focus": "^3.14.9",

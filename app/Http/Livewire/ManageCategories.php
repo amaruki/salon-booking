@@ -31,7 +31,7 @@ class ManageCategories extends Component
     {
         $this->categories = Category::when($this->search, function ($query) {
             $query->where('name', 'like', '%'.$this->search.'%');
-        })->paginate(10);
+        })->orderBy('id', 'asc')->paginate(10);
 
         return view('livewire.manage-categories', [
             'categories' => $this->categories,

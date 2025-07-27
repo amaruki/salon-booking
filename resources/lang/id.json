@@ -269,6 +269,7 @@
     "Pending": "Tertunda",
     "Confirmed": "Dikonfirmasi",
     "Completed": "Selesai",
-    "Mark as Paid": "Tandai Dibayar",
-    "Unpaid": "Belum Dibayar"
+    "Mark as Paid": "Konfirmasi Pembayaran",
+    "Unpaid": "Belum Dibayar",
+    "Transaction History": "Riwayat Transaksi"
 }
