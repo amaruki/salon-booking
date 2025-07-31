@@ -54,7 +54,7 @@ class ManageAppointments extends Component
         $user = auth()->user();
         if ($user->role->name == 'Customer') {
             $this->userId = $user->id;
-        } elseif (in_array($user->role->name, ['Cashier', 'Owner'])) {
+        } else { // Cashier or Owner
             $this->userId = $userId;
         }
 
@@ -124,15 +124,16 @@ class ManageAppointments extends Component
         session()->flash('message', 'Appointment marked as completed.');
     }
 
-    public function confirmAppointmentCancellation(Appointment $appointment)
+    public function confirmAppointmentCancellation($appointmentId)
     {
-        $this->appointment = $appointment;
+        $this->appointment = Appointment::findOrFail($appointmentId);
         $this->confirmingAppointmentCancellation = true;
     }
 
-    public function confirmAppointmentEdit(Appointment $appointment)
+    public function confirmAppointmentEdit($appointmentId)
     {
-        $this->appointment = $appointment;
+        $this->reset('appointment'); // Reset the appointment property
+        $this->appointment = Appointment::findOrFail($appointmentId);
         $this->confirmingAppointmentEdit = true;
     }
 
@@ -157,10 +158,16 @@ class ManageAppointments extends Component
 
     public function updateAppointment()
     {
-        $this->validate();
+        $this->validate([
+            'appointment.date' => 'required|date',
+            'appointment.time_slot_id' => 'required|integer|exists:time_slots,id',
+            'appointment.service_id' => 'required|integer|exists:services,id',
+            'appointment.location_id' => 'required|integer|exists:locations,id',
+        ]);
         $this->appointment->save();
 
         $this->confirmingAppointmentEdit = false;
         session()->flash('message', 'Appointment updated successfully.');
     }
 }
+

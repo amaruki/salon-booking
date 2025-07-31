@@ -105,9 +105,9 @@
 
                                 @if (auth()->user()->role->name == 'Customer')
                                     <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
-                                        {{ $appointment->location->address }}</td>
-                                    <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
-                                        {{ $appointment->location->telephone_number }}</td>
+                                        {{ $appointment->location?->address ?? 'N/A' }}</td>
+                                        <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
+                                            {{ $appointment->location?->telephone_number ?? 'N/A' }}</td>
                                 @elseif (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
                                     <td class="px-6 py-4 max-w-xs font-medium text-gray-700">
                                         {{ $appointment->user->name }}</td>
@@ -120,7 +120,7 @@
                                 <td>
                                     <div class="flex gap-1 mt-5">
                                         @if (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
-                                            @if ($appointment->status == 0) {{-- 0 for unpaid --}}
+                                            @if ($selectFilter == 'unpaid' || $selectFilter == 'upcoming')
                                                 <x-button wire:click="markAsPaid({{ $appointment->id }})" wire:loading.attr="disabled">
                                                     {{ __('Mark as Paid') }}
                                                 </x-button>
@@ -132,7 +132,7 @@
                                         @endif
                                         @if (auth()->user()->role->name == 'Customer')
                                         @if ($selectFilter == 'unpaid' || $selectFilter == 'upcoming')
-                                            <x-button wire:click="confirmAppointmentEdit({{ $appointment }})" wire:loading.attr="disabled">
+                                            <x-button wire:click="confirmAppointmentEdit({{ $appointment->id }})" wire:loading.attr="disabled">
                                                 {{ __('Edit') }}
                                             </x-button>
                                             <x-danger-button wire:click="confirmAppointmentCancellation({{ $appointment->id }})"

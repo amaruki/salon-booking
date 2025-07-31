@@ -220,23 +220,17 @@
 
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div class="col-span-2">
-                        <label for="image"
-                            class="block text-sm font-medium text-gray-700">{{ __('Image') }}</label>
-                        <input type="file" wire:model.defer="image" id="image"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                          <label for="image" class="block text-sm font-medium text-gray-700">{{ __('Image') }}</label>
+                        <input type="file" wire:model="image" id="image"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
+                        @if ($image)
+                            <img src="{{ $image }}" class="mt-2 w-20 h-20">
+                        @elseif (isset($newService->image))
+                            <img src="{{ asset('storage/' . $newService->image) }}" class="mt-2 w-20 h-20">
+                        @endif
                         @error('image')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
-
-                        {{-- If the image is already saved is system show img --}}
-                        @if ($image instanceof \Livewire\TemporaryUploadedFile)
-                            <img alt="image" src="{{ $image->temporaryUrl() }}" class="mt-4" width="200">
-                        @elseif (!empty($existingImagePath))
-                            <img alt="image" src="{{ asset('storage/' . $existingImagePath) }}" class="mt-4"
-                                width="200">
-                        @endif
-
-
                     </div>
                 </div>
                 <div class="flex justify-end mt-4 gap-2">

@@ -61,5 +61,11 @@
         @stack('modals')
 
         @livewireScripts
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Any scripts that need to run after the DOM is fully loaded can be placed here.
+                // This acts as a safeguard for elements that might not be available immediately.
+            });
+        </script>
     </body>
 </html>

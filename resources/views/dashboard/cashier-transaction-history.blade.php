@@ -50,7 +50,7 @@
                                             {{ date('g:i a', strtotime($appointment->start_time)) }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            Rp.{{ number_format($appointment->total_price, 0, ',', '.') }}
+                                            Rp.{{ number_format($appointment->total, 0, ',', '.') }}
                                         </td>
                                         <td class="px-6 py-4">
                                             <span

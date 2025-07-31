@@ -16,7 +16,7 @@ class CustomerTransactionHistory extends Component
     {
         $this->appointments = Appointment::where('user_id', auth()->user()->id)
             
-            ->with('service', 'location', 'timeSlot', 'status')
+            ->with('service', 'location', 'timeSlot')
             ->orderBy('date', 'desc')
             ->paginate(10);
 
