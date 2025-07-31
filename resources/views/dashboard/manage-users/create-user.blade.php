@@ -7,7 +7,7 @@
     </x-slot>
 
     <div>
-        <form action="{{ route('manageusers.store')}}" method="post" class="w-1/2 mx-auto bg-white rounded-lg p-5">
+        <form action="{{ route('users.store')}}" method="post" class="w-1/2 mx-auto bg-white rounded-lg p-5">
             @csrf
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4 my-2">
@@ -51,6 +51,7 @@
                 <select name="role" id="role" class="border-gray-300 focus:border-pink-500 focus:ring-pink-500 rounded-md shadow-sm">
                     <option value="cashier">{{ __('Cashier') }}</option>
                     <option value="customer">{{ __('Customer') }}</option>
+                    <option value="owner">{{ __('Owner') }}</option>
                 </select>
                 <x-input-error for="role" class="mt-2" />
             </div>

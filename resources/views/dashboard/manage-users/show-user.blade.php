@@ -38,43 +38,58 @@
                             <span class="ml-auto">{{ $user->created_at->toDateString() }}</span>
                         </li>
 
+                            @php
+                                $lastPastAppointment = $appointments->filter(function ($appointment) {
+                                    return $appointment->status->value === 1 && $appointment->date <= \Carbon\Carbon::today()->toDateString();
+                                })->sortByDesc('date')->first();
+                                $lastAnyAppointment = $appointments->filter(function ($appointment) {
+                                    return $appointment->status->value === 1;
+                                })->sortByDesc('date')->first();
+                                $lastPurchase = $appointments->filter(function ($appointment) {
+                                    return $appointment->status->value === 3;
+                                })->sortByDesc('created_at')->first();
+                                $totalPurchases = $appointments->filter(function ($appointment) {
+                                    return $appointment->status->value === 3;
+                                })->sum('total');
+                                $lastCancellation = $appointments->filter(function ($appointment) {
+                                    return $appointment->status->value === 2;
+                                })->sortByDesc('created_at')->first();
+                            @endphp
                         <li class="flex items-center py-3">
                             <span>{{ __('Last Appointment') }}</span>
-                            <span
-                                class="ml-auto">{{ $appointments->where('status', true)->sortByDesc('date')->where('date', '<=', \Carbon\Carbon::today()->toDateString())->first()?->service->name }}</span>
+                            <span class="ml-auto">{{ $lastPastAppointment?->service->name }}</span>
                         </li>
                         <li class="flex items-center py-3">
                             <span>{{ __('Last Appointment Date') }}</span>
-                            <span
-                                class="ml-auto">{{ $appointments->where('status', true)->sortByDesc('date')->first()?->date }}</span>
+                            <span class="ml-auto">{{ $lastAnyAppointment?->date }}</span>
                         </li>
                         <div x-cloak x-show="showFullInfo">
                             <li class="flex items-center py-3">
                                 <span>{{ __('Last Purchase') }}</span>
                                 <span class="ml-auto">
-                                    {{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->service->name }}
+                                    {{ $lastPurchase?->service->name }}
                                 </span>
                             </li>
                             <li class="flex items-center py-3">
                                 <span>{{ __('Last Purchase Date') }}</span>
                                 <span class="ml-auto">
-                                    {{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->created_at->toDateString() }}</span>
+                                    {{ $lastPurchase?->created_at->toDateString() }}</span>
                             </li>
                             <li class="flex items-center py-3">
                                 <span>{{ __('Last Purchase Amount') }}</span>
                                 <span class="ml-auto">
-                                    Rp.{{ $appointments->where('status', true)->sortByDesc('created_at')->first()?->total }}</span>
+                                    Rp.{{ $lastPurchase?->total }}</span>
                             </li>
 
                             <li class="flex items-center py-3">
                                 <span>{{ __('Total Purchases') }}</span>
                                 <span class="ml-auto">
-                                    Rp.{{ $appointments->where('status', true)?->sum('total') }}</span>
+                                    Rp.{{ $totalPurchases }}</span>
                             </li>
                             <li class="flex items-center py-3">
                                 <span>{{ __('Last Cancellation') }}</span>
                                 <span class="ml-auto">
-                                    {{ $appointments->where('status', false)->sortByDesc('created_at')->first()?->service->name }}</span>
+                                    {{ $lastCancellation?->service->name }}</span>
                             </li>
                         </div>
                     </ul>
@@ -83,8 +98,6 @@
                     class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">{{ __('Show Full Information') }}</button>
             </div>
         </div>
-        <div class="w-full">
-            <livewire:manage-appointments :user-id="$user->id" :select-filter="'upcoming'" />
-        </div>
     </div>
 </x-dashboard>
+

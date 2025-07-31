@@ -71,6 +71,7 @@ class ManageLocations extends Component
 
         $this->confirmingLocationAdd = false;
         $this->location = null;
+        session()->flash('message', 'Location saved successfully.');
     }
 
     public function deleteLocation(Location $locationId)
@@ -78,6 +79,7 @@ class ManageLocations extends Component
         $this->location = $locationId;
         $this->location->delete();
         $this->confirmingLocationDeletion = false;
+        session()->flash('message', 'Location deleted successfully.');
     }
 
     public function confirmLocationAdd()

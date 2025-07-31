@@ -80,7 +80,7 @@
                             <td class="px-6 py-2">
                                 <div class="flex gap-2">
 
-                                    @if ($user->role()->first()->name != 'Owner')
+                                    @if ($user->id != 1)
                                         @if ($user->status == true)
                                             <form action="{{ route('manageusers.suspend', $user->id) }}"
                                                 method="POST">

@@ -66,12 +66,14 @@ class ManageCategories extends Component
 
         $this->confirmingCategoryAdd = false;
         $this->category = null;
+        session()->flash('message', 'Category saved successfully.');
     }
 
     public function deleteCategory()
     {
         Category::find($this->categoryIdToDelete)->delete();
         $this->confirmingCategoryDeletion = false;
+        session()->flash('message', 'Category deleted successfully.');
     }
 
     public function confirmCategoryAdd()

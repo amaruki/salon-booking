@@ -31,10 +31,20 @@ class AdminDashboardHomeController extends Controller
 
         $totalUpcomingAppointments = Appointment::where('date', '>', $todayDate)->count();
         $todaysAppointments = Appointment::where('date', $todayDate)->count();
-        $tommorowsAppointments = Appointment::where('date', Carbon::today()->addDay()->toDateTime())->count();
+        $tommorowsAppointments = Appointment::where('date', Carbon::today()->addDay()->toDateString())->count();
 
-        $bookingRevenueThisMonth = Appointment::where('created_at', '>', Carbon::today()->subMonth()->toDateTime())->where('status', '!=', 0)->sum('total');
-        $bookingRevenueLastMonth = Appointment::where('created_at', '>', Carbon::today()->subMonths(2)->toDateTime())->where('created_at', '<', Carbon::today()->subMonth()->toDateTime())->where('status', '!=', 0)->sum('total');
+        $startOfCurrentMonth = Carbon::now()->startOfMonth();
+        $endOfCurrentMonth = Carbon::now()->endOfMonth();
+        $startOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
+        $endOfLastMonth = Carbon::now()->subMonth()->endOfMonth();
+
+        $bookingRevenueThisMonth = Appointment::whereBetween('created_at', [$startOfCurrentMonth, $endOfCurrentMonth])
+            ->where('status', '!=', 0)
+            ->sum('total');
+
+        $bookingRevenueLastMonth = Appointment::whereBetween('created_at', [$startOfLastMonth, $endOfLastMonth])
+            ->where('status', '!=', 0)
+            ->sum('total');
 
         $percentageRevenueChangeLastMonth = 0;
         if ($bookingRevenueLastMonth != 0) {
@@ -52,7 +62,7 @@ class AdminDashboardHomeController extends Controller
             ->get();
 
         $tommorowsSchedule = Appointment::orderBy('start_time', 'asc')
-            ->where('date', Carbon::today()->addDay()->toDateTime())
+            ->where('date', Carbon::today()->addDay()->toDateString())
             ->where('status', '!=', 0)
             ->orderBy('time_slot_id', 'asc')
             ->where('status', '!=', 0)

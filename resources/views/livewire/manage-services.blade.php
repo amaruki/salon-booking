@@ -224,9 +224,9 @@
                         <input type="file" wire:model="image" id="image"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm">
                         @if ($image)
-                            <img src="{{ $image }}" class="mt-2 w-20 h-20">
-                        @elseif (isset($newService->image))
-                            <img src="{{ asset('storage/' . $newService->image) }}" class="mt-2 w-20 h-20">
+                            <img src="{{ $image->temporaryUrl() }}" class="mt-2 w-20 h-20">
+                        @elseif (isset($existingImagePath))
+                            <img src="{{ asset('storage/' . $existingImagePath) }}" class="mt-2 w-20 h-20">
                         @endif
                         @error('image')
                             <span class="text-red-500">{{ $message }}</span>

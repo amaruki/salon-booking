@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Cart::class);
     }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }

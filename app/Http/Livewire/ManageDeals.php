@@ -117,5 +117,7 @@ class ManageDeals extends Component
 
         session()->flash('message', __('Deal successfully saved.'));
         $this->confirmingDealAdd = false;
+        $this->newDeal = new Deal(); // Reset newDeal after saving
+        $this->image = null; // Clear image input after saving
     }
 }

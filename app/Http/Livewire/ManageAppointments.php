@@ -36,6 +36,10 @@ class ManageAppointments extends Component
 
     private $userId;
 
+    public $timeSlots;
+    public $services;
+    public $locations;
+
     protected $rules = [
         'appointment.cart_id' => 'required|integer|exists:carts,id',
         'appointment.user_id' => 'required|integer|exists:users,id',
@@ -49,17 +53,28 @@ class ManageAppointments extends Component
         'appointment.status' => 'required|integer',
     ];
 
-    public function mount($userId = null, $selectFilter = 'unpaid')
+    public function mount($userId = null, $selectFilter = null)
     {
-        $user = auth()->user();
-        if ($user->role->name == 'Customer') {
-            $this->userId = $user->id;
-        } else { // Cashier or Owner
-            $this->userId = $userId;
-        }
+        // Only attempt to get user data if authenticated
+        if (auth()->check()) {
+            $user = auth()->user();
+            $this->userId = $userId ?? $user->id; // Use provided userId or authenticated user's ID
 
-        $this->selectFilter = $selectFilter ?: 'unpaid';
+            // Set default filter based on role if not explicitly provided
+            if (is_null($selectFilter)) {
+                $this->selectFilter = ($user->role->name == 'Customer') ? 'upcoming' : 'unpaid';
+            } else {
+                $this->selectFilter = $selectFilter;
+            }
+        } else {
+            // For unauthenticated users or when user ID is not relevant
+            $this->userId = $userId; // Use provided userId or null
+            $this->selectFilter = $selectFilter ?? 'upcoming'; // Default filter for unauthenticated
+        }
         $this->timeNow = Carbon::now();
+        $this->timeSlots = TimeSlot::all();
+        $this->services = Service::all();
+        $this->locations = Location::all();
     }
 
     public function render()
@@ -91,18 +106,18 @@ class ManageAppointments extends Component
             case 'cancelled':
                 $query->where('status', 2);
                 break;
+            case 'completed':
+                $query->where('status', 3);
+                break;
         }
 
-        $this->appointments = $query
+        $appointments = $query
             ->orderBy('date')
             ->orderBy('start_time')
             ->paginate(10);
 
         return view('livewire.manage-appointments', [
-            'appointments' => $this->appointments,
-            'timeSlots' => TimeSlot::all(),
-            'services' => Service::all(),
-            'locations' => Location::all(),
+            'appointments' => $appointments,
         ]);
     }
 
@@ -170,4 +185,5 @@ class ManageAppointments extends Component
         session()->flash('message', 'Appointment updated successfully.');
     }
 }
+
 

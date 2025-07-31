@@ -1,5 +1,4 @@
 <div {{ $attributes->class(['m-3']) }}>
-
     <h2 class="font-medium text-gray-600 text-lg mb-2">{{ $date->toDateString() }}</h2>
     <table class="w-full border-collapse bg-white text-left text-sm text-gray-500 overflow-x-scroll min-w-screen">
         <thead class="bg-gray-50">
@@ -12,12 +11,11 @@
         </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-        @foreach ($timeSlots as $timeSlotId => $slot)
+        @foreach ($timeSlots as $timeSlot)
             @php
-                $appointment = $daySchedule->where('time_slot_id', $timeSlotId)->first();
+                $appointment = $daySchedule->where('time_slot_id', $timeSlot->id)->first();
             @endphp
             <tr
-
                     @if($appointment)
                         class = "bg-pink-50 hover:bg-pink-100"
                     @else
@@ -25,7 +23,7 @@
                     @endif
             >
                 <td class="px-1 py-1 max-w-0 border">
-                    {{ date('g:i a', strtotime($slot->start_time)) . ' - ' . date('g:i a', strtotime($slot->end_time)) }}
+                    {{ date('g:i a', strtotime($timeSlot->start_time)) . ' - ' . date('g:i a', strtotime($timeSlot->end_time)) }}
                 </td>
                 <td class="max-w-xs font-medium text-gray-700 border p-2">
                     @if ($appointment)
@@ -51,5 +49,4 @@
         @endforeach
         </tbody>
     </table>
-
 </div>

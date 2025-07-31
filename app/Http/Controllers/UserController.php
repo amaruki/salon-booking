@@ -45,10 +45,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        // Redirect if not owner
-        if (auth()->user()->role->name != 'Owner') {
-            return redirect()->route('dashboard')->with('error', 'You are not authorized to perform this action.');
-        }
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
@@ -56,7 +52,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8|max:255',
             'password_confirmation' => 'required|string|min:8|max:255|same:password',
             'phone_number' => ['required', 'string', 'regex:/^08[0-9]{7,12}$/', 'unique:users'],
-            'role' => 'required|string|in:cashier,customer',
+            'role' => 'required|string|in:cashier,customer,owner',
         ]);
 
         if ($validator->fails()) {
@@ -67,11 +63,12 @@ class UserController extends Controller
 
         $role = $request['role'];
 
-        if ($role == 'cashier') {
-            $role_id = UserRolesEnum::Cashier;
-        } else {
-            $role_id = UserRolesEnum::Customer;
-        }
+        $role_id = match ($role) {
+            'cashier' => UserRolesEnum::Cashier->value,
+            'customer' => UserRolesEnum::Customer->value,
+            'owner' => UserRolesEnum::Owner->value,
+            default => UserRolesEnum::Customer->value, // Fallback, though validation should prevent this
+        };
 
         try {
             User::create([
@@ -95,9 +92,10 @@ class UserController extends Controller
     {
 
         // find the appointments of the user
-        $appointments = Appointment::where('user_id', $user->id)
+        $appointments = Appointment::with('service')
+            ->where('user_id', $user->id)
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->get();
 
         return view('dashboard.manage-users.show-user', compact('user', 'appointments'));
     }
@@ -108,6 +106,22 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
+    }
+
+    public function suspend(User $user)
+    {
+        $user->status = false;
+        $user->save();
+
+        return redirect()->route('manageusers')->with('success', 'User suspended successfully.');
+    }
+
+    public function activate(User $user)
+    {
+        $user->status = true;
+        $user->save();
+
+        return redirect()->route('manageusers')->with('success', 'User activated successfully.');
     }
 
     /**
@@ -126,3 +140,4 @@ class UserController extends Controller
         //
     }
 }
+

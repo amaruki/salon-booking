@@ -48,13 +48,14 @@
                     </div>
                 </div>
 
-                <select class="border text-gray-900  border-gray-300 rounded-lg" wire:model="selectFilter">
-                @if (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')    
-                <option value="unpaid">{{ __('Unpaid') }}</option>
+                <select class="border text-gray-900  border-gray-300 rounded-lg" wire:model.live="selectFilter">
+                @if (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
+                <option value="unpaid" @if($selectFilter == 'unpaid') selected @endif>{{ __('Unpaid') }}</option>
                 @endif
-                    <option value="unpaid">{{ __('Upcoming') }}</option>
-                    <option value="previous">{{ __('Previous') }}</option>
-                    <option value="cancelled">{{ __('Cancelled') }}</option>
+                    <option value="upcoming" @if($selectFilter == 'upcoming') selected @endif>{{ __('Upcoming') }}</option>
+                    <option value="previous" @if($selectFilter == 'previous') selected @endif>{{ __('Previous') }}</option>
+                    <option value="cancelled" @if($selectFilter == 'cancelled') selected @endif>{{ __('Cancelled') }}</option>
+                    <option value="completed" @if($selectFilter == 'completed') selected @endif>{{ __('Completed') }}</option>
                 </select>
 
 
@@ -121,14 +122,21 @@
                                     <div class="flex gap-1 mt-5">
                                         @if (auth()->user()->role->name == 'Owner' || auth()->user()->role->name == 'Cashier')
                                             @if ($selectFilter == 'unpaid' || $selectFilter == 'upcoming')
-                                                <x-button wire:click="markAsPaid({{ $appointment->id }})" wire:loading.attr="disabled">
-                                                    {{ __('Mark as Paid') }}
-                                                </x-button>
-                                                <x-danger-button wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
-                                                    wire:loading.attr="disabled">
-                                                    Cancel
-                                                </x-danger-button>
-                                            @endif
+                                                    <x-button wire:click="markAsPaid({{ $appointment->id }})" wire:loading.attr="disabled">
+                                                        {{ __('Mark as Paid') }}
+                                                    </x-button>
+                                                    <x-danger-button wire:click="confirmAppointmentCancellation({{ $appointment->id }})"
+                                                        wire:loading.attr="disabled">
+                                                        Cancel
+                                                    </x-danger-button>
+                                               @elseif ($selectFilter == 'completed')
+                                                  {{-- If an appointment is completed, but needs to be marked as paid --}}
+                                                  @if ($appointment->status == 3) {{-- Assuming status 3 is 'completed' --}}
+                                                      <x-button wire:click="markAsPaid({{ $appointment->id }})" wire:loading.attr="disabled">
+                                                          {{ __('Mark as Paid') }}
+                                                      </x-button>
+                                                  @endif
+                                               @endif
                                         @endif
                                         @if (auth()->user()->role->name == 'Customer')
                                         @if ($selectFilter == 'unpaid' || $selectFilter == 'upcoming')
